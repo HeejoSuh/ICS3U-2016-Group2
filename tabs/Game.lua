@@ -23,8 +23,7 @@ local userGage
 
 local potionButton
 
---delete this
-local goBackButton
+
 
 
 function GameScene:init()
@@ -53,8 +52,6 @@ function GameScene:init()
     
     potionButton= Potion()
     
-    --delete this
-    goBackButton= BackButton()
 end
 
 
@@ -92,9 +89,6 @@ end
 
 function GameScene:touched(touch)
     -- Codea does not automatically call this method
-    
-    --delete this
-    goBackButton:touched(touch)
     
     --move touch light
     if touch.state==ENDED then

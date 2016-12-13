@@ -29,6 +29,10 @@ end
 function SpellsScene:draw()
     -- Codea does not automatically call this method
     
+    previousPageButton:draw()
+    nextPageButton:draw()
+    --hide the buttons
+    
     background(160, 101, 149, 255)
     
     if currentPage==0 then
@@ -84,9 +88,7 @@ function SpellsScene:draw()
     
     backButton:draw()
     
-    previousPageButton:draw()
-    nextPageButton:draw()
-    --hide the buttons
+    
 end
 
 function SpellsScene:touched(touch)

@@ -12,6 +12,8 @@ local spellSpritePos
 local size
 local angle
 
+local mode= Mode
+
 
 function AttackScene:init()
     -- you can accept and set parameters here
@@ -70,7 +72,12 @@ function AttackScene:draw()
         
         
         if speech.speaking==false then --go back
-            Scene.Change("game")
+            if mode=="practice" then
+                --if practicing then
+                Scene.Change("game")
+            else
+                Scene.Change("walk")
+            end
         end
     end
     

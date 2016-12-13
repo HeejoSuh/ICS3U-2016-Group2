@@ -14,6 +14,7 @@ local companyLogoSprite
 local gameLogoSprite
 
 local currentSprite
+local currentWords
 
 
 function SplashScene:init()
@@ -24,6 +25,7 @@ function SplashScene:init()
     gameLogoSprite= "Planet Cute:Chest Open"
     
     currentSprite= companyLogoSprite --first, set to company sprite
+    currentWords= "H Company"
 end
 
 
@@ -38,10 +40,14 @@ function SplashScene:draw()
     elseif (durationTime + transitionTime < ElapsedTime) then
         --for the next few seconds, show game logo
         currentSprite= gameLogoSprite
+        currentWords= "Spell Caster"
     end
     
     --Draw logo
     sprite(currentSprite, WIDTH/2, HEIGHT/1.5, WIDTH/1.5, WIDTH/1.5)
+    fontSize(WIDTH/15)
+    fill(0, 0, 0, 255)
+    text(currentWords,WIDTH/2, HEIGHT/1.5)
 end
 
 

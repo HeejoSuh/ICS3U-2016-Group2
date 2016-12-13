@@ -18,10 +18,7 @@ function MainMenuScene:init()
     local middleButtonSpace= HEIGHT/7
     local middleButtonOriginalY= HEIGHT/1.9
     
-    buttons= {                                                                                 {["sprite"]= "Space Art:Part Yellow Hull 3", ["position"]= vec2(WIDTH/2, middleButtonOriginalY - 2*middleButtonSpace), ["scene"]="game", ["mode"]= "practice"},                                                                                 {["sprite"]= "Space Art:Part Yellow Hull 3", ["position"]= vec2(WIDTH/2, middleButtonOriginalY - 3*middleButtonSpace), ["scene"]="spells"},                                                                                 {["sprite"]= "Space Art:Part Yellow Hull 3", ["position"]= vec2(WIDTH/8, HEIGHT/1.1), ["scene"]="settings"},                                                                                                                                                                 {["sprite"]= "Space Art:Part Yellow Hull 3", ["position"]= vec2(WIDTH- WIDTH/8, HEIGHT/1.1), ["scene"]="shop"},                                                                                 }
-    --buttons to add in:
-    --{["sprite"]= "Space Art:Part Yellow Hull 3", ["position"]= vec2(WIDTH/2, middleButtonOriginalY), ["scene"]="maps",},                                                                                 {["sprite"]= "Space Art:Part Yellow Hull 3", ["position"]= vec2(WIDTH/2, middleButtonOriginalY - 1*middleButtonSpace), ["scene"]="game", ["mode"]= "resume"},                                                         
-    
+    buttons= {                                                                                 {["sprite"]= "Space Art:Part Yellow Hull 3", ["position"]= vec2(WIDTH/2, middleButtonOriginalY), ["scene"]="maps",},                                                                                 {["sprite"]= "Space Art:Part Yellow Hull 3", ["position"]= vec2(WIDTH/2, middleButtonOriginalY - 1*middleButtonSpace), ["scene"]="game", ["mode"]= "resume"}, {["sprite"]= "Space Art:Part Yellow Hull 3", ["position"]= vec2(WIDTH/2, middleButtonOriginalY - 2*middleButtonSpace), ["scene"]="game", ["mode"]= "practice"},                                                                                 {["sprite"]= "Space Art:Part Yellow Hull 3", ["position"]= vec2(WIDTH/2, middleButtonOriginalY - 3*middleButtonSpace), ["scene"]="spells"},                                                                                 {["sprite"]= "Space Art:Part Yellow Hull 3", ["position"]= vec2(WIDTH/8, HEIGHT/1.1), ["scene"]="settings"},                                                                                                                                                                 {["sprite"]= "Space Art:Part Yellow Hull 3", ["position"]= vec2(WIDTH- WIDTH/8, HEIGHT/1.1), ["scene"]="shop"},                                                                                 }
 
     for numberOfButtons= 1, #buttons do
         --put actual buttons into dictionary
@@ -46,6 +43,9 @@ function MainMenuScene:draw()
     end
     
     sprite("Small World:Court", WIDTH/2, HEIGHT/1.2, WIDTH/2.5, WIDTH/2.5) -- game name sprite
+    fontSize(WIDTH/18)
+    fill(0, 0, 0, 255)
+    text("Spell Caster", WIDTH/2, HEIGHT/1.2)
     
     fontSize (WIDTH/25)
     font("Papyrus")
