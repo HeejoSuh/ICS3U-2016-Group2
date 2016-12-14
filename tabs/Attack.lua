@@ -12,7 +12,7 @@ local spellSpritePos
 local size
 local angle
 
-local mode= Mode
+local basicSprites
 
 
 function AttackScene:init()
@@ -31,14 +31,16 @@ function AttackScene:init()
     end
     
     sound("A Hero's Quest:Defensive Cast 1")
+    
+    basicSprites= BasicSprites(Mode)
 end
 
 function AttackScene:draw()
     -- Codea does not automatically call this method
     background(62, 48, 48, 255)
     
-    --draw wand
-    sprite(Wands[CurrentWandNumber]["sprite"], WIDTH/2, HEIGHT/2.8)
+    --background and wand
+    basicSprites:draw()
     
     if Attacked==false then
         --if attacking, not getting attacked

@@ -20,6 +20,8 @@ local popUpY
 local userGage
 local potionButton
 
+local wand
+
 function WalkingScene:init()
     -- you can accept and set parameters here
     
@@ -40,10 +42,12 @@ function WalkingScene:init()
     
     popUpY= 0
     
-    music("Game Music One:Pulsar", true, 0.6) --play sound
+    sound("A Hero's Quest:Walk",  0.7) --play sound
     
     userGage= GageBar(UserHealth, 100, vec2(WIDTH/25, HEIGHT/90), color(255, 0, 0, 255), WIDTH/1.06)
     potionButton= Potion()
+    
+    wand= BasicSprites("walking")
 end
 
 
@@ -81,16 +85,16 @@ function WalkingScene:draw()
     scaleSize.x= scaleSize.x + 1
     scaleSize.y= scaleSize.y + 1
     
-    sprite("Documents:Hallway", WIDTH/2+ moveHorrizontally, HEIGHT/2+ moveVertically, scaleSize.x, scaleSize.y) --draw background
+    sprite("SpaceCute:Background", WIDTH/2+ moveHorrizontally, HEIGHT/2+ moveVertically, scaleSize.x, scaleSize.y) --draw background
     
     
+    
+      --draw wand
+    wand:draw()
     
     --user gage bar
     userGage:draw()
-    
-    --draw wand
-    sprite(Wands[CurrentWandNumber]["sprite"], WIDTH/2, HEIGHT/2.8)
-    
+
     --draw potion button
     potionButton:draw()
     
@@ -119,12 +123,13 @@ function WalkingScene:draw()
         --move popup up
         popUpY= popUpY+ (HEIGHT-popUpY)/60
     end
-        
+    
     
     --change scene
     if (startTime + endWalkTime < ElapsedTime) then
         Scene.Change("game")
     end
+    
 end
 
 function WalkingScene:touched(touch)

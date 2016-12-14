@@ -9,6 +9,8 @@
 		<string>Main</string>
 		<string>MainMenu</string>
 		<string>Game</string>
+		<string>PausedScene</string>
+		<string>BasicSprites</string>
 		<string>Attack</string>
 		<string>Walking</string>
 		<string>Splash</string>

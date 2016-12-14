@@ -22,7 +22,7 @@ EnemyDefeated= "" --set to nothing
 NewFloor= "" --set to nothing
 
 
---{["spell name"]= "SpellName", ["power"]= spellAttackPoints(average=20), ["type"]= "GrowTurn", ["spell"]= spellNumbers, ["sprite"]= spellSpriteImage, ["lv"]=levelToUnlock, ["description"]= },                                                        
+--{["spell name"]= "SpellName", ["power"]=spellAttackPoints(average=20), ["type"]= "GrowTurn", ["spell"]= spellNumbers, ["sprite"]= spellSpriteImage, ["lv"]=levelToUnlock, ["description"]= },                                                        
 
 Spells= {{["spell name"]= "Dividi Bavidiboo", ["power"]= 10, ["type"]= "grow", ["spell"]= "123", ["sprite"]= "Documents:Another Blue Light", ["level"]=1, ["description"]= "this is spell number one"},                                                                                             {["spell name"]= "Abracadabra", ["power"]= 1000, ["type"]= "turn", ["spell"]= "456", ["sprite"]= "Documents:Blue Circle", ["level"]=1, ["description"]= "this is spell number two"},                                                        
 }
@@ -40,6 +40,9 @@ SpellCasted= ""
 Attacked= false
 
 UserHealth= nil
+CurrentMonster= ""
+CurrentMonsterHealth= 0
+
 
 NumberOfPotions=nil
 
@@ -47,9 +50,11 @@ MusicMuted= nil
 
 Mode= "game"
 
+
+
 function setup()
     supportedOrientations(PORTRAIT)
-    displayMode(FULLSCREEN_NO_BUTTONS)
+    displayMode(FULLSCREEN)
 	noFill()
 	noSmooth()
 	noStroke()
@@ -86,11 +91,13 @@ function setup()
     Scene("game", GameScene)
     Scene("walk", WalkingScene)
     Scene("attack", AttackScene)
+    Scene("pause", PausedScene)
+    
     
     
     --go to splash scene first
     --Scene.Change("splash")
-    Scene.Change("splash")
+    Scene.Change("mainMenu")
 end
  
 function draw()

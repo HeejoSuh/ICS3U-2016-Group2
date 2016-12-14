@@ -7,7 +7,8 @@
 
 GameScene = class()
 
-local mode= Mode
+
+local goBackButton
 
 local touchLight
 local touchLightPosition
@@ -22,13 +23,15 @@ local userHealth
 local userGage
 
 local potionButton
+local pauseButton
 
+local basicSprites
 
 
 
 function GameScene:init()
     -- you can accept and set parameters here
-    saveLocalData("number of potions", 10)
+    
     
     --dots position
     local dotMainPos= vec2(WIDTH/2, HEIGHT/2.4)
@@ -51,7 +54,12 @@ function GameScene:init()
     
     
     potionButton= Potion()
+
+    basicSprites= BasicSprites(Mode)
     
+    goBackButton= BackButton()
+    
+    pauseButton= Button("Cargo Bot:Stop Button", vec2(WIDTH-WIDTH/8, HEIGHT-WIDTH/9))
 end
 
 
@@ -59,17 +67,13 @@ function GameScene:draw()
     -- Codea does not automatically call this method
     background(0, 39, 255, 255)
     
-    --draw wand
-    sprite(Wands[CurrentWandNumber]["sprite"], WIDTH/2, HEIGHT/2.8, WIDTH/3, HEIGHT/1.5)
+    basicSprites:draw() --draw background and wand
     
     --gage bar
     userGage:draw()
     
     --potions bottle
     potionButton:draw()
-    
-    --delete this
-    BackButton:draw()
     
     
     --draw dots
@@ -83,12 +87,22 @@ function GameScene:draw()
     tint(127, 127, 127, 100)
     touchLight:draw()
     popStyle()
+    
+    if Mode~="game" then
+        --draw go back button
+        goBackButton:draw()
+    else
+        --draw pause button
+        pauseButton:draw()
+    end
 end
 
 
 
 function GameScene:touched(touch)
     -- Codea does not automatically call this method
+    
+    goBackButton:touched(touch)
     
     --move touch light
     if touch.state==ENDED then
@@ -106,6 +120,7 @@ function GameScene:touched(touch)
         touchLightPosition= vec2(touch.x, touch.y)--move to touch location
     end
        
+    
     --get spell  
     for numberOfDots=1, 9 do
         if ((touchLight:isTouching(dots[numberOfDots]))==true and string.sub(touchedDots, #touchedDots)~=tostring(numberOfDots))  then
@@ -115,6 +130,13 @@ function GameScene:touched(touch)
             touchedDots= touchedDots..tostring(numberOfDots)
             print(touchedDots)
         end
+    end
+    
+    
+    --pause button
+    pauseButton:touched(touch)
+    if pauseButton.selected== true then
+        Scene.Change("pause")
     end
     
     userGage:recalculateHealth(potionButton:touched(touch)) --see if change in health

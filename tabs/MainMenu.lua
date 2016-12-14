@@ -18,7 +18,9 @@ function MainMenuScene:init()
     local middleButtonSpace= HEIGHT/7
     local middleButtonOriginalY= HEIGHT/1.9
     
-    buttons= {                                                                                 {["sprite"]= "Space Art:Part Yellow Hull 3", ["position"]= vec2(WIDTH/2, middleButtonOriginalY), ["scene"]="maps",},                                                                                 {["sprite"]= "Space Art:Part Yellow Hull 3", ["position"]= vec2(WIDTH/2, middleButtonOriginalY - 1*middleButtonSpace), ["scene"]="game", ["mode"]= "resume"}, {["sprite"]= "Space Art:Part Yellow Hull 3", ["position"]= vec2(WIDTH/2, middleButtonOriginalY - 2*middleButtonSpace), ["scene"]="game", ["mode"]= "practice"},                                                                                 {["sprite"]= "Space Art:Part Yellow Hull 3", ["position"]= vec2(WIDTH/2, middleButtonOriginalY - 3*middleButtonSpace), ["scene"]="spells"},                                                                                 {["sprite"]= "Space Art:Part Yellow Hull 3", ["position"]= vec2(WIDTH/8, HEIGHT/1.1), ["scene"]="settings"},                                                                                                                                                                 {["sprite"]= "Space Art:Part Yellow Hull 3", ["position"]= vec2(WIDTH- WIDTH/8, HEIGHT/1.1), ["scene"]="shop"},                                                                                 }
+    buttons= {                                                                                 {["sprite"]= "Space Art:Part Yellow Hull 3", ["position"]= vec2(WIDTH/2, middleButtonOriginalY), ["scene"]="maps",},                                                                                  {["sprite"]= "Space Art:Part Yellow Hull 3", ["position"]= vec2(WIDTH/2, middleButtonOriginalY - 1*middleButtonSpace), ["scene"]="game", ["mode"]= "practice"},                                                                                 {["sprite"]= "Space Art:Part Yellow Hull 3", ["position"]= vec2(WIDTH/2, middleButtonOriginalY - 2*middleButtonSpace), ["scene"]="spells"},                                                                                 {["sprite"]= "Space Art:Part Yellow Hull 3", ["position"]= vec2(WIDTH/8, HEIGHT/1.1), ["scene"]="settings"},                                                                                                                                                                 {["sprite"]= "Space Art:Part Yellow Hull 3", ["position"]= vec2(WIDTH/2, middleButtonOriginalY - 3*middleButtonSpace), ["scene"]="shop"},                                                                                 }
+    
+    --{["sprite"]= "Space Art:Part Yellow Hull 3", ["position"]= vec2(WIDTH/2, middleButtonOriginalY - 1*middleButtonSpace), ["scene"]="game", ["mode"]= "resume"},
 
     for numberOfButtons= 1, #buttons do
         --put actual buttons into dictionary
@@ -75,18 +77,18 @@ function MainMenuScene:touched(touch)
                 SpriteEnemies= true
             end
             
-            if currentButtonDict["mode"]=="resume" and CurrentGameFloor==nil then
+            --if currentButtonDict["mode"]=="resume" and CurrentGameFloor==nil then
                 --if no resume then do nothing
-            else 
-                if currentButtonDict["mode"]=="practice" then
-                    --practice scene
-                    Mode= "practice"
-                end
-                print("Go to "..currentButtonDict["scene"])
-                Scene.Change(currentButtonDict["scene"])
+            --else 
+            if currentButtonDict["mode"]=="practice" then
+                --practice scene
+                Mode= "practice"
             end
+            print("Go to "..currentButtonDict["scene"])
+            Scene.Change(currentButtonDict["scene"])
         end
     end
+    
 end
 
 
