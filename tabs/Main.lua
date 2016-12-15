@@ -11,16 +11,22 @@ Level= 1
 ExpPoints= 0
 MoneyHave= 0
 
-MapsUnlocked= {true, false, false, false} --if maps are unlocked or not
 
 CurrentWandNumber= 1
+
 CurrentGameMap= 1
 CurrentGameFloor= 1
-SpriteEnemies=true
+CurrentMonsters= {}
+CurrentMonster= {}
+CurrentMonsterOrgHealth= 0
+
+Attacked= false
 
 EnemyDefeated= "" --set to nothing
-NewFloor= "" --set to nothing
+NewFloor= false
 
+
+Maps= {                                                                                                      {["map name"]= "A1", ["floor"]= 1, ["unlocked"]= true},                                                                              {["map name"]= "A2", ["floor"]= 20, ["unlocked"]= false},                                                                              {["map name"]= "A3", ["floor"]= 40, ["unlocked"]= false},                                                                                                                                                        {["map name"]= "B1", ["floor"]= 70, ["unlocked"]= false},                                                                              }
 
 
 --{["spell name"]= "SpellName", ["power"]=spellAttackPoints(average=20), ["type"]= "GrowTurn", ["spell"]= spellNumbers, ["sprite"]= spellSpriteImage, ["lv"]=levelToUnlock, ["description"]= },                                                        
@@ -31,10 +37,6 @@ Spells= {{["spell name"]= "Dividi Bavidiboo", ["power"]= 10, ["type"]= "grow", [
 --{["wand name"]=wandName, ["sprite"]=wandSpriteImage, ["cost"]=cost, ["level"]= LevelToUse},                                                                                             
 Wands= {                                                                    {["wand name"]="Beginner's wand", ["sprite"]="Cargo Bot:Claw Arm", ["cost"]=0, ["level"]= 1},                                                                                             
 {["wand name"]="Intermediate's wand", ["sprite"]="Cargo Bot:Claw Arm", ["cost"]=5, ["level"]= 1},                                                                 {["wand name"]="Advanced wand", ["sprite"]="Cargo Bot:Claw Arm", ["cost"]=20, ["level"]= 2},                                                                    {["wand name"]="Expert's wand", ["sprite"]="Cargo Bot:Claw Arm", ["cost"]=40, ["level"]= 3},                                                                                                                         }
-
-
---                                                                                                            {['monster name']='NameOfMonster', ['sprite']= spriteImage, ['health']= healthOfMonster(average=80), ['points']= pointOfMonster(average=10), ['speed']= timeItTakesToAttack(average=2.3), ['coins']= numberOfCoins(average=14), ['strength']= attackPower,(average=36), ['floor']= atLeastThisFlooraToSee, ['attack sound']= soundWhenAttacking, ['hurt sound']= soundWhenAttacked},                                                                                                                  
-Monsters= {                                                                                                            {['monster name']='NameOfMonster', ['sprite']= "Planet Cute:Character Cat Girl", ['health']= 10, ['points']= 8, ['speed']= 2, ['coins']= 10, ["strength"]= 30, ['floor']= 1, ['attack sound']= "A Hero's Quest:Bottle Break 1", ['hurt sound']= "A Hero's Quest:Bottle Break 1"},                                                                                                                  {['monster name']='NameOfMonster', ['sprite']= "Planet Cute:Character Princess Girl", ['health']= 100, ['points']= 10, ['speed']= 1.8, ['coins']= 5, ['strength']= 20, ['floor']= 1, ['attack sound']= "A Hero's Quest:Bottle Break 1", ['hurt sound']= "A Hero's Quest:Bottle Break 1"},                                                                                                                  {['monster name']='NameOfMonster', ['sprite']= "Planet Cute:Character Pink Girl", ['health']= 50, ['points']= 5, ['speed']= 1, ['coins']= 25, ['strength']= 15, ['floor']= 2, ['attack sound']= "A Hero's Quest:Dig 1", ['hurt sound']= "A Hero's Quest:Bottle Break 1"}                                                                                                                                                                                                                              }
 
 
 SpellCasted= ""

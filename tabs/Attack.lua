@@ -74,6 +74,7 @@ function AttackScene:draw()
         
         
         if speech.speaking==false then --go back
+            Attacked= false --reset to false
             if Mode=="practice" then
                 --if practicing then
                 Scene.Change("game")

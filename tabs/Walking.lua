@@ -1,3 +1,10 @@
+-- Walking scene
+
+--Created by: Heejo Suh
+-- Created on: Dec 2016
+-- Created for: ICS3U
+-- This is the walking scene for game
+
 WalkingScene = class()
 
 local backgroundImage= "Documents:Hallway"
@@ -13,13 +20,10 @@ local moveLeftOrRight
 local moveUpOrDown
 
 local scaleSize
-
 local popUpY
-
 
 local userGage
 local potionButton
-
 local pauseButton
 
 local wand
@@ -27,12 +31,16 @@ local wand
 function WalkingScene:init()
     -- you can accept and set parameters here
     
-    --time it takes to walk
-    if NewFloor~="" then
-        endWalkTime= 5
+    if CurrentMonsters=={} then
+        --if a floor cleared then
+        CurrentGameFloor= CurrentGameFloor-1 --new floor
+        NewFloor= true
+        CurrentMonsters= Monsters() --sprite new patch
+        endWalkTime= 6--time it takes to walk
     else
-        endWalkTime= 4.5
+        endWalkTime= math.random(40, 50)/10--time it takes to walk
     end
+
     
     moveHorrizontally= 0
     moveVertically= 0
@@ -104,7 +112,7 @@ function WalkingScene:draw()
     
     
     --pop up
-    if EnemyDefeated~= "" or NewFloor~= "" then 
+    if EnemyDefeated~= "" or NewFloor==true then 
         --create sprite
     
         sprite("Documents:양피지 2", WIDTH/2, popUpY, WIDTH/1.5, WIDTH/2.5) --draw popup

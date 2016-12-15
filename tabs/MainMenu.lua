@@ -15,6 +15,8 @@ local centerButtonSize= vec2(WIDTH/2.5, HEIGHT/8)
 
 function MainMenuScene:init()
     -- you can accept and set parameters here 
+    local djjddjdjjd= Monsters()
+    print (djjddjdjjd:returnMonsterNames())
     local middleButtonSpace= HEIGHT/7
     local middleButtonOriginalY= HEIGHT/1.9
     

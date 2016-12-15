@@ -30,8 +30,9 @@ local basicSprites
 
 function GameScene:init()
     -- you can accept and set parameters here
-    if Mode=="walk" then
-        --turn to game
+    
+    if Mode=="walk" then 
+        --turn mode back to game
         Mode="game"
     end
     
@@ -132,7 +133,6 @@ function GameScene:touched(touch)
             print(touchedDots)
         end
     end
-    
     
     --pause button
     pauseButton:touched(touch)
