@@ -13,6 +13,7 @@ local resumeButton
 function PausedScene:init()
     -- you can accept and set parameters here
     mainMenuButton= Button("Cargo Bot:Stop Button", vec2(2*WIDTH/7, HEIGHT/3))
+    resumeButton= Button("Cargo Bot:Stop Button", vec2(5*WIDTH/7, HEIGHT/3))
 end
 
 function PausedScene:draw()
@@ -28,8 +29,27 @@ function PausedScene:draw()
     text("Game Paused", WIDTH/2, HEIGHT/1.4)
     
     mainMenuButton:draw()
+    resumeButton:draw()
 end
 
 function PausedScene:touched(touch)
     -- Codea does not automatically call this method
+    mainMenuButton:touched(touch)
+    if mainMenuButton.selected==true then
+        --go to main menu
+        Scene.Change("mainMenu")
+    end
+    
+    
+    resumeButton:touched(touch)
+    if resumeButton.selected==true then
+        if Mode=="game" then
+            --go back to game
+            Scene.Change("game")
+        else
+            --go back to walking scene
+            Scene.Change("walk")
+        end
+    end
 end
+

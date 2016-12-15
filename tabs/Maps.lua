@@ -51,6 +51,7 @@ function MapsScene:touched(touch)
             --go to walk scene
             NewFloor= currentButtonDict["map"]
             EnemyDefeated= ""
+            Mode= "walk"
             print(EnemyDefeated)
             Scene.Change("walk")
         end

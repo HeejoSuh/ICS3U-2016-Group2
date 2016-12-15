@@ -20,6 +20,8 @@ local popUpY
 local userGage
 local potionButton
 
+local pauseButton
+
 local wand
 
 function WalkingScene:init()
@@ -47,7 +49,9 @@ function WalkingScene:init()
     userGage= GageBar(UserHealth, 100, vec2(WIDTH/25, HEIGHT/90), color(255, 0, 0, 255), WIDTH/1.06)
     potionButton= Potion()
     
-    wand= BasicSprites("walking")
+    wand= BasicSprites()
+    
+    pauseButton= Button("Cargo Bot:Stop Button", vec2(WIDTH-WIDTH/8, HEIGHT-WIDTH/9))
 end
 
 
@@ -130,9 +134,17 @@ function WalkingScene:draw()
         Scene.Change("game")
     end
     
+    
+    pauseButton:draw()
 end
 
 function WalkingScene:touched(touch)
     -- Codea does not automatically call this method
     userGage:recalculateHealth(potionButton:touched(touch)) --see if change in health
+    
+    --pause button
+    pauseButton:touched(touch)
+    if pauseButton.selected== true then
+        Scene.Change("pause")
+    end
 end

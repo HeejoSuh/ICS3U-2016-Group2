@@ -9,10 +9,10 @@
 		<string>Main</string>
 		<string>MainMenu</string>
 		<string>Game</string>
+		<string>Walking</string>
 		<string>PausedScene</string>
 		<string>BasicSprites</string>
 		<string>Attack</string>
-		<string>Walking</string>
 		<string>Splash</string>
 		<string>GageBar</string>
 		<string>Potion</string>

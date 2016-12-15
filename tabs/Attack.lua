@@ -32,7 +32,7 @@ function AttackScene:init()
     
     sound("A Hero's Quest:Defensive Cast 1")
     
-    basicSprites= BasicSprites(Mode)
+    basicSprites= BasicSprites()
 end
 
 function AttackScene:draw()
@@ -74,7 +74,7 @@ function AttackScene:draw()
         
         
         if speech.speaking==false then --go back
-            if mode=="practice" then
+            if Mode=="practice" then
                 --if practicing then
                 Scene.Change("game")
             else

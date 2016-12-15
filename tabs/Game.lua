@@ -19,7 +19,6 @@ local touchedDots=""
 local whooshSounds={"A Hero's Quest:Swing 1", "A Hero's Quest:Swing 2", "A Hero's Quest:Swing 3"}
 
 
-local userHealth
 local userGage
 
 local potionButton
@@ -31,7 +30,10 @@ local basicSprites
 
 function GameScene:init()
     -- you can accept and set parameters here
-    
+    if Mode=="walk" then
+        --turn to game
+        Mode="game"
+    end
     
     --dots position
     local dotMainPos= vec2(WIDTH/2, HEIGHT/2.4)
@@ -49,13 +51,12 @@ function GameScene:init()
     touchLightPosition= vec2(0,0)
     
     
-    userHealth= UserHealth
-    userGage= GageBar(userHealth, 100, vec2(WIDTH/25, HEIGHT/90), color(255, 0, 0, 255), WIDTH/1.06)
+    userGage= GageBar(UserHealth, 100, vec2(WIDTH/25, HEIGHT/90), color(255, 0, 0, 255), WIDTH/1.06)
     
     
     potionButton= Potion()
 
-    basicSprites= BasicSprites(Mode)
+    basicSprites= BasicSprites()
     
     goBackButton= BackButton()
     

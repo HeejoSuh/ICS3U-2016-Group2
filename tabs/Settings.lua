@@ -9,7 +9,6 @@ SettingsScene = class()
 
 local backButton
 
-local musicMuted
 local musicOnButton
 local onOffWords
 
@@ -22,10 +21,8 @@ function SettingsScene:init()
     -- you can accept and set parameters here
     backButton= BackButton()
     
-    musicMuted= MusicMuted
-    
     musicOnButton= Button("Planet Cute:Brown Block", vec2(4*WIDTH/7, HEIGHT/1.8))
-    if musicMuted==false then
+    if MusicMuted==false then
         onOffWords= "On"
     else
         onOffWords= "Off"
@@ -84,11 +81,11 @@ function SettingsScene:touched(touch)
     if musicOnButton.selected== true then
         if onOffWords== "On" then
             onOffWords= "Off"
-            musicMuted= true
+            MusicMuted= true
             music.muted= true
         else
             onOffWords= "On"
-            musicMuted= false
+            MusicMuted= false
             music.muted= false
         end
         saveLocalData("music on", musicMuted)

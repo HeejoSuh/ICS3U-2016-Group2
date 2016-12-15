@@ -7,19 +7,20 @@
 
 
 
-Level=nil
-ExpPoints=nil
-MoneyHave=nil
+Level= 1
+ExpPoints= 0
+MoneyHave= 0
 
-MapsUnlocked=nil --if maps are unlocked or not
+MapsUnlocked= {true, false, false, false} --if maps are unlocked or not
 
-CurrentWandNumber=nil
-CurrentGameMap=nil
-CurrentGameFloor=nil
+CurrentWandNumber= 1
+CurrentGameMap= 1
+CurrentGameFloor= 1
 SpriteEnemies=true
 
 EnemyDefeated= "" --set to nothing
 NewFloor= "" --set to nothing
+
 
 
 --{["spell name"]= "SpellName", ["power"]=spellAttackPoints(average=20), ["type"]= "GrowTurn", ["spell"]= spellNumbers, ["sprite"]= spellSpriteImage, ["lv"]=levelToUnlock, ["description"]= },                                                        
@@ -39,14 +40,14 @@ Monsters= {                                                                     
 SpellCasted= ""
 Attacked= false
 
-UserHealth= nil
+UserHealth= 100
 CurrentMonster= ""
 CurrentMonsterHealth= 0
 
 
-NumberOfPotions=nil
+NumberOfPotions= 3
 
-MusicMuted= nil
+MusicMuted= false
 
 Mode= "game"
 
@@ -60,21 +61,7 @@ function setup()
 	noStroke()
 	pushStyle()
     
-    Level= readLocalData("lv", 1)
-    ExpPoints= readLocalData("exp points", 0)
-    MoneyHave= readLocalData("money have", 0)
     
-    MapsUnlocked= readLocalData("maps unlocked", "oxxx")
-    
-    CurrentGameMap= readLocalData("game map", nil)
-    CurrentGameFloor= readLocalData("game floor", nil)
-    CurrentWandNumber= readLocalData("current wand number", 1)
-    
-    UserHealth= readLocalData("user health", 20)
-    
-    NumberOfPotions= readLocalData("number of potions", 0)
-    
-    MusicMuted= readLocalData("music on", "false")
     if MusicMuted==false then
         music("Game Music One:Smoothie", true, 0.7)
     else

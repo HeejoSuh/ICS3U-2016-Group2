@@ -7,22 +7,20 @@
 
 BasicSprites = class()
 
-local mode
-local wand
 
-function BasicSprites:init(gameMode)
+
+function BasicSprites:init()
     -- you can accept and set parameters here
-    mode= gameMode
 end
 
 function BasicSprites:draw()
     -- Codea does not automatically call this method
     
     --draw background
-    if mode== "practice" then
+    if Mode== "practice" then
         sprite("Planet Cute:Stone Block Tall", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT) -- draw background
         sprite("Planet Cute:Icon", WIDTH/2, HEIGHT/1.8, WIDTH/1.2, WIDTH/1.2) -- draw dummy
-    elseif mode== "game" then
+    elseif Mode== "game" then
         sprite("SpaceCute:Background", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT) -- draw background
     end
     

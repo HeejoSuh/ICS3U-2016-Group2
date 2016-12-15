@@ -7,8 +7,7 @@
 
 ShopScene = class()
 
-local currentMoney
-local numberOfPotions
+
 
 local buyPotionButton
 local potionCost= 100
@@ -17,7 +16,6 @@ local backButton
 
 
 --local zeroWidth= 0
-local currentWand
 local wandSpace
 local wandChooseButtons={}
 
@@ -26,14 +24,11 @@ local shopType
 
 function ShopScene:init()
     -- you can accept and set parameters here
-    currentMoney= math.tointeger(MoneyHave)
     
-    numberOfPotions= math.tointeger(NumberOfPotions)
     buyPotionButton= Button("Documents:Yellow Potion", vec2(2*WIDTH/3, HEIGHT/5.5))
     
     backButton= BackButton()
     
-    currentWand= CurrentWandNumber
     wandSpace= WIDTH/5
     
     shopType= "shop"
@@ -69,7 +64,7 @@ function ShopScene:draw()
     fill(18, 17, 14, 220)
     font("Papyrus-Condensed")
     fontSize(WIDTH/27)
-    text(numberOfPotions, 2.5*WIDTH/5, HEIGHT/6)
+    text(math.tointeger(NumberOfPotions), 2.5*WIDTH/5, HEIGHT/6)
     
     
     --back button
@@ -80,12 +75,12 @@ function ShopScene:draw()
     font("Papyrus-Condensed")
     textWrapWidth(WIDTH/1.4)
     fontSize(WIDTH/20)
-    text(currentMoney.." coins", WIDTH/2, HEIGHT/1.1)
+    text(math.tointeger(MoneyHave).." coins", WIDTH/2, HEIGHT/1.1)
     
     for numberOfWands= 1, #Wands do
         tint(255, 255, 255, 255)
         sprite(Wands[numberOfWands]["sprite"], numberOfWands*wandSpace, 3.3*HEIGHT/5, WIDTH/7, WIDTH/3)
-        if currentWand== numberOfWands then
+        if CurrentWandNumber== numberOfWands then
             --if using it
             tint(26, 155, 66, 255)
         end
@@ -106,11 +101,9 @@ function ShopScene:touched(touch)
         --see if can buy
         if MoneyHave>= potionCost then 
             --take away money
-            currentMoney= currentMoney-potionCost
-            saveLocalData("money have", currentMoney)
+            MoneyHave= MoneyHave- potionCost
             --add a number of potion
-            numberOfPotions= numberOfPotions+1
-            saveLocalData("number of potions", numberOfPotions)
+            NumberOfPotions= NumberOfPotions +1
         end
     end
     
@@ -120,8 +113,7 @@ function ShopScene:touched(touch)
         local touchedButton= wandChooseButtons[numberOfWands]
         touchedButton:touched(touch)
         if touchedButton.selected==true then
-            currentWand= numberOfWands
-            saveLocalData("current wand number", currentWand)
+            CurrentWandNumber= numberOfWands
         end
     end
     
