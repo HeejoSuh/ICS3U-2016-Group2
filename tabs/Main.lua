@@ -6,7 +6,6 @@
 -- This is main program for the CPT game
 
 
-
 Level= 1
 ExpPoints= 0
 MoneyHave= 0
@@ -18,15 +17,18 @@ CurrentGameMap= 1
 CurrentGameFloor= 1
 CurrentMonsters= {}
 CurrentMonster= {}
-CurrentMonsterOrgHealth= 0
+
 
 Attacked= false
 
-EnemyDefeated= "" --set to nothing
-NewFloor= false
+NextWords= "o" --set to nothing
+
+ExpLevelAmount= 350
+HealthLevelAmount= 1.1
 
 
-Maps= {                                                                                                      {["map name"]= "A1", ["floor"]= 1, ["unlocked"]= true},                                                                              {["map name"]= "A2", ["floor"]= 20, ["unlocked"]= false},                                                                              {["map name"]= "A3", ["floor"]= 40, ["unlocked"]= false},                                                                                                                                                        {["map name"]= "B1", ["floor"]= 70, ["unlocked"]= false},                                                                              }
+Maps= {                                                                                                      {["floor"]= 1, ["unlocked"]= true},                                                                              {["floor"]= 20, ["unlocked"]= false},                                                                              {["floor"]= 40, ["unlocked"]= false},                                                                                                                                                        {["floor"]= 70, ["unlocked"]= false},                                                                              }
+
 
 
 --{["spell name"]= "SpellName", ["power"]=spellAttackPoints(average=20), ["type"]= "GrowTurn", ["spell"]= spellNumbers, ["sprite"]= spellSpriteImage, ["lv"]=levelToUnlock, ["description"]= },                                                        
@@ -39,12 +41,13 @@ Wands= {                                                                    {["w
 {["wand name"]="Intermediate's wand", ["sprite"]="Cargo Bot:Claw Arm", ["cost"]=5, ["level"]= 1},                                                                 {["wand name"]="Advanced wand", ["sprite"]="Cargo Bot:Claw Arm", ["cost"]=20, ["level"]= 2},                                                                    {["wand name"]="Expert's wand", ["sprite"]="Cargo Bot:Claw Arm", ["cost"]=40, ["level"]= 3},                                                                                                                         }
 
 
-SpellCasted= ""
+SpellCastedNumber= 0
 Attacked= false
 
 UserHealth= 100
 CurrentMonster= ""
-CurrentMonsterHealth= 0
+
+MonsterDefeated= ""
 
 
 NumberOfPotions= 3
@@ -81,12 +84,12 @@ function setup()
     Scene("walk", WalkingScene)
     Scene("attack", AttackScene)
     Scene("pause", PausedScene)
-    
+    Scene("dead", DeadScene)
     
     
     --go to splash scene first
     --Scene.Change("splash")
-    Scene.Change("mainMenu")
+    Scene.Change("maps")
 end
  
 function draw()

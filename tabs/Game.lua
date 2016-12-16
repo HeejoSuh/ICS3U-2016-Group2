@@ -8,8 +8,6 @@
 GameScene = class()
 
 
-local goBackButton
-
 local touchLight
 local touchLightPosition
 
@@ -27,14 +25,14 @@ local pauseButton
 local basicSprites
 
 
+local startTime
+
 
 function GameScene:init()
     -- you can accept and set parameters here
+    print("Game scene")
     
-    if Mode=="walk" then 
-        --turn mode back to game
-        Mode="game"
-    end
+    Attacked= false --reset to false
     
     --dots position
     local dotMainPos= vec2(WIDTH/2, HEIGHT/2.4)
@@ -49,19 +47,16 @@ function GameScene:init()
     end
     
     --touchLight
-    touchLightPosition= vec2(0,0)
-    
-    
-    userGage= GageBar(UserHealth, 100, vec2(WIDTH/25, HEIGHT/90), color(255, 0, 0, 255), WIDTH/1.06)
-    
-    
-    potionButton= Potion()
-
-    basicSprites= BasicSprites()
-    
-    goBackButton= BackButton()
+    touchLightPosition= vec2(-300,-300) --out of screen
     
     pauseButton= Button("Cargo Bot:Stop Button", vec2(WIDTH-WIDTH/8, HEIGHT-WIDTH/9))
+    
+    potionButton= Potion()
+    basicSprites= BasicSprites()
+    
+    userGage= GageBar(UserHealth, 100, vec2(WIDTH/25, HEIGHT/30), color(255, 0, 0, 255), WIDTH/1.06)
+    
+    startTime= ElapsedTime 
 end
 
 
@@ -69,13 +64,21 @@ function GameScene:draw()
     -- Codea does not automatically call this method
     background(0, 39, 255, 255)
     
-    basicSprites:draw() --draw background and wand
+    --draw background 
+    basicSprites:drawBackground() 
     
-    --gage bar
-    userGage:draw()
+    --draw monsters
+    if Mode=="game" then
+        --draw monster
+        CurrentMonsters:draw() 
+    end
+    
+    -- draw wand
+    basicSprites:drawWand() 
     
     --potions bottle
     potionButton:draw()
+    
     
     
     --draw dots
@@ -92,11 +95,26 @@ function GameScene:draw()
     
     if Mode~="game" then
         --draw go back button
-        goBackButton:draw()
+        basicSprites:drawBackButton()
     else
         --draw pause button
+        CurrentMonsters:checkIfAttacked(startTime) --check if attacked
         pauseButton:draw()
     end
+    
+    
+    if Mode=="game" then
+        --floor number
+        fill(7, 7, 6, 220)
+        font("Papyrus-Condensed")
+        textWrapWidth(WIDTH/1.1)
+        fontSize(WIDTH/24)
+        textMode(CENTER)
+        text("Floor "..tostring(CurrentGameFloor), WIDTH/2, HEIGHT/1.1)
+    end
+    
+    -- user gage bar
+    userGage:draw()
 end
 
 
@@ -104,26 +122,27 @@ end
 function GameScene:touched(touch)
     -- Codea does not automatically call this method
     
-    goBackButton:touched(touch)
+    basicSprites:touched(touch)
     
     --move touch light
     if touch.state==ENDED then
         --if finger off of the screen
         local spellCasted= touchedDots --set to spell
         for numberOfSpells= 1, #Spells do
+            --check if spell
             if Spells[numberOfSpells]["spell"]== spellCasted then
-                SpellCasted= Spells[numberOfSpells]
+                SpellCastedNumber= numberOfSpells
                 Scene.Change("attack")
             end
         end
         touchedDots= ""
-        touchLightPosition= vec2(-100,-100) --move out of screen
+        touchLightPosition= vec2(-300,-300) --move out of screen
     else
         touchLightPosition= vec2(touch.x, touch.y)--move to touch location
     end
        
     
-    --get spell  
+    --touched dots
     for numberOfDots=1, 9 do
         if ((touchLight:isTouching(dots[numberOfDots]))==true and string.sub(touchedDots, #touchedDots)~=tostring(numberOfDots))  then
             --if touching a dot and the dot isn't previously touched or nothing has been touched then
@@ -140,6 +159,6 @@ function GameScene:touched(touch)
         Scene.Change("pause")
     end
     
-    userGage:recalculateHealth(potionButton:touched(touch)) --see if change in health
+
 end
     

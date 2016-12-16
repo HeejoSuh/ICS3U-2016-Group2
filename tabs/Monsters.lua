@@ -8,11 +8,11 @@
 Monsters = class()
 
 --                                                                                                            {['monster name']='NameOfMonster', ['sprite']= spriteImage, ['health']= healthOfMonster(average=80), ['points']= pointOfMonster(average=10), ['speed']= timeItTakesToAttack(average=2.3), ['coins']= numberOfCoins(average=14), ['strength']= attackPower,(average=36), ['floor']= atLeastThisFlooraToSee, ['attack sound']= soundWhenAttacking, ['hurt sound']= soundWhenAttacked},                                                                                                                  
-monstersDict= {                                                                                                            {['monster name']='Booo', ['sprite']= "Planet Cute:Character Cat Girl", ['health']= 10, ['points']= 8, ['speed']= 2, ['coins']= 10, ["strength"]= 30, ['floor']= 1, ['attack sound']= "A Hero's Quest:Bottle Break 1", ['hurt sound']= "A Hero's Quest:Bottle Break 1"},                                                                                                                  {['monster name']='Hi', ['sprite']= "Planet Cute:Character Princess Girl", ['health']= 100, ['points']= 10, ['speed']= 1.8, ['coins']= 5, ['strength']= 20, ['floor']= 1, ['attack sound']= "A Hero's Quest:Bottle Break 1", ['hurt sound']= "A Hero's Quest:Bottle Break 1"},                                                                                                                  {['monster name']='Hoo', ['sprite']= "Planet Cute:Character Pink Girl", ['health']= 50, ['points']= 5, ['speed']= 1, ['coins']= 25, ['strength']= 15, ['floor']= 2, ['attack sound']= "A Hero's Quest:Dig 1", ['hurt sound']= "A Hero's Quest:Bottle Break 1"}                                                                                                                                                                                                                              }
+monstersDict= {                                                                                                            {['monster name']='Booo', ['sprite']= "Planet Cute:Character Cat Girl", ['health']= 10, ['points']= 8, ['speed']= 2, ['coins']= 10, ["strength"]= 30, ['floor']= 1, ['attack sound']= "A Hero's Quest:Bottle Break 1", ['hurt sound']= "A Hero's Quest:Bottle Break 1"},                                                                                                                  {['monster name']='Hi', ['sprite']= "Planet Cute:Character Princess Girl", ['health']= 100, ['points']= 10, ['speed']= 2, ['coins']= 5, ['strength']= 20, ['floor']= 1, ['attack sound']= "A Hero's Quest:Bottle Break 1", ['hurt sound']= "A Hero's Quest:Bottle Break 1"},                                                                                                                  {['monster name']='Hoo', ['sprite']= "Planet Cute:Character Pink Girl", ['health']= 50, ['points']= 5, ['speed']= 1, ['coins']= 25, ['strength']= 15, ['floor']= 2, ['attack sound']= "A Hero's Quest:Dig 1", ['hurt sound']= "A Hero's Quest:Bottle Break 1"}                                                                                                                                                                                                                              }
 
 local monstersList= {}
-
 local currentMonsterGageBar
+
 
 function Monsters:init()
     -- you can accept and set parameters here
@@ -23,9 +23,13 @@ end
 function Monsters:draw()
     -- Codea does not automatically call this method
     --draw monster
-    sprite(currentMonster["sprite"], 3*WIDTH/5, HEIGHT/1.7)
+    sprite(CurrentMonster["sprite"], WIDTH/2, HEIGHT/1.5, WIDTH/1.3, WIDTH/1.3)
+    
+    currentMonsterGageBar= GageBar(CurrentMonster["health"], currentMonsterOrgHealth, vec2(WIDTH/23, HEIGHT- HEIGHT/25), color(131, 0, 255, 255), WIDTH/1.1) --gage bar for monster
+    --draw gage bar
     currentMonsterGageBar:draw()
 end
+
 
 function Monsters:touched(touch)
     -- Codea does not automatically call this method
@@ -38,7 +42,7 @@ function createNewBatchOfMonsters()
     monstersList= {} --clear up array
     
     --how many monsters in a floor
-    local numberOfMonsters= math.random(6,8)
+    local numberOfMonsters= math.random(3,5)
     
     local randomNumber
     
@@ -63,9 +67,9 @@ function Monsters:returnMonsterNames()
 end
 
 
-function Monsters:checkIfAttacked()
+function Monsters:checkIfAttacked(startTime)
     --get the time limit of current monster 
-    local timeLimit= currentMonster["speed"]
+    local timeLimit= CurrentMonster["speed"]
     if (ElapsedTime-startTime > timeLimit) then
         --if time over then
         Attacked= true
@@ -73,11 +77,6 @@ function Monsters:checkIfAttacked()
     end
 end
 
-function Monsters:monsterIsAttacked(amount)
-    --reduce monster health
-    CurrentMonster["health"]= math.tointeger(CurrentMonster["health"]-amount)
-    currentMonsterGageBar:recalculateHealth(amount)
-end
 
 function setNextMonster()
     --reset monster and gagebar
@@ -89,13 +88,58 @@ function setNextMonster()
     
     for numberOfDetails= 1, #changes do
         --replace with random numbers so they wouldnt be exact
-        local orginalValueTimed= tonumber(CurrentMonster[changes[numberOfDetails]]) *10
-        CurrentMonster[changes[numberOfDetails]]= math.random(orginalValueTimed-5, orginalValueTimed-5)/1000
+        
+        local currentChanging= changes[numberOfDetails] --what value is currently changing     
+        local changingValue= CurrentMonster[currentChanging]
+        
+        CurrentMonster[currentChanging]= tonumber(CurrentMonster[currentChanging]) + math.random(changingValue, 2*changingValue) - changingValue + 1
         --slight changes
+        
     end
     
-    CurrentMonsterOrgHealth= CurrentMonster["health"] --save original health
-    
-    --gage bar
-    currentMonsterGageBar= GageBar(CurrentMonster["health"], CurrentMonsterOrgHealth, vec2(WIDTH/25, HEIGHT/90), color(255, 0, 0, 255), WIDTH/1.06) --gage bar for monster
+    currentMonsterOrgHealth= CurrentMonster["health"] --save original health    
 end
+
+
+
+function Monsters:nextMonsterUp()
+    --see if can get next monster
+    MonsterDefeated= CurrentMonster["monster name"] --set name
+    
+    --add coins, exp points and such
+    print("Coins")
+    print(CurrentMonster["coins"])
+    MoneyHave= MoneyHave + CurrentMonster["coins"]
+    ExpPoints= ExpPoints + CurrentMonster["points"]
+    
+    --check if there needs to be a new level
+    if ExpPoints>= Level*ExpLevelAmount then
+        ExpPoints= ExpPoints- needExpPoints
+        Level= Level+1
+    end
+    
+    
+    --then delete the current monster
+    if #monstersList==1 then
+        
+        --if only one left then
+        print("No more")
+        CurrentMonsters= "nothing"
+        print(monstersList)
+        
+    else
+        
+        for numberOfMonsters= 1, #monstersList do
+            if numberOfMonsters== #monstersList then
+                --get rid of the last one
+                table.remove(monstersList, #monstersList)
+                setNextMonster() --set current monster
+            else
+                monstersList[numberOfMonsters]= monstersList[numberOfMonsters+1] --set to next one
+            end
+        end
+    end
+    print(Monsters:returnMonsterNames())
+    
+end
+

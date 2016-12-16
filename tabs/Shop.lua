@@ -27,7 +27,7 @@ function ShopScene:init()
     
     buyPotionButton= Button("Documents:Yellow Potion", vec2(2*WIDTH/3, HEIGHT/5.5))
     
-    backButton= BackButton()
+    backButton= BasicSprites()
     
     wandSpace= WIDTH/5
     
@@ -68,7 +68,7 @@ function ShopScene:draw()
     
     
     --back button
-    backButton:draw()
+    backButton:drawBackButton()
     
     --money
     fill(64, 51, 29, 220)

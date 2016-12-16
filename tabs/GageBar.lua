@@ -30,15 +30,7 @@ function GageBar:init(healthAmount, fullHealthAmount, barPosition, colourSet, wi
     barWidth= widthOfBar
 end
 
-function GageBar:recalculateHealth(addHealthAmount)
-    health= health+ addHealthAmount
-    if health>fullHealth then
-        --if greater than full health amount, just set it back to full health
-        health= fullHealth
-    end
-    saveLocalData("user health", health)
-    print(health)
-end
+
 
 function GageBar:draw()
     -- Codea does not automatically call this method

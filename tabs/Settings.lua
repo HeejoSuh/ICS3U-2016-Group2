@@ -14,12 +14,11 @@ local onOffWords
 
 local currentLevel
 local currentExpPoints
-local needExpPoints
 local expGage
 
 function SettingsScene:init()
     -- you can accept and set parameters here
-    backButton= BackButton()
+    backButton= BasicSprites()
     
     musicOnButton= Button("Planet Cute:Brown Block", vec2(4*WIDTH/7, HEIGHT/1.8))
     if MusicMuted==false then
@@ -32,9 +31,6 @@ function SettingsScene:init()
     --level
     currentLevel= math.tointeger(Level)
     currentExpPoints= math.tointeger(ExpPoints)
-    needExpPoints= currentLevel*350 
-    
-    newLevel()
     
     expGage= GageBar(ExpPoints, needExpPoints, vec2(WIDTH/4, HEIGHT/1.5), color(94, 148, 27, 255), WIDTH/2)
 end
@@ -42,7 +38,7 @@ end
 function SettingsScene:draw()
     -- Codea does not automatically call this method
     background(122, 30, 30, 255)
-    backButton:draw()
+    backButton:drawBackButton()
     
     musicOnButton:draw()
     fill(0, 0, 0, 255)
@@ -92,12 +88,3 @@ function SettingsScene:touched(touch)
     end
 end
 
-function newLevel()
-    --check if there needs to be a new level
-    repeat
-        currentLevel= currentLevel+1
-        saveLocalData("lv", currentLevel)
-        currentExpPoints= currentExpPoints- needExpPoints
-        saveLocalData("exp points", currentExpPoints)
-    until needExpPoints > ExpPoints
-end

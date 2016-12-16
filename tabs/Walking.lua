@@ -10,7 +10,7 @@ WalkingScene = class()
 local backgroundImage= "Documents:Hallway"
 local backgroundSprite
 
-local startTime= ElapsedTime
+local beginTime
 local endWalkTime
 
 local moveHorrizontally
@@ -28,38 +28,63 @@ local pauseButton
 
 local wand
 
+local monsterDeafeatWords
+
+
+
 function WalkingScene:init()
     -- you can accept and set parameters here
-    
-    if CurrentMonsters=={} then
-        --if a floor cleared then
-        CurrentGameFloor= CurrentGameFloor-1 --new floor
-        NewFloor= true
-        CurrentMonsters= Monsters() --sprite new patch
-        endWalkTime= 6--time it takes to walk
+    print("Walk scene")
+    if CurrentMonster["health"]<=0 then
+        CurrentMonsters:nextMonsterUp() -- next monster
+        if CurrentMonsters=="nothing" then
+            --if a floor cleared then
+            CurrentGameFloor= CurrentGameFloor-1 --new floor
+            CurrentMonsters= Monsters() --sprite new patch
+            
+            for numberOfMaps= 1,#Maps do
+                --floor unlocked
+                if CurrentGameFloor==Maps[numberOfMaps]["floor"] then
+                    Maps[numberOfMaps]["unlocked"]= true
+                end
+            end
+            
+            endWalkTime= 6--time it takes to walk
+            NextWords= "Floor number "..tostring(CurrentGameFloor)
+            endWalkTime= 3 --new floor
+            
+            
+        else
+            endWalkTime= math.random(10, 35)/10--time it takes to walk
+        end
+        
+        
     else
-        endWalkTime= math.random(40, 50)/10--time it takes to walk
+        endWalkTime= 5 --beginning game, slightly longer
     end
 
     
+    
+    monsterDeafeatWords= tostring(MonsterDefeated).." defeated!"
+    
     moveHorrizontally= 0
     moveVertically= 0
-    
     moveLeftOrRight= "left"
     moveLeftOrRight= "down"
     
     scaleSize= vec2(WIDTH*1.1, HEIGHT*1.1)
-    
     popUpY= 0
     
     sound("A Hero's Quest:Walk",  0.7) --play sound
     
-    userGage= GageBar(UserHealth, 100, vec2(WIDTH/25, HEIGHT/90), color(255, 0, 0, 255), WIDTH/1.06)
-    potionButton= Potion()
+    userGage= GageBar(UserHealth, 100, vec2(WIDTH/25, HEIGHT/30), color(255, 0, 0, 255), WIDTH/1.06)
     
+    potionButton= Potion()
     wand= BasicSprites()
     
     pauseButton= Button("Cargo Bot:Stop Button", vec2(WIDTH-WIDTH/8, HEIGHT-WIDTH/9))
+    
+    beginTime= ElapsedTime
 end
 
 
@@ -97,12 +122,12 @@ function WalkingScene:draw()
     scaleSize.x= scaleSize.x + 1
     scaleSize.y= scaleSize.y + 1
     
-    sprite("SpaceCute:Background", WIDTH/2+ moveHorrizontally, HEIGHT/2+ moveVertically, scaleSize.x, scaleSize.y) --draw background
+    sprite("Project:bg", WIDTH/2+ moveHorrizontally, HEIGHT/2+ moveVertically, scaleSize.x, scaleSize.y) --draw background
     
     
     
       --draw wand
-    wand:draw()
+    wand:drawWand()
     
     --user gage bar
     userGage:draw()
@@ -112,33 +137,39 @@ function WalkingScene:draw()
     
     
     --pop up
-    if EnemyDefeated~= "" or NewFloor==true then 
-        --create sprite
+    --create sprite
     
-        sprite("Documents:양피지 2", WIDTH/2, popUpY, WIDTH/1.5, WIDTH/2.5) --draw popup
+    sprite("Documents:양피지 2", WIDTH/2, popUpY, WIDTH/1.5, WIDTH/2.5) --draw popup
     
-        --draw text
-        textMode (CENTER)
-        font("Papyrus")
-        pushStyle ()
-        if NewFloor~= "" then
-            --floor
-            fontSize(WIDTH/24)
-            fill(0, 0, 0, 255)
-            text(NewFloor, WIDTH/2, popUpY+WIDTH/24)
-        end
+    --draw text
+    textMode (CENTER)
+    font("Papyrus")
+    pushStyle ()
+    if NextWords~= "" then
+        --if new floor then
         fontSize (WIDTH/26)
         fill(42, 28, 24, 255)
-        text("hsjejej", WIDTH/2, popUpY-WIDTH/26)
-    
-    
-        --move popup up
-        popUpY= popUpY+ (HEIGHT-popUpY)/60
+        text(NextWords, WIDTH/2, popUpY)
+    end
+    if MonsterDefeated~="" then
+        --enemy defeated
+        fontSize (WIDTH/25)
+        fill(0, 0, 0, 255)
+        text(monsterDeafeatWords, WIDTH/2, popUpY-WIDTH/15)
     end
     
     
+    --move popup up
+    popUpY= popUpY+ (HEIGHT-popUpY)/60
+       
+    
     --change scene
-    if (startTime + endWalkTime < ElapsedTime) then
+    
+    if (beginTime + endWalkTime) < ElapsedTime then
+        --turn mode back to game
+        Mode="game"
+        MonsterDefeated= "" --reset to nothing
+        NextWords= ""
         Scene.Change("game")
     end
     
@@ -148,7 +179,6 @@ end
 
 function WalkingScene:touched(touch)
     -- Codea does not automatically call this method
-    userGage:recalculateHealth(potionButton:touched(touch)) --see if change in health
     
     --pause button
     pauseButton:touched(touch)

@@ -55,7 +55,7 @@ function MainMenuScene:draw()
     textMode (CENTER)
     pushStyle ()
     fill(228, 190, 101, 255)
-    text("Coins: "..math.tointeger(MoneyHave), WIDTH/2, HEIGHT/1.6)
+    text("Coins: "..tostring(math.tointeger(MoneyHave)), WIDTH/2, HEIGHT/1.6)
     fill(10, 10, 10, 255)
     
 end
@@ -78,8 +78,12 @@ function MainMenuScene:touched(touch)
                 SpriteEnemies= true
             end
             
-            if currentButtonDict["mode"]=="resume" and CurrentGameFloor==nil then
-                --if no resume then do nothing
+            if currentButtonDict["mode"]=="resume" then
+                if CurrentMonsters[1]==nil then
+                    --if no resume then do nothing
+                else
+                    Scene.Change("game")
+                end
             else 
                 if currentButtonDict["mode"]=="practice" then
                     --practice scene

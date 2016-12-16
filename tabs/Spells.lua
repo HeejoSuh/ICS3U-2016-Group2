@@ -14,9 +14,12 @@ local nextPageButton
 
 local currentPage
 
+local nowTime
+
+
 function SpellsScene:init()
     -- you can accept and set parameters here
-    backButton= BackButton()
+    backButton= BasicSprites()
     
     --need sprites that are big
     previousPageButton= Button("Documents:Hallway", vec2(WIDTH/7, HEIGHT/2.5))
@@ -70,6 +73,8 @@ function SpellsScene:draw()
         local levelRequired= Spells[currentPage]["level"]
         text("Requires level "..levelRequired.." or more.", WIDTH/2, HEIGHT/1.3)
         --spell
+        
+        
         font("Papyrus")
         fontSize(WIDTH/20)
         fill(22, 32, 21, 190)
@@ -86,7 +91,7 @@ function SpellsScene:draw()
     end
     
     
-    backButton:draw()
+    backButton:drawBackButton()
     
     
 end
@@ -102,6 +107,7 @@ function SpellsScene:touched(touch)
             currentPage=currentPage-1
             print(currentPage)
             sound("A Hero's Quest:Page Turn")
+            nowTime=ElapsedTime
         end
     end
     
@@ -112,6 +118,7 @@ function SpellsScene:touched(touch)
             currentPage=currentPage+1
             print(currentPage)
             sound("A Hero's Quest:Page Turn")
+            nowTime=ElapsedTime
         end
     end
 end
