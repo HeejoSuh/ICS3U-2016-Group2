@@ -32,7 +32,7 @@ function SettingsScene:init()
     currentLevel= math.tointeger(Level)
     currentExpPoints= math.tointeger(ExpPoints)
     
-    expGage= GageBar(ExpPoints, needExpPoints, vec2(WIDTH/4, HEIGHT/1.5), color(94, 148, 27, 255), WIDTH/2)
+    expGage= GageBar(ExpPoints, ExpNeedAmount, vec2(WIDTH/4, HEIGHT/1.5), color(94, 148, 27, 255), WIDTH/2)
 end
 
 function SettingsScene:draw()

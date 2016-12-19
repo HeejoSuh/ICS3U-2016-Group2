@@ -31,12 +31,11 @@ end
 
 function SplashScene:draw()
     -- Codea does not automatically call this method
-    background(255, 255, 255, 255) -- White background
+    background(171, 171, 171, 255) -- White background
     
     if (durationTime + 2*transitionTime < ElapsedTime) then 
         --if time twice passed, move scene
         Scene.Change("mainMenu")
-        
     elseif (durationTime + transitionTime < ElapsedTime) then
         --for the next few seconds, show game logo
         currentSprite= gameLogoSprite

@@ -49,12 +49,13 @@ function GameScene:init()
     --touchLight
     touchLightPosition= vec2(-300,-300) --out of screen
     
-    pauseButton= Button("Cargo Bot:Stop Button", vec2(WIDTH-WIDTH/8, HEIGHT-WIDTH/9))
+    pauseButton= Button("Project:Blue Pause Button", vec2(WIDTH-WIDTH/8, HEIGHT-WIDTH/9))
+    
     
     potionButton= Potion()
     basicSprites= BasicSprites()
     
-    userGage= GageBar(UserHealth, 100, vec2(WIDTH/25, HEIGHT/30), color(255, 0, 0, 255), WIDTH/1.06)
+    userGage= GageBar(UserHealth, HealthLevelAmount, vec2(WIDTH/25, HEIGHT/30), color(255, 0, 0, 255), WIDTH/1.06)
     
     startTime= ElapsedTime 
 end
@@ -66,7 +67,6 @@ function GameScene:draw()
     
     --draw background 
     basicSprites:drawBackground() 
-    
     --draw monsters
     if Mode=="game" then
         --draw monster
@@ -75,11 +75,8 @@ function GameScene:draw()
     
     -- draw wand
     basicSprites:drawWand() 
-    
     --potions bottle
     potionButton:draw()
-    
-    
     
     --draw dots
     tint(255, 255, 255, 120) --translucent
@@ -130,7 +127,7 @@ function GameScene:touched(touch)
         local spellCasted= touchedDots --set to spell
         for numberOfSpells= 1, #Spells do
             --check if spell
-            if Spells[numberOfSpells]["spell"]== spellCasted then
+            if Spells[numberOfSpells]["spell"]== spellCasted and Spells[numberOfSpells]["level"]<=Level then
                 SpellCastedNumber= numberOfSpells
                 Scene.Change("attack")
             end

@@ -14,11 +14,20 @@ local nextPageButton
 
 local currentPage
 
+local eachDotShowTime= 0.2
 local nowTime
+
+local dotShown
+local dotShownNumber= 0
+local dotTable= {}
+
+local dotPositions
 
 
 function SpellsScene:init()
     -- you can accept and set parameters here
+
+    
     backButton= BasicSprites()
     
     --need sprites that are big
@@ -26,7 +35,13 @@ function SpellsScene:init()
     nextPageButton= Button("Documents:Hallway", vec2(6*WIDTH/7, HEIGHT/2.5))
     
     currentPage= 0
-    print(currentPage)
+    
+    
+    --dots position
+    local dotMainPos= vec2(WIDTH/2, HEIGHT/2.4)
+    local dotSpace= WIDTH/7
+    dotPositions= {                                                             vec2(dotMainPos.x-dotSpace, dotMainPos.y+dotSpace),                                             vec2(dotMainPos.x, dotMainPos.y+dotSpace),                                             vec2(dotMainPos.x+dotSpace, dotMainPos.y+dotSpace),              vec2(dotMainPos.x-dotSpace, dotMainPos.y),                                             vec2(dotMainPos.x, dotMainPos.y),                                             vec2(dotMainPos.x+dotSpace,dotMainPos.y),                     vec2(dotMainPos.x-dotSpace, dotMainPos.y-dotSpace),                                             vec2(dotMainPos.x, dotMainPos.y-dotSpace), vec2(dotMainPos.x+dotSpace,dotMainPos.y-dotSpace)                                            }
+    
 end
 
 function SpellsScene:draw()
@@ -59,6 +74,7 @@ function SpellsScene:draw()
         --page sprite
         sprite("Documents:양피지", WIDTH/2, HEIGHT/2, WIDTH/1.1, HEIGHT/1.1)
         textWrapWidth(WIDTH/1.3) --restrict range 
+        
         --name of spell
         font("SnellRoundhand-Black")
         textMode (CENTER)
@@ -66,20 +82,22 @@ function SpellsScene:draw()
         fill(79, 33, 31, 190)
         local nameOfSpell= Spells[currentPage]["spell name"]
         text(nameOfSpell, WIDTH/2, HEIGHT/1.2)
+        
         --level to unlcok
         font("Papyrus")
         fontSize(WIDTH/40)
         fill(22, 32, 21, 180)
         local levelRequired= Spells[currentPage]["level"]
         text("Requires level "..levelRequired.." or more.", WIDTH/2, HEIGHT/1.3)
+        
         --spell
+        for numberOfDots=1,9 do
+            --draw nine dots
+            fill(255, 255, 255, 90)
+            sprite("Planet Cute:Gem Orange", dotPositions[numberOfDots].x, dotPositions[numberOfDots].y, WIDTH/18, WIDTH/18)
+        end
+        drawDot()
         
-        
-        font("Papyrus")
-        fontSize(WIDTH/20)
-        fill(22, 32, 21, 190)
-        local spell= Spells[currentPage]["spell"]
-        text(spell, WIDTH/2, HEIGHT/2)
         --description
         textMode(LEFT)
         font("Zapfino")
@@ -89,7 +107,6 @@ function SpellsScene:draw()
         text(description, WIDTH-WIDTH/1.3, HEIGHT/5)      
         popStyle()
     end
-    
     
     backButton:drawBackButton()
     
@@ -105,9 +122,7 @@ function SpellsScene:touched(touch)
         if currentPage-1 >= 0 then
             --if not the first page then turn page
             currentPage=currentPage-1
-            print(currentPage)
-            sound("A Hero's Quest:Page Turn")
-            nowTime=ElapsedTime
+            newSpellSet()
         end
     end
     
@@ -116,9 +131,48 @@ function SpellsScene:touched(touch)
         if currentPage+2 < #Wands then
             --if not the last page then turn page
             currentPage=currentPage+1
-            print(currentPage)
-            sound("A Hero's Quest:Page Turn")
-            nowTime=ElapsedTime
+            newSpellSet()
         end
+    end
+end
+
+
+function newSpellSet()
+    --set spell things
+    print("Current page "..tostring(currentPage))
+    sound("A Hero's Quest:Page Turn")
+    if currentPage> 0 then
+        --if not first page
+        nowTime=ElapsedTime  
+        dotTable= {}
+    
+        for numbers = 1, string.len(Spells[currentPage]["spell"]) do
+            table.insert(dotTable, tonumber(string.sub(Spells[currentPage]["spell"], numbers, numbers)))
+        end --put into table
+    
+        dotShown= dotTable[1]
+        dotShownNumber= 1
+    end
+end
+
+
+function drawDot()
+    --draw next dot
+    if nowTime + eachDotShowTime < ElapsedTime then
+        --if time passed then
+        dotShownNumber= dotShownNumber + 1
+        if dotShownNumber== #dotTable+1 then         
+            --if last number then give a few seconds
+            nowTime= ElapsedTime
+            dotShownNumber= -1
+        else
+            nowTime= ElapsedTime
+            dotShown= dotTable[dotShownNumber]
+        end
+    end
+       
+    if dotShownNumber > 0 then
+        print("dot shown"..tostring(dotShown))
+        sprite("Platformer Art:Guy Standing", dotPositions[dotShown].x, dotPositions[dotShown].y, WIDTH/14, WIDTH/14)
     end
 end

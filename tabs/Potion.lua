@@ -14,7 +14,7 @@ local potionCoolTimeSeconds= 1
 
 function Potion:init()
     -- you can accept and set parameters here
-    potionButton= Button("Documents:Yellow Potion", vec2(WIDTH/8, WIDTH/6.5))
+    potionButton= Button("Documents:Yellow Potion", vec2(WIDTH/8, WIDTH/6))
 end
 
 function Potion:draw()

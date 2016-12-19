@@ -7,15 +7,14 @@
 
 
 Level= 1
-ExpPoints= 0
 MoneyHave= 0
 
 
 CurrentWandNumber= 1
 
 CurrentGameMap= 1
-CurrentGameFloor= 1
-CurrentMonsters= {}
+CurrentGameFloor= 0
+CurrentMonsters= nil
 CurrentMonster= {}
 
 
@@ -23,15 +22,17 @@ Attacked= false
 
 NextWords= "o" --set to nothing
 
-ExpLevelAmount= 350
-HealthLevelAmount= 1.1
+UserHealth= 100
+HealthLevelAmount= 100
+
+ExpPoints= 0
+ExpNeedAmount= 350
 
 
-Maps= {                                                                                                      {["floor"]= 1, ["unlocked"]= true},                                                                              {["floor"]= 20, ["unlocked"]= false},                                                                              {["floor"]= 40, ["unlocked"]= false},                                                                                                                                                        {["floor"]= 70, ["unlocked"]= false},                                                                              }
 
+Maps= {                                                                                                      {["floor"]= 1, ["unlocked"]= true},                                                                              {["floor"]=2, ["unlocked"]= false},                                                                              {["floor"]= 30, ["unlocked"]= false},                                                                                                                                                        {["floor"]= 100, ["unlocked"]= false},                                                                              }
 
-
---{["spell name"]= "SpellName", ["power"]=spellAttackPoints(average=20), ["type"]= "GrowTurn", ["spell"]= spellNumbers, ["sprite"]= spellSpriteImage, ["lv"]=levelToUnlock, ["description"]= },                                                        
+--{["spell name"]= "SpellName", ["power"]=spellAttackPoints(average=20), ["type"]= "GrowTurn", ["spell"]= {spellNumbers}, ["sprite"]= spellSpriteImage, ["lv"]=levelToUnlock, ["description"]= },                                                        
 
 Spells= {{["spell name"]= "Dividi Bavidiboo", ["power"]= 10, ["type"]= "grow", ["spell"]= "123", ["sprite"]= "Documents:Another Blue Light", ["level"]=1, ["description"]= "this is spell number one"},                                                                                             {["spell name"]= "Abracadabra", ["power"]= 1000, ["type"]= "turn", ["spell"]= "456", ["sprite"]= "Documents:Blue Circle", ["level"]=1, ["description"]= "this is spell number two"},                                                        
 }
@@ -44,7 +45,7 @@ Wands= {                                                                    {["w
 SpellCastedNumber= 0
 Attacked= false
 
-UserHealth= 100
+
 CurrentMonster= ""
 
 MonsterDefeated= ""
@@ -68,7 +69,7 @@ function setup()
     
     
     if MusicMuted==false then
-        music("Game Music One:Smoothie", true, 0.7)
+        music("Dropbox:GameBgm", true, 0.85)
     else
         music.muted= true
     end
@@ -89,7 +90,7 @@ function setup()
     
     --go to splash scene first
     --Scene.Change("splash")
-    Scene.Change("maps")
+    Scene.Change("splash")
 end
  
 function draw()

@@ -13,7 +13,8 @@ local resumeButton
 function PausedScene:init()
     -- you can accept and set parameters here
     mainMenuButton= Button("Cargo Bot:Stop Button", vec2(2*WIDTH/7, HEIGHT/3))
-    resumeButton= Button("Cargo Bot:Stop Button", vec2(5*WIDTH/7, HEIGHT/3))
+    resumeButton= Button("Cargo Bot:Step Button", vec2(5*WIDTH/7, HEIGHT/3))
+    
 end
 
 function PausedScene:draw()

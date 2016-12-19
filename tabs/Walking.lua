@@ -28,7 +28,9 @@ local pauseButton
 
 local wand
 
-local monsterDeafeatWords
+local monsterDeafeatWords= ""
+local coinWords= ""
+local expWords= ""
 
 
 
@@ -36,34 +38,34 @@ function WalkingScene:init()
     -- you can accept and set parameters here
     print("Walk scene")
     if CurrentMonster["health"]<=0 then
+        --if defeated monster then
+        coinWords= tostring(CurrentMonster["coins"]).." coins"
+        expWords= tostring(CurrentMonster["points"]).." points"
+        
         CurrentMonsters:nextMonsterUp() -- next monster
-        if CurrentMonsters=="nothing" then
+        if CurrentMonsters==nil then
             --if a floor cleared then
-            CurrentGameFloor= CurrentGameFloor-1 --new floor
+            print("Nooooo")
             CurrentMonsters= Monsters() --sprite new patch
-            
-            for numberOfMaps= 1,#Maps do
-                --floor unlocked
-                if CurrentGameFloor==Maps[numberOfMaps]["floor"] then
+            endWalkTime= 4 --new floor
+            CurrentGameFloor= CurrentGameFloor+1 --new floor
+            NextWords= "Underground floor number "..tostring(CurrentGameFloor)
+            sound("A Hero's Quest:Door Open")--new floor sound
+                for numberOfMaps= 1,#Maps do
+                    --floor unlocked
+                    if CurrentGameFloor==Maps[numberOfMaps]["floor"] then
                     Maps[numberOfMaps]["unlocked"]= true
                 end
             end
-            
-            endWalkTime= 6--time it takes to walk
-            NextWords= "Floor number "..tostring(CurrentGameFloor)
-            endWalkTime= 3 --new floor
-            
             
         else
             endWalkTime= math.random(10, 35)/10--time it takes to walk
         end
         
-        
     else
         endWalkTime= 5 --beginning game, slightly longer
     end
 
-    
     
     monsterDeafeatWords= tostring(MonsterDefeated).." defeated!"
     
@@ -82,10 +84,12 @@ function WalkingScene:init()
     potionButton= Potion()
     wand= BasicSprites()
     
-    pauseButton= Button("Cargo Bot:Stop Button", vec2(WIDTH-WIDTH/8, HEIGHT-WIDTH/9))
+    pauseButton= Button("Project:Blue Pause Button", vec2(WIDTH-WIDTH/8, HEIGHT-WIDTH/9))
+    
     
     beginTime= ElapsedTime
 end
+
 
 
 function WalkingScene:draw()
@@ -149,14 +153,19 @@ function WalkingScene:draw()
         --if new floor then
         fontSize (WIDTH/26)
         fill(42, 28, 24, 255)
-        text(NextWords, WIDTH/2, popUpY)
+        text(NextWords, WIDTH/2, popUpY+WIDTH/15)
     end
     if MonsterDefeated~="" then
         --enemy defeated
-        fontSize (WIDTH/25)
+        fontSize (WIDTH/23)
         fill(0, 0, 0, 255)
-        text(monsterDeafeatWords, WIDTH/2, popUpY-WIDTH/15)
+        text(monsterDeafeatWords, WIDTH/2, popUpY)
     end
+    
+    fontSize (WIDTH/27)
+    fill(0, 0, 0, 240)
+    text(coinWords, WIDTH/2, popUpY-WIDTH/19)
+    text(expWords, WIDTH/2, popUpY-WIDTH/10)
     
     
     --move popup up

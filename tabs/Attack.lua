@@ -38,7 +38,7 @@ function AttackScene:init()
                 --just set it back to zero
                 CurrentMonster["health"]= 0
                 print("Monster health: "..CurrentMonster["health"])
-                MonsterDefeated= CurrentMonster["monster name"]
+                MonsterDefeated= CurrentMonster["monster name"] --set name
             end
         
             saySpell()
@@ -70,7 +70,7 @@ function AttackScene:init()
     end
     
     basics= BasicSprites()
-    userGage= GageBar(UserHealth, 100, vec2(WIDTH/25, HEIGHT/90), color(255, 0, 0, 255), WIDTH/1.06)
+    userGage= GageBar(UserHealth, HealthLevelAmount, vec2(WIDTH/25, HEIGHT/90), color(255, 0, 0, 255), WIDTH/1.06)
 end
 
 function AttackScene:draw()
@@ -85,7 +85,6 @@ function AttackScene:draw()
         --monster
         CurrentMonsters:draw()
     end
-    
     
     
     if Attacked==false then
@@ -124,16 +123,21 @@ function AttackScene:draw()
     if speech.speaking==false then 
     --go back
         --see if user died
-        if UserHealth==0 then
+        if UserHealth<=0 then
             --died scene
             Scene.Change("dead")
         end
         --else
-        if CurrentMonster["health"]<= 0 then
-            --if monster died then
-            Scene.Change("walk")
-        else
+        if Mode== "practice" then 
+            --if practice mode then
             Scene.Change("game")
+        else
+            if CurrentMonster["health"]<= 0 then
+                --if monster died then
+                Scene.Change("walk")
+            else
+                Scene.Change("game")
+            end
         end
     end
     

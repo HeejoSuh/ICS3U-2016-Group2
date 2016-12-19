@@ -15,12 +15,13 @@ local centerButtonSize= vec2(WIDTH/2.5, HEIGHT/8)
 
 function MainMenuScene:init()
     -- you can accept and set parameters here 
-    local djjddjdjjd= Monsters()
-    print (djjddjdjjd:returnMonsterNames())
+    print("Main menu")
+    
+    
     local middleButtonSpace= HEIGHT/7
     local middleButtonOriginalY= HEIGHT/1.9
     
-    buttons= {                                                                                 {["sprite"]= "Space Art:Part Yellow Hull 3", ["position"]= vec2(WIDTH/2, middleButtonOriginalY), ["scene"]="maps",},                                                                                  {["sprite"]= "Space Art:Part Yellow Hull 3", ["position"]= vec2(WIDTH/2, middleButtonOriginalY - 1*middleButtonSpace), ["scene"]="game", ["mode"]= "resume"},                                           {["sprite"]= "Space Art:Part Yellow Hull 3", ["position"]= vec2(WIDTH/2, middleButtonOriginalY - 2*middleButtonSpace), ["scene"]="game", ["mode"]= "practice"},                                                                                 {["sprite"]= "Space Art:Part Yellow Hull 3", ["position"]= vec2(WIDTH/2, middleButtonOriginalY - 3*middleButtonSpace), ["scene"]="spells"},                                                                                 {["sprite"]= "Space Art:Part Yellow Hull 3", ["position"]= vec2(WIDTH/8, HEIGHT/1.1), ["scene"]="settings"},                                                                                                                                                                 {["sprite"]= "Space Art:Part Yellow Hull 3", ["position"]= vec2(WIDTH-WIDTH/8, HEIGHT/1.1), ["scene"]="shop"},                                                                                 }
+    buttons= {                                                                                 {["sprite"]= "Cargo Bot:Dialogue Button", ["position"]= vec2(WIDTH/2, middleButtonOriginalY), ["scene"]="maps",},                                                                                  {["sprite"]= "Cargo Bot:Dialogue Button", ["position"]= vec2(WIDTH/2, middleButtonOriginalY - 1*middleButtonSpace), ["scene"]="game", ["mode"]= "resume"},                                           {["sprite"]= "Cargo Bot:Dialogue Button", ["position"]= vec2(WIDTH/2, middleButtonOriginalY - 2*middleButtonSpace), ["scene"]="game", ["mode"]= "practice"},                                                                                 {["sprite"]= "Cargo Bot:Dialogue Button", ["position"]= vec2(WIDTH/2, middleButtonOriginalY - 3*middleButtonSpace), ["scene"]="spells"},                                                                                 {["sprite"]= "Cargo Bot:Title Large Crate 2", ["position"]= vec2(WIDTH/8, HEIGHT/1.1), ["scene"]="settings"},                                                                                                                                                                 {["sprite"]= "Cargo Bot:Title Large Crate 2", ["position"]= vec2(WIDTH-WIDTH/8, HEIGHT/1.1), ["scene"]="shop"},                                                                                 }
     
 
     for numberOfButtons= 1, #buttons do
@@ -41,6 +42,7 @@ function MainMenuScene:draw()
     for numberOfButtons= 1,#buttons do
         --draw the buttons
         buttons[numberOfButtons]["button"]:draw()
+        fontSize(WIDTH/21)
         fill(0, 0, 0, 255)
         text(buttons[numberOfButtons]["scene"], buttons[numberOfButtons]["position"].x, buttons[numberOfButtons]["position"].y)
     end
@@ -79,10 +81,15 @@ function MainMenuScene:touched(touch)
             end
             
             if currentButtonDict["mode"]=="resume" then
-                if CurrentMonsters[1]==nil then
-                    --if no resume then do nothing
+                --resume game
+                if CurrentGameFloor==0 then
+                    --if no data then do nothing
                 else
-                    Scene.Change("game")
+                    if CurrentMonsters==nil then 
+                        -- if no monsters then make new ones
+                        CurrentMonsters= Monsters()
+                    end
+                    Scene.Change("walk")
                 end
             else 
                 if currentButtonDict["mode"]=="practice" then

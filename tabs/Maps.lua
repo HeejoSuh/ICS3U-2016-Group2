@@ -13,7 +13,8 @@ local backButton
 
 function MapsScene:init()
     -- you can accept and set parameters here
-    buttonPosition= {vec2(WIDTH/4, HEIGHT/1.7 ), vec2(WIDTH/4, HEIGHT/1.7 - 1*HEIGHT/5), vec2(WIDTH/4, HEIGHT/1.7 - 2*HEIGHT/5), vec2(3*WIDTH/4, HEIGHT/2)}
+    
+    buttonPosition= {vec2(WIDTH/4, HEIGHT/1.5 ), vec2(WIDTH/4, HEIGHT/1.5 - 1*HEIGHT/5), vec2(WIDTH/4, HEIGHT/1.5 - 2*HEIGHT/5), vec2(3*WIDTH/4, HEIGHT/2)}
     
     for numberOfButtons= 1, #Maps do
         --put actual buttons into dictionary
@@ -33,7 +34,7 @@ function MapsScene:draw()
         buttons[numberOfButtons]:draw()
         if Maps[numberOfButtons]["unlocked"]==false then
             --if not unlocked then draw locks
-            sprite("Planet Cute:Key", buttonPosition[numberOfButtons].x, buttonPosition[numberOfButtons].y, WIDTH/3, WIDTH/3) --locks
+            sprite("Project:Lock", buttonPosition[numberOfButtons].x, buttonPosition[numberOfButtons].y, WIDTH/5, WIDTH/5) --locks
         end
     end
     

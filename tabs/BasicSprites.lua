@@ -11,7 +11,7 @@ local backButton
 
 function BasicSprites:init()
     -- you can accept and set parameters here
-    backButton= Button("Cargo Bot:Command Left", vec2(WIDTH/8, HEIGHT-WIDTH/9))
+    backButton= Button("Project:Blue Back Circle Button", vec2(WIDTH/8, HEIGHT-WIDTH/9))
 end
 
 function BasicSprites:drawBackground()
