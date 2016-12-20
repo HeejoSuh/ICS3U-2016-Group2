@@ -42,7 +42,7 @@ end
 
 function ShopScene:draw()
     -- Codea does not automatically call this method
-    background(162, 0, 255, 255)
+    background(40, 60, 29, 255)
     
     --top block
     sprite("Documents:양피지", WIDTH/2, HEIGHT/1.1, WIDTH, HEIGHT/5.5)

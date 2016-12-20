@@ -27,7 +27,7 @@ end
 
 function MapsScene:draw()
     -- Codea does not automatically call this method
-    background(178, 91, 91, 255)
+    background(40, 60, 29, 255)
     
     for numberOfButtons= 1,#buttons do
         --draw the buttons

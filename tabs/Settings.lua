@@ -37,7 +37,7 @@ end
 
 function SettingsScene:draw()
     -- Codea does not automatically call this method
-    background(122, 30, 30, 255)
+    background(40, 60, 29, 255)
     backButton:drawBackButton()
     
     musicOnButton:draw()

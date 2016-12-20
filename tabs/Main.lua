@@ -69,7 +69,7 @@ function setup()
     
     
     if MusicMuted==false then
-        music("Dropbox:GameBgm", true, 0.85)
+        music("Project:GameBgm", true, 1)
     else
         music.muted= true
     end

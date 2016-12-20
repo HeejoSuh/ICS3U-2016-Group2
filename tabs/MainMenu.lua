@@ -37,7 +37,7 @@ end
 
 function MainMenuScene:draw()
     -- Codea does not automatically call this method
-    background(132, 83, 83, 255)
+    background(40, 60, 29, 255)
     
     for numberOfButtons= 1,#buttons do
         --draw the buttons
@@ -50,7 +50,7 @@ function MainMenuScene:draw()
     sprite("Small World:Court", WIDTH/2, HEIGHT/1.2, WIDTH/2.5, WIDTH/2.5) -- game name sprite
     fontSize(WIDTH/18)
     fill(0, 0, 0, 255)
-    text("Spell Caster", WIDTH/2, HEIGHT/1.2)
+    text("The Wanderer", WIDTH/2, HEIGHT/1.2)
     
     fontSize (WIDTH/25)
     font("Papyrus")

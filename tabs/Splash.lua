@@ -39,7 +39,7 @@ function SplashScene:draw()
     elseif (durationTime + transitionTime < ElapsedTime) then
         --for the next few seconds, show game logo
         currentSprite= gameLogoSprite
-        currentWords= "Spell Caster"
+        currentWords= "The Wanderer"
     end
     
     --Draw logo

@@ -51,7 +51,7 @@ function SpellsScene:draw()
     nextPageButton:draw()
     --hide the buttons
     
-    background(160, 101, 149, 255)
+    background(40, 60, 29, 255)
     
     if currentPage==0 then
          --book sprite
