@@ -35,6 +35,9 @@ function MapsScene:draw()
         if Maps[numberOfButtons]["unlocked"]==false then
             --if not unlocked then draw locks
             sprite("Project:Lock", buttonPosition[numberOfButtons].x, buttonPosition[numberOfButtons].y, WIDTH/5, WIDTH/5) --locks
+        fontSize(WIDTH/23)
+        fill(0, 0, 0, 255)
+        text("Floor "..tostring(Maps[numberOfButtons]["floor"]), buttonPosition[numberOfButtons].x, buttonPosition[numberOfButtons].y)
         end
     end
     

@@ -7,7 +7,7 @@
 
 WalkingScene = class()
 
-local backgroundImage= "Documents:Hallway"
+local backgroundImage= ("Project:bg")
 local backgroundSprite
 
 local beginTime
@@ -143,7 +143,7 @@ function WalkingScene:draw()
     --pop up
     --create sprite
     
-    sprite("Documents:양피지 2", WIDTH/2, popUpY, WIDTH/1.5, WIDTH/2.5) --draw popup
+    sprite("Cargo Bot:Dialogue Button", WIDTH/2, popUpY, WIDTH/1.5, WIDTH/2.5) --draw popup
     
     --draw text
     textMode (CENTER)

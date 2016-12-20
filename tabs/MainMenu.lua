@@ -21,7 +21,7 @@ function MainMenuScene:init()
     local middleButtonSpace= HEIGHT/7
     local middleButtonOriginalY= HEIGHT/1.9
     
-    buttons= {                                                                                 {["sprite"]= "Cargo Bot:Dialogue Button", ["position"]= vec2(WIDTH/2, middleButtonOriginalY), ["scene"]="maps",},                                                                                  {["sprite"]= "Cargo Bot:Dialogue Button", ["position"]= vec2(WIDTH/2, middleButtonOriginalY - 1*middleButtonSpace), ["scene"]="game", ["mode"]= "resume"},                                           {["sprite"]= "Cargo Bot:Dialogue Button", ["position"]= vec2(WIDTH/2, middleButtonOriginalY - 2*middleButtonSpace), ["scene"]="game", ["mode"]= "practice"},                                                                                 {["sprite"]= "Cargo Bot:Dialogue Button", ["position"]= vec2(WIDTH/2, middleButtonOriginalY - 3*middleButtonSpace), ["scene"]="spells"},                                                                                 {["sprite"]= "Cargo Bot:Title Large Crate 2", ["position"]= vec2(WIDTH/8, HEIGHT/1.1), ["scene"]="settings"},                                                                                                                                                                 {["sprite"]= "Cargo Bot:Title Large Crate 2", ["position"]= vec2(WIDTH-WIDTH/8, HEIGHT/1.1), ["scene"]="shop"},                                                                                 }
+    buttons= {                                                                                 {["sprite"]= "Cargo Bot:Dialogue Button", ["position"]= vec2(WIDTH/2, middleButtonOriginalY), ["scene"]="maps", ["name"]="Maps"},                                                                                  {["sprite"]= "Cargo Bot:Dialogue Button", ["position"]= vec2(WIDTH/2, middleButtonOriginalY - 1*middleButtonSpace), ["scene"]="game", ["mode"]= "resume",  ["name"]="Resume"},                                           {["sprite"]= "Cargo Bot:Dialogue Button", ["position"]= vec2(WIDTH/2, middleButtonOriginalY - 2*middleButtonSpace), ["scene"]="game", ["mode"]= "practice",  ["name"]="Practice"},                                                                                 {["sprite"]= "Cargo Bot:Dialogue Button", ["position"]= vec2(WIDTH/2, middleButtonOriginalY - 3*middleButtonSpace), ["scene"]="spells",  ["name"]="Spells"},                                                                                 {["sprite"]= "Cargo Bot:Title Large Crate 2", ["position"]= vec2(WIDTH/8, HEIGHT/1.1), ["scene"]="settings",  ["name"]="Settings"},                                                                                                                                                                 {["sprite"]= "Cargo Bot:Title Large Crate 2", ["position"]= vec2(WIDTH-WIDTH/8, HEIGHT/1.1), ["scene"]="shop",  ["name"]="Shop"},                                                                                 }
     
 
     for numberOfButtons= 1, #buttons do
@@ -44,7 +44,7 @@ function MainMenuScene:draw()
         buttons[numberOfButtons]["button"]:draw()
         fontSize(WIDTH/21)
         fill(0, 0, 0, 255)
-        text(buttons[numberOfButtons]["scene"], buttons[numberOfButtons]["position"].x, buttons[numberOfButtons]["position"].y)
+        text(buttons[numberOfButtons]["name"], buttons[numberOfButtons]["position"].x, buttons[numberOfButtons]["position"].y)
     end
     
     sprite("Small World:Court", WIDTH/2, HEIGHT/1.2, WIDTH/2.5, WIDTH/2.5) -- game name sprite
@@ -87,6 +87,7 @@ function MainMenuScene:touched(touch)
                 else
                     if CurrentMonsters==nil then 
                         -- if no monsters then make new ones
+                        CurrentGameFloor= 1
                         CurrentMonsters= Monsters()
                     end
                     Scene.Change("walk")

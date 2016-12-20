@@ -61,7 +61,7 @@ Mode= "game"
 
 function setup()
     supportedOrientations(PORTRAIT)
-    displayMode(FULLSCREEN)
+    displayMode(FULLSCREEN_NO_BUTTONS)
 	noFill()
 	noSmooth()
 	noStroke()
