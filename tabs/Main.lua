@@ -32,15 +32,16 @@ ExpNeedAmount= 350
 
 Maps= {                                                                                                      {["floor"]= 1, ["unlocked"]= true},                                                                              {["floor"]=2, ["unlocked"]= false},                                                                              {["floor"]= 30, ["unlocked"]= false},                                                                                                                                                        {["floor"]= 100, ["unlocked"]= false},                                                                              }
 
---{["spell name"]= "SpellName", ["power"]=spellAttackPoints(average=20), ["type"]= "GrowTurn", ["spell"]= {spellNumbers}, ["sprite"]= spellSpriteImage, ["lv"]=levelToUnlock, ["description"]= },                                                        
+--{["spell name"]= "SpellName", ["power"]=spellAttackPoints(average=15), ["type"]= "GrowTurn", ["spell"]= {spellNumbers}, ["sprite"]= spellSpriteImage, ["lv"]=levelToUnlock, ["description"]= },                                                        
 
-Spells= {{["spell name"]= "Dividi Bavidiboo", ["power"]= 10, ["type"]= "grow", ["spell"]= "123", ["sprite"]= "Cargo Bot:Smoke Particle", ["level"]=1, ["description"]= "this is spell number one"},                                                                                             {["spell name"]= "Abracadabra", ["power"]= 1000, ["type"]= "turn", ["spell"]= "456", ["sprite"]= "Cargo Bot:Smoke Star", ["level"]=1, ["description"]= "this is spell number two"},                                                        
-}
+Spells= {{["spell name"]= "Dividi Bavidiboo", ["power"]= 5, ["type"]= "grow", ["spell"]= "123", ["sprite"]= "Cargo Bot:Smoke Particle", ["level"]=1, ["description"]= "this is spell number one"},                                                                                             {["spell name"]= "Abracadabra", ["power"]= 1000, ["type"]= "turn", ["spell"]= "456", ["sprite"]= "SpaceCute:Collision Circle", ["level"]=1, ["description"]= "this is spell number two"},                                                        
+{["spell name"]= "Boop", ["power"]= 30, ["type"]= "grow", ["spell"]= "123654789", ["sprite"]= "Cargo Bot:Smoke Star", ["level"]=2, ["description"]= "this is spell number three"},                                  }
 
 
 --{["wand name"]=wandName, ["sprite"]=wandSpriteImage, ["cost"]=cost, ["level"]= LevelToUse},                                                                                             
-Wands= {                                                                    {["wand name"]="Beginner's wand", ["sprite"]="Cargo Bot:Claw Arm", ["cost"]=0, ["level"]= 1},                                                                                             
-{["wand name"]="Intermediate's wand", ["sprite"]="Cargo Bot:Claw Arm", ["cost"]=5, ["level"]= 1},                                                                 {["wand name"]="Advanced wand", ["sprite"]="Cargo Bot:Claw Arm", ["cost"]=20, ["level"]= 2},                                                                    {["wand name"]="Expert's wand", ["sprite"]="Cargo Bot:Claw Arm", ["cost"]=40, ["level"]= 3},                                                                                                                         }
+Wands= {                                                                    {["wand name"]="Beginner's wand", ["sprite"]="Cargo Bot:Claw Arm", ["cost"]=0, ["level"]= 1, ["unlocked"]= true},                                                                                             
+{["wand name"]="Intermediate's wand", ["sprite"]="Cargo Bot:Claw Arm", ["cost"]=100, ["level"]= 2, ["unlocked"]= false},                                                                     {["wand name"]="Advanced wand", ["sprite"]="Cargo Bot:Claw Arm", ["cost"]=500, ["level"]= 5, ["unlocked"]= false},                                                                     {["wand name"]="Expert's wand", ["sprite"]="Cargo Bot:Claw Arm", ["cost"]=1000, ["level"]= 10, ["unlocked"]= false},                                                                                                                           }
+
 
 
 SpellCastedNumber= 0
@@ -62,7 +63,8 @@ Mode= "game"
 
 function setup()
     supportedOrientations(PORTRAIT)
-    displayMode(FULLSCREEN_NO_BUTTONS)
+    --displayMode(FULLSCREEN_NO_BUTTONS)
+    displayMode(FULLSCREEN)
 	noFill()
 	noSmooth()
 	noStroke()
@@ -91,7 +93,7 @@ function setup()
     
     --go to splash scene first
     --Scene.Change("splash")
-    Scene.Change("splash")
+    Scene.Change("mainMenu")
 end
  
 function draw()

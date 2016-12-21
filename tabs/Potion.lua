@@ -10,7 +10,7 @@ Potion = class()
 
 local potionWaitTime= 0 --potion cool time, set it to zero as default
 local potionHealAmount= 15
-local potionCoolTimeSeconds= 1
+local potionCoolTimeSeconds= 5 --how long it takes for the potion to be able to be used again
 
 function Potion:init()
     -- you can accept and set parameters here
@@ -25,8 +25,11 @@ function Potion:draw()
             potionWaitTime= potionWaitTime-0.01
         end
         --draw potion
+        
         tint(255, 255, 255, 255-(255/2*potionWaitTime))
         potionButton:draw()
+        
+        tint(255, 255, 255, 255)
         
         fill(0, 0, 0, 220)
         font("Papyrus-Condensed")
@@ -41,9 +44,10 @@ function Potion:touched(touch)
         --if not in time limit
         potionButton:touched(touch)
         if potionButton.selected==true and NumberOfPotions>0 then
+            print("Potion button touched")
             sound("A Hero's Quest:Drink 2")
             NumberOfPotions= NumberOfPotions-1
-            print(numberOfPotionsHave)
+            print("Points left: "..tostring(numberOfPotionsHave))
             potionWaitTime= potionCoolTimeSeconds --potion cooltime
             return potionHealAmount
         else

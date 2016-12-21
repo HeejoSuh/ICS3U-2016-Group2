@@ -7,11 +7,12 @@
 	<key>Buffer Order</key>
 	<array>
 		<string>Main</string>
+		<string>Shop</string>
+		<string>Buy</string>
 		<string>Splash</string>
 		<string>MainMenu</string>
 		<string>Game</string>
 		<string>Settings</string>
-		<string>Shop</string>
 		<string>Spells</string>
 		<string>Maps</string>
 		<string>Walking</string>

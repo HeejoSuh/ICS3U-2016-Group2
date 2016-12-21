@@ -21,6 +21,9 @@ local wandChooseButtons={}
 
 local shopType
 
+local allowTouch= true
+local popUp
+
 
 function ShopScene:init()
     -- you can accept and set parameters here
@@ -38,6 +41,8 @@ function ShopScene:init()
         --use buttons
         table.insert(wandChooseButtons, Button("Planet Cute:Character Boy", vec2(numberOfWands*wandSpace, HEIGHT/2)))
     end
+    
+    popUp= Buy(1) --set to random at first
 end
 
 function ShopScene:draw()
@@ -79,43 +84,70 @@ function ShopScene:draw()
     
     for numberOfWands= 1, #Wands do
         tint(255, 255, 255, 255)
-        sprite(Wands[numberOfWands]["sprite"], numberOfWands*wandSpace, 3.3*HEIGHT/5, WIDTH/7, WIDTH/3)
+        
+        sprite(Wands[numberOfWands]["sprite"], numberOfWands*wandSpace, 3.3*HEIGHT/5, WIDTH/7, WIDTH/3) --draw wands   
+        if Wands[numberOfWands]["unlocked"]==false then
+            --draw locks
+            sprite("Project:Lock", numberOfWands*wandSpace, 3.3*HEIGHT/5, WIDTH/5, WIDTH/5)
+        end
         if CurrentWandNumber== numberOfWands then
             --if using it
             tint(26, 155, 66, 255)
         end
         wandChooseButtons[numberOfWands]:draw()
+        
     end
     
     
+    
+    if allowTouch==false then
+        --draw popup
+        popUp:draw()
+        
+        if popUp:done()==true then
+            allowTouch=true
+        end
+    end
 end
 
 function ShopScene:touched(touch)
     -- Codea does not automatically call this method
     
-    --if not buying anything then
-    buyPotionButton:touched(touch)
-    if buyPotionButton.selected== true then
-        --play music
-        sound("A Hero's Quest:Pick Up")
-        --see if can buy
-        if MoneyHave>= potionCost then 
-            --take away money
-            MoneyHave= MoneyHave- potionCost
-            --add a number of potion
-            NumberOfPotions= NumberOfPotions +1
-        end
-    end
-    
+    popUp:touched(touch)
     backButton:touched(touch)
     
-    for numberOfWands= 1, #Wands do
-        local touchedButton= wandChooseButtons[numberOfWands]
-        touchedButton:touched(touch)
-        if touchedButton.selected==true then
-            CurrentWandNumber= numberOfWands
+    --if not buying anything then
+    if allowTouch==true then
+        buyPotionButton:touched(touch)
+        if buyPotionButton.selected== true then
+            --play music
+            sound("A Hero's Quest:Pick Up")
+            --see if can buy
+            if MoneyHave>= potionCost then 
+                --take away money
+                MoneyHave= MoneyHave- potionCost
+                --add a number of potion
+                NumberOfPotions= NumberOfPotions +1
+            end
+        end
+    
+        for numberOfWands= 1, #Wands do
+            local touchedButton= wandChooseButtons[numberOfWands]
+            touchedButton:touched(touch)
+            if touchedButton.selected==true then
+                if Wands[numberOfWands]["unlocked"]==true then 
+                    --if unlocked then
+                    CurrentWandNumber= numberOfWands
+                else
+                    --not unlocked
+                    allowTouch= false
+                    print("Buy?")
+                    popUp= Buy(numberOfWands)     
+                end
+            end
         end
     end
+    
     
     --screen moving
     --if zeroWidth+touch.deltaX < (#Wands+1)*wandSpace and zeroWidth+touch.deltaX>0 then 

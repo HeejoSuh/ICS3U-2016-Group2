@@ -188,7 +188,7 @@ end
 
 function WalkingScene:touched(touch)
     -- Codea does not automatically call this method
-    
+    potionButton:touched(touch)
     --pause button
     pauseButton:touched(touch)
     if pauseButton.selected== true then

@@ -8,7 +8,7 @@
 Monsters = class()
 
 --                                                                                                            {['monster name']='NameOfMonster', ['sprite']= spriteImage, ['health']= healthOfMonster(average=80), ['points']= pointOfMonster(average=10), ['speed']= timeItTakesToAttack(average=2.3), ['coins']= numberOfCoins(average=14), ['strength']= attackPower,(average=36), ['floor']= atLeastThisFlooraToSee, ['attack sound']= soundWhenAttacking, ['hurt sound']= soundWhenAttacked},                                                                                                                  
-monstersDict= {                                                                                                            {['monster name']='Booo', ['sprite']= "Planet Cute:Character Cat Girl", ['health']= 10, ['points']= 8, ['speed']= 2, ['coins']= 10, ["strength"]= 30, ['floor']= 1, ['attack sound']= "A Hero's Quest:Monster Die 2", ['hurt sound']= "A Hero's Quest:Monster Die 1"},                                                                                                                  {['monster name']='Hi', ['sprite']= "Planet Cute:Character Princess Girl", ['health']= 100, ['points']= 10, ['speed']= 2, ['coins']= 5, ['strength']= 20, ['floor']= 1, ['attack sound']= "A Hero's Quest:Monster Hit 2", ['hurt sound']= "A Hero's Quest:Bottle Break 1"},                                                                                                                  {['monster name']='Hoo', ['sprite']= "Planet Cute:Character Pink Girl", ['health']= 50, ['points']= 5, ['speed']= 1, ['coins']= 25, ['strength']= 15, ['floor']= 2, ['attack sound']= "A Hero's Quest:Dig 1", ['hurt sound']= "A Hero's Quest:Bottle Break 1"}                                                                                                                                                                                                                              }
+monstersDict= {                                                                                                            {['monster name']='Booo', ['sprite']= "Planet Cute:Character Cat Girl", ['health']= 30, ['points']= 8, ['speed']= 2, ['coins']= 10, ["strength"]= 30, ['floor']= 1, ['attack sound']= "A Hero's Quest:Monster Die 2", ['hurt sound']= "A Hero's Quest:Monster Die 1"},                                                                                                                  {['monster name']='Hi', ['sprite']= "Planet Cute:Character Princess Girl", ['health']= 100, ['points']= 10, ['speed']= 0.5, ['coins']= 5, ['strength']= 8, ['floor']= 1, ['attack sound']= "A Hero's Quest:Monster Hit 2", ['hurt sound']= "A Hero's Quest:Bottle Break 1"},                                                                                                                  {['monster name']='Hoo', ['sprite']= "Planet Cute:Character Pink Girl", ['health']= 300, ['points']= 5, ['speed']= 1, ['coins']= 25, ['strength']= 15, ['floor']= 2, ['attack sound']= "A Hero's Quest:Dig 1", ['hurt sound']= "A Hero's Quest:Bottle Break 1"}                                                                                                                                                                                                                              }
 
 --sound("A Hero's Quest:Monster Hit 2")
 
@@ -94,8 +94,9 @@ function setNextMonster()
         local currentChanging= changes[numberOfDetails] --what value is currently changing     
         local changingValue= CurrentMonster[currentChanging]
         
-        CurrentMonster[currentChanging]= tonumber(CurrentMonster[currentChanging]) + math.random(changingValue, 2*changingValue) - changingValue + 1
+        CurrentMonster[currentChanging]= tonumber(CurrentMonster[currentChanging]) + math.random(changingValue, 2*changingValue) - 1.5*changingValue
         --slight changes
+        --self + 1~2 -1.5
         
     end
     

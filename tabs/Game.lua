@@ -36,7 +36,7 @@ function GameScene:init()
     
     --dots position
     local dotMainPos= vec2(WIDTH/2, HEIGHT/2.4)
-    local dotSpace= WIDTH/7
+    local dotSpace= WIDTH/6
     local dotPositions= {                                                             vec2(dotMainPos.x-dotSpace, dotMainPos.y+dotSpace),                                             vec2(dotMainPos.x, dotMainPos.y+dotSpace),                                             vec2(dotMainPos.x+dotSpace, dotMainPos.y+dotSpace),              vec2(dotMainPos.x-dotSpace, dotMainPos.y),                                             vec2(dotMainPos.x, dotMainPos.y),                                             vec2(dotMainPos.x+dotSpace,dotMainPos.y),                     vec2(dotMainPos.x-dotSpace, dotMainPos.y-dotSpace),                                             vec2(dotMainPos.x, dotMainPos.y-dotSpace), vec2(dotMainPos.x+dotSpace,dotMainPos.y-dotSpace)                                            }
     
     dots={}
@@ -120,6 +120,7 @@ function GameScene:touched(touch)
     -- Codea does not automatically call this method
     
     basicSprites:touched(touch)
+    potionButton:touched(touch)
     
     --move touch light
     if touch.state==ENDED then

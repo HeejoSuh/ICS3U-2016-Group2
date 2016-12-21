@@ -56,7 +56,7 @@ function SpellsScene:draw()
     if currentPage==0 then
          --book sprite
         tint(85, 31, 31, 255)
-        sprite("Documents:양피지", WIDTH/2, HEIGHT/2, WIDTH/1.1, HEIGHT/1.1)
+        sprite("Cargo Bot:Goal Area", WIDTH/2, HEIGHT/2, WIDTH/1.1, HEIGHT/1.1)
         font("TimesNewRomanPS-BoldMT")
         --title
         textMode (CENTER)
@@ -72,7 +72,7 @@ function SpellsScene:draw()
         popStyle()
     elseif currentPage> 0 then
         --page sprite
-        sprite("Documents:양피지", WIDTH/2, HEIGHT/2, WIDTH/1.1, HEIGHT/1.1)
+        sprite("Cargo Bot:Goal Area", WIDTH/2, HEIGHT/2, WIDTH/1.1, HEIGHT/1.1)
         textWrapWidth(WIDTH/1.3) --restrict range 
         
         --name of spell
@@ -128,7 +128,7 @@ function SpellsScene:touched(touch)
     
     nextPageButton:touched(touch)
     if nextPageButton.selected==true then
-        if currentPage+2 < #Wands then
+        if currentPage+1 < #Wands then
             --if not the last page then turn page
             currentPage=currentPage+1
             newSpellSet()
@@ -145,7 +145,7 @@ function newSpellSet()
         --if not first page
         nowTime=ElapsedTime  
         dotTable= {}
-    
+        --dots
         for numbers = 1, string.len(Spells[currentPage]["spell"]) do
             table.insert(dotTable, tonumber(string.sub(Spells[currentPage]["spell"], numbers, numbers)))
         end --put into table
