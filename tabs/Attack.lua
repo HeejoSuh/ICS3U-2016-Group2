@@ -30,7 +30,7 @@ function AttackScene:init()
     if Mode=="game" then
         --if attacking monster
         if Attacked==false then
-        
+            print("Attack monster")
             --recalculate monster health
             CurrentMonster["health"]=-Spells[SpellCastedNumber]["power"]
         
@@ -50,12 +50,13 @@ function AttackScene:init()
         
         --if user attcked   
         elseif Attacked==true then
-        
+            print("Attacked")
             --re calculate user health
             UserHealth= UserHealth - CurrentMonster["strength"]
             if UserHealth<0 then
                 --just set it back to zero
                 UserHealth=0
+                print("Die")
             end
         
             --just for time
@@ -125,10 +126,10 @@ function AttackScene:draw()
         --see if user died
         if UserHealth<=0 then
             --died scene
+            print("Go to die scene")
             Scene.Change("dead")
-        end
         --else
-        if Mode== "practice" then 
+        elseif Mode== "practice" then 
             --if practice mode then
             Scene.Change("game")
         else

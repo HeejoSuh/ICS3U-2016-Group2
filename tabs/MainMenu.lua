@@ -96,6 +96,7 @@ function MainMenuScene:touched(touch)
                 if currentButtonDict["mode"]=="practice" then
                     --practice scene
                     Mode= "practice"
+                    CurrentGameFloor= 0
                 end
                 print("Go to "..currentButtonDict["scene"])
                 Scene.Change(currentButtonDict["scene"])

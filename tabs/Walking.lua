@@ -22,11 +22,11 @@ local moveUpOrDown
 local scaleSize
 local popUpY
 
-local userGage
+
 local potionButton
 local pauseButton
 
-local wand
+local basicSprites
 
 local monsterDeafeatWords= ""
 local coinWords= ""
@@ -39,8 +39,8 @@ function WalkingScene:init()
     print("Walk scene")
     if CurrentMonster["health"]<=0 then
         --if defeated monster then
-        coinWords= tostring(CurrentMonster["coins"]).." coins"
-        expWords= tostring(CurrentMonster["points"]).." points"
+        coinWords= "+"..tostring(math.tointeger(CurrentMonster["coins"])).." coins"
+        expWords= "+"..tostring(math.tointeger(CurrentMonster["points"])).." points"
         
         CurrentMonsters:nextMonsterUp() -- next monster
         if CurrentMonsters==nil then
@@ -49,7 +49,7 @@ function WalkingScene:init()
             CurrentMonsters= Monsters() --sprite new patch
             endWalkTime= 4 --new floor
             CurrentGameFloor= CurrentGameFloor+1 --new floor
-            NextWords= "Underground floor number "..tostring(CurrentGameFloor)
+            NextWords= "Underground floor number "..tostring(math.tointeger(CurrentGameFloor))
             sound("A Hero's Quest:Door Open")--new floor sound
                 for numberOfMaps= 1,#Maps do
                     --floor unlocked
@@ -79,10 +79,9 @@ function WalkingScene:init()
     
     sound("A Hero's Quest:Walk",  0.7) --play sound
     
-    userGage= GageBar(UserHealth, 100, vec2(WIDTH/25, HEIGHT/30), color(255, 0, 0, 255), WIDTH/1.06)
     
     potionButton= Potion()
-    wand= BasicSprites()
+    basicSprites= BasicSprites()
     
     pauseButton= Button("Project:Blue Pause Button", vec2(WIDTH-WIDTH/8, HEIGHT-WIDTH/9))
     
@@ -131,10 +130,10 @@ function WalkingScene:draw()
     
     
       --draw wand
-    wand:drawWand()
+    basicSprites:drawWand()
     
     --user gage bar
-    userGage:draw()
+    basicSprites:drawUserGage()
 
     --draw potion button
     potionButton:draw()

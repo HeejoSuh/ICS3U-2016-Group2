@@ -25,7 +25,7 @@ NextWords= "o" --set to nothing
 UserHealth= 100
 HealthLevelAmount= 100
 
-ExpPoints= 0
+ExpPoints= 800
 ExpNeedAmount= 350
 
 

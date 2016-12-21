@@ -28,7 +28,8 @@ local popUp
 function ShopScene:init()
     -- you can accept and set parameters here
     
-    buyPotionButton= Button("Documents:Yellow Potion", vec2(2*WIDTH/3, HEIGHT/5.5))
+    buyPotionButton= Button("Cargo Bot:Dialogue Button", vec2(2*WIDTH/3, HEIGHT/5.5))
+    
     
     backButton= BasicSprites()
     
@@ -55,7 +56,7 @@ function ShopScene:draw()
     sprite("Documents:양피지", WIDTH/2, HEIGHT/5, WIDTH, HEIGHT/2.5)
     
     --potion
-    sprite("Documents:Yellow Potion", WIDTH/3, HEIGHT/5.5, WIDTH/4, WIDTH/4)
+    sprite("Planet Cute:Heart", WIDTH/3, HEIGHT/5.5, WIDTH/4, WIDTH/4)
     
     buyPotionButton:draw()
     
@@ -70,6 +71,8 @@ function ShopScene:draw()
     font("Papyrus-Condensed")
     fontSize(WIDTH/27)
     text(math.tointeger(NumberOfPotions), 2.5*WIDTH/5, HEIGHT/6)
+    
+    text("Buy", 2*WIDTH/3, HEIGHT/5.6)
     
     
     --back button

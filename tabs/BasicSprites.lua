@@ -8,10 +8,12 @@
 BasicSprites = class()
 
 local backButton
+local userGage
 
 function BasicSprites:init()
     -- you can accept and set parameters here
     backButton= Button("Project:Blue Back Circle Button", vec2(WIDTH/8, HEIGHT-WIDTH/9))
+    userGage= GageBar(UserHealth, HealthLevelAmount, vec2(WIDTH/25, HEIGHT/30), color(255, 0, 0, 255), WIDTH/1.06)
 end
 
 function BasicSprites:drawBackground()
@@ -38,6 +40,13 @@ function BasicSprites:drawBackButton()
     -- Codea does not automatically call this method
     --draw back button
     backButton:draw()
+end
+
+function BasicSprites:drawUserGage()
+    -- Codea does not automatically call this method
+    --draw user gage bar
+    userGage= GageBar(UserHealth, HealthLevelAmount, vec2(WIDTH/25, HEIGHT/30), color(255, 0, 0, 255), WIDTH/1.06)
+    userGage:draw()
 end
 
 

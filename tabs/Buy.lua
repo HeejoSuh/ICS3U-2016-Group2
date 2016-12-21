@@ -15,7 +15,7 @@ function Buy:init(itemInfoNumber)
     item= Wands[itemInfoNumber]
     itemNumber= itemInfoNumber
     
-    showWords= "Do You want to unlock "..item["wand name"].." for "..tostring(item["cost"]).." coins?"
+    showWords= "Do You want to unlock the "..item["wand name"].." for "..tostring(item["cost"]).." coins?"
     
     
     okayButton= Button("Cargo Bot:Dialogue Box", vec2(WIDTH/2, HEIGHT/3))
@@ -33,7 +33,7 @@ function Buy:draw()
     
     fill(7, 7, 6, 220)
     font("Papyrus-Condensed")
-    textWrapWidth(WIDTH/1.5)
+    textWrapWidth(WIDTH/1.7)
     textMode(CENTER)
     
     fontSize(WIDTH/22)

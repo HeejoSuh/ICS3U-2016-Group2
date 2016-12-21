@@ -17,8 +17,6 @@ local touchedDots=""
 local whooshSounds={"A Hero's Quest:Swing 1", "A Hero's Quest:Swing 2", "A Hero's Quest:Swing 3"}
 
 
-local userGage
-
 local potionButton
 local pauseButton
 
@@ -55,7 +53,7 @@ function GameScene:init()
     potionButton= Potion()
     basicSprites= BasicSprites()
     
-    userGage= GageBar(UserHealth, HealthLevelAmount, vec2(WIDTH/25, HEIGHT/30), color(255, 0, 0, 255), WIDTH/1.06)
+   -- userGage= GageBar(UserHealth, HealthLevelAmount, vec2(WIDTH/25, HEIGHT/30), color(255, 0, 0, 255), WIDTH/1.06)
     
     startTime= ElapsedTime 
 end
@@ -99,6 +97,10 @@ function GameScene:draw()
         pauseButton:draw()
     end
     
+    -- user gage bar
+    --userGage:draw()
+    basicSprites:drawUserGage()
+    
     
     if Mode=="game" then
         --floor number
@@ -109,9 +111,6 @@ function GameScene:draw()
         textMode(CENTER)
         text("Floor "..tostring(CurrentGameFloor), WIDTH/2, HEIGHT/1.1)
     end
-    
-    -- user gage bar
-    userGage:draw()
 end
 
 
