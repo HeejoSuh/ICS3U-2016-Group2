@@ -45,6 +45,7 @@ function Buy:draw()
         text("Yes", 2*WIDTH/7, HEIGHT/3)
         text("No", 5*WIDTH/7, HEIGHT/3)
     elseif buyMode=="okay" then
+        print("Work")
         okayButton:draw()
         fontSize(WIDTH/24)
         text("Okay", WIDTH/2, HEIGHT/3)
@@ -60,12 +61,25 @@ function Buy:touched(touch)
     end
     noButton:touched(touch)
     okayButton:touched(touch)
-    if noButton.selected==true or okayButton.selected==true then
-        print("no or okay")
+    if noButton.selected==true then
+        print("no")
+        buyMode= "done" --end popup
+    end
+    if okayButton.selected==true then
+        print("okay")
         buyMode= "done" --end popup
     end
 end
 
+function Buy:done()
+    -- check if its done or not
+    if buyMode=="done" then
+        print("Delete popup")
+        return true
+    else
+        return false
+    end
+end
 
 function check()
     --check if user is allowed to purchase
@@ -92,18 +106,6 @@ function check()
     else
         showWords= "You need to be at least level "..tostring(item["level"]).." to unlock this wand"
         buyMode= "okay"
-        
         print("No level")
-    end
-end
-
-
-function Buy:done()
-    -- check if its done or not
-    if buyMode=="done" then
-        print("Purchase done")
-        return true
-    else
-        return false
     end
 end
