@@ -85,24 +85,40 @@ end
 function setNextMonster()
     --reset monster and gagebar
     
-    local changes= {'health', 'points', 'speed', 'coins', "strength"}
+   -- local changes= {'health', 'points', 'coins', "strength"}
     --the ones that will be changed
     
     CurrentMonster= monstersDict[monstersList[1]] --set current monster
     
-    --for numberOfDetails= 1, #changes do
+   -- for numberOfDetails= 1, #changes do
         --replace with random numbers so they wouldnt be exact
         
-        --local currentChanging= changes[numberOfDetails] --what value is currently changing     
-        --local changingValue= CurrentMonster[currentChanging]
-        
-        --CurrentMonster[currentChanging]= math.tointeger(CurrentMonster[currentChanging]*math.random(50,100)/100)
+       -- local currentChanging= changes[numberOfDetails] --what value is currently changing     
+      --  print(CurrentMonster[currentChanging])
+                
+       -- CurrentMonster[currentChanging]= math.tointeger(tonumber(CurrentMonster[currentChanging])*math.random(50,CurrentGameFloor*100)/100)
         --slight variations for each one
-    --end
+       -- print(CurrentMonster[currentChanging])
+   -- end
     
+    
+    
+    --differs for every monster
+    local percent= math.random(3, 10*CurrentGameFloor)/10
+
+    
+    CurrentMonster["health"]= tonumber(string.format("%.f", tonumber(CurrentMonster["health"]) * percent))
+    
+    CurrentMonster["coins"]= tonumber(string.format("%.f", tonumber(CurrentMonster["coins"]) * percent))
+    
+    CurrentMonster["points"]= tonumber(string.format("%.f", tonumber(CurrentMonster["points"]) * percent))
+    
+    CurrentMonster["strength"]= tonumber(string.format("%.f", tonumber(CurrentMonster["strength"]) * percent))
+
+    print("\n\n\n\n\n\n")
+
     currentMonsterOrgHealth= CurrentMonster["health"] --save original health    
     
-    print(tostring(CurrentMonster["monster name"]).." Health: "..tostring(CurrentMonster["health"]))
 end
 
 
