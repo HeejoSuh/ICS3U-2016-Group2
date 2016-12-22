@@ -28,7 +28,7 @@ function SpellsScene:init()
     -- you can accept and set parameters here
 
     
-    backButton= BasicSprites()
+    backButton= Button("Project:Blue Back Circle Button", vec2(WIDTH/8, HEIGHT-WIDTH/9))
     
     --need sprites that are big
     previousPageButton= Button("Dropbox:Page flip button", vec2(WIDTH/7, HEIGHT/2.5))
@@ -109,15 +109,26 @@ function SpellsScene:draw()
         popStyle()
     end
     
-    backButton:drawBackButton()
-    
-    
+    backButton:draw()
 end
 
 function SpellsScene:touched(touch)
     -- Codea does not automatically call this method
-    backButton:touched(touch)
     
+    -- go back
+    backButton:touched(touch)
+    if backButton.selected==true then
+        if GoBackTo == "" then
+            --if didnt come from practice mode then
+            Scene.Change("mainMenu")
+        else
+            -- go back to practice scene
+            GoBackTo= "" --reset to nothing
+            Scene.Change("game")
+        end
+    end
+    
+    --previous page
     previousPageButton:touched(touch)
     if previousPageButton.selected==true then
         if currentPage-1 >= 0 then
@@ -126,7 +137,7 @@ function SpellsScene:touched(touch)
             newSpellSet()
         end
     end
-    
+    --next page
     nextPageButton:touched(touch)
     if nextPageButton.selected==true then
         if currentPage+1 < #Wands then

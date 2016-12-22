@@ -28,6 +28,8 @@ HealthLevelAmount= 100
 ExpPoints= 0
 ExpNeedAmount= 350
 
+GoBackTo= ""
+
 
 
 Maps= {                                                                                                      {["floor"]= 1, ["unlocked"]= true},                                                                              {["floor"]=2, ["unlocked"]= false},                                                                              {["floor"]= 30, ["unlocked"]= false},                                                                                                                                                        {["floor"]= 100, ["unlocked"]= false},                                                                              }

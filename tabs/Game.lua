@@ -25,6 +25,8 @@ local basicSprites
 
 local startTime
 
+local spellsButton
+
 
 function GameScene:init()
     -- you can accept and set parameters here
@@ -47,7 +49,8 @@ function GameScene:init()
     --touchLight
     touchLightPosition= vec2(-300,-300) --out of screen
     
-    pauseButton= Button("Project:Blue Pause Button", vec2(WIDTH-WIDTH/8, HEIGHT-WIDTH/9))
+    pauseButton= Button("Project:Blue Pause Button", vec2(WIDTH-WIDTH/8, HEIGHT-WIDTH/9)) -- for game
+    spellsButton= Button("Planet Cute:Chest Closed", vec2(WIDTH-WIDTH/8, HEIGHT-WIDTH/9)) -- for practicing
     
     
     potionButton= Potion()
@@ -91,6 +94,7 @@ function GameScene:draw()
     if Mode~="game" then
         --draw go back button
         basicSprites:drawBackButton()
+        spellsButton:draw()
     else
         --draw pause button
         CurrentMonsters:checkIfAttacked(startTime) --check if attacked
@@ -157,6 +161,11 @@ function GameScene:touched(touch)
         Scene.Change("pause")
     end
     
-
+    --spells button
+    spellsButton:touched(touch)
+    if spellsButton.selected== true then
+        GoBackTo= "game"
+        Scene.Change("spells")
+    end
 end
     

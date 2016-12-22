@@ -17,6 +17,7 @@ function MainMenuScene:init()
     -- you can accept and set parameters here 
     print("Main menu")
     
+    GoBackTo= "" --reset to nothing
     
     local middleButtonSpace= HEIGHT/7
     local middleButtonOriginalY= HEIGHT/1.9

@@ -32,7 +32,8 @@ function AttackScene:init()
         if Attacked==false then
             print("Attack monster")
             --recalculate monster health
-            CurrentMonster["health"]=-Spells[SpellCastedNumber]["power"]
+            print("Monster health decreased from "..tostring(CurrentMonster["health"]).." by "..tostring(Spells[SpellCastedNumber]["power"]))
+            CurrentMonster["health"]= CurrentMonster["health"] - Spells[SpellCastedNumber]["power"]
         
             if CurrentMonster["health"]<0 then
                 --just set it back to zero
