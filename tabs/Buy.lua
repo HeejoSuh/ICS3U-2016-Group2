@@ -18,9 +18,11 @@ function Buy:init(itemInfoNumber)
     showWords= "Do You want to unlock the "..item["wand name"].." for "..tostring(item["cost"]).." coins?"
     
     
-    okayButton= Button("Cargo Bot:Dialogue Box", vec2(WIDTH/2, HEIGHT/3))
-    yesButton= Button("Platformer Art:Block Grass", vec2(2*WIDTH/7, HEIGHT/3))
-    noButton= Button("Platformer Art:Block Brick", vec2(5*WIDTH/7, HEIGHT/3))
+    okayButton= Button("Platformer Art:Block Brick", vec2(WIDTH/2, HEIGHT/3))
+    yesButton= Button("Platformer Art:Block Grass", vec2(2*WIDTH/8, HEIGHT/3))
+    noButton= Button("Platformer Art:Block Brick", vec2(6*WIDTH/8, HEIGHT/3))
+    
+    
     
     
     buyMode= "ask"
@@ -42,9 +44,9 @@ function Buy:draw()
     if buyMode=="ask" then
         yesButton:draw()
         noButton:draw()
-        text("Yes", 2*WIDTH/7, HEIGHT/3)
-        text("No", 5*WIDTH/7, HEIGHT/3)
-    elseif buyMode=="okay" then
+        text("Yes", 2*WIDTH/8, HEIGHT/3)
+        text("No", 6*WIDTH/8, HEIGHT/3)
+    elseif buyMode=="showing okay" then
         print("Work")
         okayButton:draw()
         fontSize(WIDTH/24)
@@ -56,17 +58,17 @@ function Buy:touched(touch)
     -- Codea does not automatically call this method
     yesButton:touched(touch)
     if yesButton.selected==true then
-        print("Yes")
+        print("Yes button seleted")
         check()
     end
     noButton:touched(touch)
     okayButton:touched(touch)
     if noButton.selected==true then
-        print("no")
+        print("no button selected")
         buyMode= "done" --end popup
     end
     if okayButton.selected==true then
-        print("okay")
+        print("okay button selected")
         buyMode= "done" --end popup
     end
 end
@@ -94,18 +96,18 @@ function check()
             CurrentWandNumber= itemNumber
             
             showWords= "Purchase complete!"
-            buyMode= "okay"
+            buyMode= "showing okay"
             
             print("Bought")
         else
             showWords= "You don't have enough money"
-            buyMode= "okay"
+            buyMode= "showing okay"
             
             print("No money")
         end
     else
         showWords= "You need to be at least level "..tostring(item["level"]).." to unlock this wand"
-        buyMode= "okay"
+        buyMode= "showing okay"
         print("No level")
     end
 end
