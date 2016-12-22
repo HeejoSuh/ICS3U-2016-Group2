@@ -128,6 +128,7 @@ function GameScene:touched(touch)
         for numberOfSpells= 1, #Spells do
             --check if spell
             if Spells[numberOfSpells]["spell"]== spellCasted and Spells[numberOfSpells]["level"]<=Level then
+                print(Spells[numberOfSpells]["level"])
                 SpellCastedNumber= numberOfSpells
                 Scene.Change("attack")
             end

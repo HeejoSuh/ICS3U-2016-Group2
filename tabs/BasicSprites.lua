@@ -42,10 +42,11 @@ function BasicSprites:drawBackButton()
     backButton:draw()
 end
 
+
 function BasicSprites:drawUserGage()
     -- Codea does not automatically call this method
     --draw user gage bar
-    userGage= GageBar(UserHealth, HealthLevelAmount, vec2(WIDTH/25, HEIGHT/30), color(255, 0, 0, 255), WIDTH/1.06)
+    userGage:recalculateHealth(UserHealth)
     userGage:draw()
 end
 
@@ -54,7 +55,7 @@ function BasicSprites:touched(touch)
     -- Codea does not automatically call this method
     backButton:touched(touch)
     if backButton.selected==true then
-        sound(SOUND_HIT, 8992)
+        sound("A Hero's Quest:Arrow Shoot 1")
         Scene.Change("mainMenu")
     end
 end

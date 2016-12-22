@@ -124,27 +124,35 @@ function AttackScene:draw()
     if speech.speaking==false then 
     --go back
         --see if user died
-        if UserHealth<=0 then
-            --died scene
-            print("Go to die scene")
-            Scene.Change("dead")
-        --else
-        elseif Mode== "practice" then 
-            --if practice mode then
-            Scene.Change("game")
-        else
-            if CurrentMonster["health"]<= 0 then
-                --if monster died then
-                Scene.Change("walk")
+        if Attacked== true then 
+            --if had been attacked
+            if UserHealth<=0 then
+                --died scene
+                print("User died")
+                Scene.Change("dead")
             else
+                print("Attacked by monster")
                 Scene.Change("game")
+            end
+        else 
+            --if had casted spell
+            if Mode== "practice" then 
+                --if practice mode then
+                Scene.Change("game")
+            else
+                if CurrentMonster["health"]<= 0 then
+                    --if monster died then
+                    Scene.Change("walk")
+                else
+                    Scene.Change("game")
+                end
             end
         end
     end
     
     
     --user gage
-    userGage:draw()
+    basics:drawUserGage()
 end
 
 function AttackScene:touched(touch)

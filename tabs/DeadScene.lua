@@ -12,19 +12,19 @@ local mainMenuButton
 
 function DeadScene:init()
     -- you can accept and set parameters here
-    mainMenuButton= Button("Cargo Bot:Stop Button", vec2(2*WIDTH/7, HEIGHT/3))
+    mainMenuButton= Button("Cargo Bot:Stop Button", vec2(WIDTH/2, HEIGHT/2.5))
     CurrentGameFloor= 0 --delete current data, start over.
 end
 
 function DeadScene:draw()
     -- Codea does not automatically call this method
-    background(0, 0, 0, 255)
+    background(188, 161, 161, 255)
     
     fill(0, 0, 0, 255)
     font("Zapfino")
     textMode (CENTER)
     fontSize(WIDTH/17)
-    text("You died!", WIDTH/2, HEIGHT/1.2)
+    text("You died!", WIDTH/2, HEIGHT/1.5)
     
     mainMenuButton:draw()
 end

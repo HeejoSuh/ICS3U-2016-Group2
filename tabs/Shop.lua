@@ -124,7 +124,7 @@ function ShopScene:touched(touch)
         buyPotionButton:touched(touch)
         if buyPotionButton.selected== true then
             --play music
-            sound("A Hero's Quest:Pick Up")
+            sound("Game Sounds One:Reload 1")
             --see if can buy
             if MoneyHave>= potionCost then 
                 --take away money

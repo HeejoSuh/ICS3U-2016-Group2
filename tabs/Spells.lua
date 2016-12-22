@@ -31,8 +31,9 @@ function SpellsScene:init()
     backButton= BasicSprites()
     
     --need sprites that are big
-    previousPageButton= Button("Documents:Hallway", vec2(WIDTH/7, HEIGHT/2.5))
-    nextPageButton= Button("Documents:Hallway", vec2(6*WIDTH/7, HEIGHT/2.5))
+    previousPageButton= Button("Dropbox:Page flip button", vec2(WIDTH/7, HEIGHT/2.5))
+    
+    nextPageButton= Button("Dropbox:Page flip button", vec2(6*WIDTH/7, HEIGHT/2.5))
     
     currentPage= 0
     

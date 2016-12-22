@@ -51,6 +51,10 @@ function GageBar:draw()
     
 end
 
+function GageBar:recalculateHealth(newHealth)
+    --recalculate health
+    health= newHealth
+end
 
 function GageBar:touched(touch)
     -- Codea does not automatically call this method
