@@ -46,7 +46,7 @@ end
 function BasicSprites:drawUserGage()
     -- Codea does not automatically call this method
     --draw user gage bar
-    userGage:recalculateHealth(UserHealth)
+    userGage= GageBar(UserHealth, HealthLevelAmount, vec2(WIDTH/25, HEIGHT/30), color(255, 0, 0, 255), WIDTH/1.06)
     userGage:draw()
 end
 

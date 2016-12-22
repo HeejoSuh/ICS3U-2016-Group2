@@ -55,6 +55,8 @@ function SettingsScene:draw()
     textWrapWidth(WIDTH/1.4)
     fontSize(WIDTH/18)
     text("Lv."..Level, WIDTH/2, HEIGHT/1.3)
+    fontSize(WIDTH/24)
+    text(tostring(ExpPoints).." / "..tostring(ExpNeedAmount), WIDTH/2, HEIGHT/1.4)
     
     --exp points
     expGage:draw()

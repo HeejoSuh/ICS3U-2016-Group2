@@ -41,7 +41,7 @@ function GageBar:draw()
     
     --bar
     fill(colour)
-    rect(position.x, position.y, health*barWidth/health, barlength)
+    rect(position.x, position.y, health*barWidth/fullHealth, barlength)
     
     --dividing lines
     fill(0, 0, 0, 250)
@@ -51,10 +51,6 @@ function GageBar:draw()
     
 end
 
-function GageBar:recalculateHealth(newHealth)
-    --recalculate health
-    health= newHealth
-end
 
 function GageBar:touched(touch)
     -- Codea does not automatically call this method

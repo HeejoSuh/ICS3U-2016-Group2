@@ -6,7 +6,6 @@
 	<string>Unknown</string>
 	<key>Buffer Order</key>
 	<array>
-		<string>BasicSprites</string>
 		<string>Main</string>
 		<string>Shop</string>
 		<string>Buy</string>
@@ -22,6 +21,7 @@
 		<string>DeadScene</string>
 		<string>PausedScene</string>
 		<string>Potion</string>
+		<string>BasicSprites</string>
 		<string>GageBar</string>
 		<string>HelperClass</string>
 	</array>

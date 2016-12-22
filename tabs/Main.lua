@@ -22,7 +22,7 @@ Attacked= false
 
 NextWords= "o" --set to nothing
 
-UserHealth= 70
+UserHealth= 100
 HealthLevelAmount= 100
 
 ExpPoints= 0

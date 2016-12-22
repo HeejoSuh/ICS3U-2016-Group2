@@ -10,7 +10,7 @@ Potion = class()
 
 local potionWaitTime= 0 --potion cool time, set it to zero as default
 local potionHealAmount= 15
-local potionCoolTimeSeconds= 5 --how long it takes for the potion to be able to be used again
+local potionCoolTimeSeconds= 2 --how long it takes for the potion to be able to be used again
 
 function Potion:init()
     -- you can accept and set parameters here
@@ -26,7 +26,7 @@ function Potion:draw()
         end
         --draw potion
         
-        tint(255, 255, 255, 255-(255/2*potionWaitTime))
+        tint(255, 255, 255, 255-(255/1.5*potionWaitTime))
         potionButton:draw()
         
         tint(255, 255, 255, 255)
@@ -49,7 +49,7 @@ function Potion:touched(touch)
             NumberOfPotions= NumberOfPotions-1
             print("Points left: "..tostring(numberOfPotionsHave))
             potionWaitTime= potionCoolTimeSeconds --potion cooltime
-            return potionHealAmount
+            UserHealth= UserHealth + potionHealAmount
         else
             return 0
         end
