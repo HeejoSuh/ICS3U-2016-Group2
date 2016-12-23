@@ -14,6 +14,7 @@ function DeadScene:init()
     -- you can accept and set parameters here
     mainMenuButton= Button("Cargo Bot:Stop Button", vec2(WIDTH/2, HEIGHT/2.5))
     CurrentGameFloor= 0 --delete current data, start over.
+    UserHealth= HealthLevelAmount -- reset health
 end
 
 function DeadScene:draw()

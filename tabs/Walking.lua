@@ -8,6 +8,7 @@
 WalkingScene = class()
 
 local backgroundImage= ("Project:bg")
+
 local backgroundSprite
 
 local beginTime
@@ -31,6 +32,8 @@ local basicSprites
 local monsterDeafeatWords= ""
 local coinWords= ""
 local expWords= ""
+
+
 
 
 
@@ -77,16 +80,15 @@ function WalkingScene:init()
     scaleSize= vec2(WIDTH*1.1, HEIGHT*1.1)
     popUpY= 0
     
-    sound("A Hero's Quest:Walk",  0.7) --play sound
-    
     
     potionButton= Potion()
     basicSprites= BasicSprites()
     
     pauseButton= Button("Project:Blue Pause Button", vec2(WIDTH-WIDTH/8, HEIGHT-WIDTH/9))
     
-    
     beginTime= ElapsedTime
+    
+    sound("A Hero's Quest:Walk")
 end
 
 
@@ -183,6 +185,7 @@ function WalkingScene:draw()
     
     
     pauseButton:draw()
+    
 end
 
 function WalkingScene:touched(touch)

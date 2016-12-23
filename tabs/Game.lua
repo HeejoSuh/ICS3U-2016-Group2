@@ -49,8 +49,11 @@ function GameScene:init()
     --touchLight
     touchLightPosition= vec2(-300,-300) --out of screen
     
-    pauseButton= Button("Project:Blue Pause Button", vec2(WIDTH-WIDTH/8, HEIGHT-WIDTH/9)) -- for game
-    spellsButton= Button("Planet Cute:Chest Closed", vec2(WIDTH-WIDTH/8, HEIGHT-WIDTH/9)) -- for practicing
+    if Mode=="game" then
+        pauseButton= Button("Project:Blue Pause Button", vec2(WIDTH-WIDTH/8, HEIGHT-WIDTH/9)) -- for game
+    else
+        spellsButton= Button("Planet Cute:Chest Closed", vec2(WIDTH-WIDTH/8, HEIGHT-WIDTH/9)) -- for practicing
+    end
     
     
     potionButton= Potion()
@@ -155,17 +158,19 @@ function GameScene:touched(touch)
         end
     end
     
-    --pause button
-    pauseButton:touched(touch)
-    if pauseButton.selected== true then
-        Scene.Change("pause")
-    end
-    
-    --spells button
-    spellsButton:touched(touch)
-    if spellsButton.selected== true then
-        GoBackTo= "game"
-        Scene.Change("spells")
+    if Mode=="game" then
+        --pause button
+        pauseButton:touched(touch)
+        if pauseButton.selected== true then
+            Scene.Change("pause")
+        end
+    else
+        --spells button
+        spellsButton:touched(touch)
+        if spellsButton.selected== true then
+            GoBackTo= "game"
+            Scene.Change("spells")
+        end
     end
 end
     

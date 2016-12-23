@@ -51,12 +51,12 @@ function ShopScene:draw()
     background(40, 60, 29, 255)
     
     --top block
-    sprite("Documents:양피지", WIDTH/2, HEIGHT/1.1, WIDTH, HEIGHT/5.5)
+    sprite("Cargo Bot:Dialogue Button", WIDTH/2, HEIGHT/1.1, WIDTH, HEIGHT/5.5)
     --bottom block
-    sprite("Documents:양피지", WIDTH/2, HEIGHT/5, WIDTH, HEIGHT/2.5)
+    sprite("Planet Cute:Brown Block", WIDTH/2, HEIGHT/5, WIDTH, HEIGHT/2.5)
     
     --potion
-    sprite("Planet Cute:Heart", WIDTH/3, HEIGHT/5.5, WIDTH/4, WIDTH/4)
+    sprite("Project:potion", WIDTH/3, HEIGHT/5.5, WIDTH/4, WIDTH/4)
     
     buyPotionButton:draw()
     
@@ -88,7 +88,7 @@ function ShopScene:draw()
     for numberOfWands= 1, #Wands do
         tint(255, 255, 255, 255)
         
-        sprite(Wands[numberOfWands]["sprite"], numberOfWands*wandSpace, 3.3*HEIGHT/5, WIDTH/7, WIDTH/3) --draw wands   
+        sprite(Wands[numberOfWands]["sprite"], numberOfWands*wandSpace, 3.3*HEIGHT/5, WIDTH/7.5, WIDTH/3.5) --draw wands   
         if Wands[numberOfWands]["unlocked"]==false then
             --draw locks
             sprite("Project:Lock", numberOfWands*wandSpace, 3.3*HEIGHT/5, WIDTH/5, WIDTH/5)
@@ -98,7 +98,7 @@ function ShopScene:draw()
             tint(26, 155, 66, 255)
         end
         wandChooseButtons[numberOfWands]:draw()
-        
+        tint(255, 255, 255, 255)
     end
     
     

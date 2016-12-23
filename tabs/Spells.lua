@@ -31,16 +31,17 @@ function SpellsScene:init()
     backButton= Button("Project:Blue Back Circle Button", vec2(WIDTH/8, HEIGHT-WIDTH/9))
     
     --need sprites that are big
-    previousPageButton= Button("Dropbox:Page flip button", vec2(WIDTH/7, HEIGHT/2.5))
+    previousPageButton= Button("Project:Page flip button", vec2(WIDTH/7, HEIGHT/2.5))
     
-    nextPageButton= Button("Dropbox:Page flip button", vec2(6*WIDTH/7, HEIGHT/2.5))
+    
+    nextPageButton= Button("Project:Page flip button", vec2(6*WIDTH/7, HEIGHT/2.5))
     
     currentPage= 0
     
     
     --dots position
-    local dotMainPos= vec2(WIDTH/2, HEIGHT/2.4)
-    local dotSpace= WIDTH/7
+    local dotMainPos= vec2(WIDTH/2, HEIGHT/2)
+    local dotSpace= WIDTH/6
     dotPositions= {                                                             vec2(dotMainPos.x-dotSpace, dotMainPos.y+dotSpace),                                             vec2(dotMainPos.x, dotMainPos.y+dotSpace),                                             vec2(dotMainPos.x+dotSpace, dotMainPos.y+dotSpace),              vec2(dotMainPos.x-dotSpace, dotMainPos.y),                                             vec2(dotMainPos.x, dotMainPos.y),                                             vec2(dotMainPos.x+dotSpace,dotMainPos.y),                     vec2(dotMainPos.x-dotSpace, dotMainPos.y-dotSpace),                                             vec2(dotMainPos.x, dotMainPos.y-dotSpace), vec2(dotMainPos.x+dotSpace,dotMainPos.y-dotSpace)                                            }
     
 end
@@ -102,10 +103,10 @@ function SpellsScene:draw()
         --description
         textMode(LEFT)
         font("Zapfino")
-        fontSize(WIDTH/40)
+        fontSize(WIDTH/50)
         fill(0, 0, 0, 160)
         local description= Spells[currentPage]["description"]
-        text(description, WIDTH-WIDTH/1.3, HEIGHT/5)      
+        text(description, WIDTH-WIDTH/1.4, HEIGHT/6)      
         popStyle()
     end
     

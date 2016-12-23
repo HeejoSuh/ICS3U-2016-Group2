@@ -26,7 +26,7 @@ UserHealth= 100
 HealthLevelAmount= 100
 
 ExpPoints= 0
-ExpNeedAmount= 350
+ExpNeedAmount= 200
 
 GoBackTo= ""
 
@@ -34,15 +34,16 @@ GoBackTo= ""
 
 Maps= {                                                                                                      {["floor"]= 1, ["unlocked"]= true},                                                                              {["floor"]=2, ["unlocked"]= false},                                                                              {["floor"]= 30, ["unlocked"]= false},                                                                                                                                                        {["floor"]= 100, ["unlocked"]= false},                                                                              }
 
---{["spell name"]= "SpellName", ["power"]=spellAttackPoints(average=15), ["type"]= "GrowTurn", ["spell"]= {spellNumbers}, ["sprite"]= spellSpriteImage, ["lv"]=levelToUnlock, ["description"]= },                                                        
+--                                                                 {["spell name"]= "spellName", ["power"]=spellAttackPoints(average=15), ["type"]= "GrowTurn", ["spell"]= {spellNumbers}, ["sprite"]= spellSpriteImage, ["lv"]=3, ["description"]= "Spell strength: Medium \nDifficulty: Medium"},                                                                                                                         
 
-Spells= {{["spell name"]= "Dividi Bavidiboo", ["power"]= 5, ["type"]= "grow", ["spell"]= "123", ["sprite"]= "Cargo Bot:Smoke Particle", ["level"]=1, ["description"]= "this is spell number one"},                                                                                             {["spell name"]= "Abracadabra", ["power"]= 1000, ["type"]= "turn", ["spell"]= "456", ["sprite"]= "SpaceCute:Collision Circle", ["level"]=1, ["description"]= "this is spell number two"},                                                        
-{["spell name"]= "Boop", ["power"]= 30, ["type"]= "grow", ["spell"]= "123654789", ["sprite"]= "Cargo Bot:Smoke Star", ["level"]=2, ["description"]= "this is spell number three"},                                  }
+Spells= {{["spell name"]= "Dividi Bavidiboo", ["power"]= 4, ["type"]= "grow", ["spell"]= "123", ["sprite"]= "Cargo Bot:Smoke Particle", ["level"]=1, ["description"]= "Spell strength: Low \nDifficulty: Low"},                                                                                                                   {["spell name"]= "Abracadabra", ["power"]= 5, ["type"]= "turn", ["spell"]= "456", ["sprite"]= "SpaceCute:Collision Circle", ["level"]=1, ["description"]= "Spell strength: Low \nDifficulty: Low"},                                                                                             {["spell name"]= "Thunder lash", ["power"]= 8, ["type"]= "turn", ["spell"]= "258789", ["sprite"]= "SpaceCute:Collision Circle", ["level"]=1, ["description"]= "Spell strength: Low \nDifficulty: Low"},                           {["spell name"]= "Fire blast", ["power"]= 13, ["type"]= "grow", ["spell"]= "321478963", ["sprite"]= "Cargo Bot:Smoke Star", ["level"]=2, ["description"]= "Spell strength: Low Medium \nDifficulty: Low Medium"},                                              }
+
+
 
 
 --{["wand name"]=wandName, ["sprite"]=wandSpriteImage, ["cost"]=cost, ["level"]= LevelToUse},                                                                                             
-Wands= {                                                                    {["wand name"]="Beginner's wand", ["sprite"]="Cargo Bot:Claw Arm", ["cost"]=0, ["level"]= 1, ["unlocked"]= true},                                                                                             
-{["wand name"]="Intermediate's wand", ["sprite"]="Cargo Bot:Claw Arm", ["cost"]=100, ["level"]= 2, ["unlocked"]= false},                                                                     {["wand name"]="Advanced wand", ["sprite"]="Cargo Bot:Claw Arm", ["cost"]=500, ["level"]= 5, ["unlocked"]= false},                                                                     {["wand name"]="Expert's wand", ["sprite"]="Cargo Bot:Claw Arm", ["cost"]=1000, ["level"]= 10, ["unlocked"]= false},                                                                                                                           }
+Wands= {                                                                    {["wand name"]="Beginner's wand", ["sprite"]="Project:Wand 1", ["cost"]=0, ["level"]= 1, ["unlocked"]= true},                                                                                             
+{["wand name"]="Intermediate's wand", ["sprite"]="Project:Wand 3", ["cost"]=100, ["level"]= 2, ["unlocked"]= false},                                                                     {["wand name"]="Advanced wand", ["sprite"]="Project:Wand 2", ["cost"]=500, ["level"]= 5, ["unlocked"]= false},                                                                     {["wand name"]="Expert's wand", ["sprite"]="Cargo Bot:Claw Arm", ["cost"]=1000, ["level"]= 10, ["unlocked"]= false},                                                                                                                           }
 
 
 
@@ -76,7 +77,7 @@ function setup()
     if MusicMuted==false then
         music("Project:GameBgm", true, 1)
     else
-        music.muted= true
+        music.paused= true
     end
     
     --define scenes

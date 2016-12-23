@@ -8,26 +8,27 @@
 
 Potion = class()
 
-local potionWaitTime= 0 --potion cool time, set it to zero as default
-local potionHealAmount= 15
-local potionCoolTimeSeconds= 2 --how long it takes for the potion to be able to be used again
+local __potionWaitTime= 0 --potion cool time, set it to zero as default
+local __potionHealAmount= 15
+local __potionCoolTimeSeconds= 2 --how long it takes for the potion to be able to be used again
 
 function Potion:init()
     -- you can accept and set parameters here
-    potionButton= Button("Planet Cute:Heart", vec2(WIDTH/8, WIDTH/6))
+    __potionButton= Button("Project:potion", vec2(WIDTH/8, WIDTH/6))
+
 end
 
 function Potion:draw()
     -- Codea does not automatically call this method
     --set cool time for potions and draw potion button
     if NumberOfPotions>0 then --if have potions
-        if potionWaitTime>0 then
-            potionWaitTime= potionWaitTime-0.01
+        if __potionWaitTime>0 then
+            __potionWaitTime= __potionWaitTime-0.01
         end
         --draw potion
         
-        tint(255, 255, 255, 255-(255/1.5*potionWaitTime))
-        potionButton:draw()
+        tint(255, 255, 255, 255-(255/1.5*__potionWaitTime))
+        __potionButton:draw()
         
         tint(255, 255, 255, 255)
         
@@ -40,16 +41,19 @@ end
 
 function Potion:touched(touch)
     -- Codea does not automatically call this method
-    if potionWaitTime<=0 then
+    if __potionWaitTime<=0 then
         --if not in time limit
-        potionButton:touched(touch)
-        if potionButton.selected==true and NumberOfPotions>0 then
+        __potionButton:touched(touch)
+        if __potionButton.selected==true and NumberOfPotions>=1 then
             print("Potion button touched")
             sound("A Hero's Quest:Drink 2")
             NumberOfPotions= NumberOfPotions-1
-            print("Points left: "..tostring(numberOfPotionsHave))
-            potionWaitTime= potionCoolTimeSeconds --potion cooltime
-            UserHealth= UserHealth + potionHealAmount
+            __potionWaitTime= __potionCoolTimeSeconds --potion cooltime
+            UserHealth= UserHealth + __potionHealAmount
+            if UserHealth> HealthLevelAmount then
+                --just set it back to max
+                UserHealth= HealthLevelAmount
+            end
         else
             return 0
         end

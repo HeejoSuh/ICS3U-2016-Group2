@@ -68,7 +68,7 @@ function SettingsScene:draw()
     textWrapWidth(WIDTH/1.1)
     fontSize(WIDTH/27)
     textMode(CENTER)
-    text("CREDITS:\n\nDesigned by: Heejo Suh\nProgrammed by: Heejo Suh\nMusic:Hyunjo Suh\nArtwork by: Heejo Suh", WIDTH/2, HEIGHT/4.5)
+    text("CREDITS:\n\nDesigned by: Heejo Suh\nProgrammed by: Heejo Suh\nMusic:Yun\nArtwork by: Heejo Suh", WIDTH/2, HEIGHT/4.5)
     popMatrix()
 end
 
@@ -81,13 +81,12 @@ function SettingsScene:touched(touch)
         if onOffWords== "On" then
             onOffWords= "Off"
             MusicMuted= true
-            music.muted= true
+            music.paused= true
         else
             onOffWords= "On"
             MusicMuted= false
-            music.muted= false
+            music.paused= false
         end
-        saveLocalData("music on", musicMuted)
     end
 end
 

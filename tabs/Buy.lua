@@ -58,16 +58,19 @@ function Buy:touched(touch)
     -- Codea does not automatically call this method
     yesButton:touched(touch)
     if yesButton.selected==true then
+        sound("Game Sounds One:Reload 2")
         print("Yes button seleted")
         check()
     end
     noButton:touched(touch)
     okayButton:touched(touch)
     if noButton.selected==true then
+        sound("Game Sounds One:Reload 2")
         print("no button selected")
         buyMode= "done" --end popup
     end
     if okayButton.selected==true then
+        sound("Game Sounds One:Reload 2")
         print("okay button selected")
         buyMode= "done" --end popup
     end

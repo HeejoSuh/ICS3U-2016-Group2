@@ -32,7 +32,7 @@ end
 function BasicSprites:drawWand()
     -- Codea does not automatically call this method
     --draw wand
-    sprite(Wands[CurrentWandNumber]["sprite"], WIDTH/2, HEIGHT/4, WIDTH/6, HEIGHT/1.9)
+    sprite(Wands[CurrentWandNumber]["sprite"], WIDTH/2, HEIGHT/4, WIDTH/3, HEIGHT/1.3)
 end
 
 
