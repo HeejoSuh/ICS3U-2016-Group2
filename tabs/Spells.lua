@@ -42,7 +42,7 @@ function SpellsScene:init()
     --dots position
     local dotMainPos= vec2(WIDTH/2, HEIGHT/2)
     local dotSpace= WIDTH/6
-    dotPositions= {                                                             vec2(dotMainPos.x-dotSpace, dotMainPos.y+dotSpace),                                             vec2(dotMainPos.x, dotMainPos.y+dotSpace),                                             vec2(dotMainPos.x+dotSpace, dotMainPos.y+dotSpace),              vec2(dotMainPos.x-dotSpace, dotMainPos.y),                                             vec2(dotMainPos.x, dotMainPos.y),                                             vec2(dotMainPos.x+dotSpace,dotMainPos.y),                     vec2(dotMainPos.x-dotSpace, dotMainPos.y-dotSpace),                                             vec2(dotMainPos.x, dotMainPos.y-dotSpace), vec2(dotMainPos.x+dotSpace,dotMainPos.y-dotSpace)                                            }
+    dotPositions= {                                                             vec2(dotMainPos.x-dotSpace, dotMainPos.y+dotSpace),                                             vec2(dotMainPos.x, dotMainPos.y+dotSpace*1.6),                                             vec2(dotMainPos.x+dotSpace, dotMainPos.y+dotSpace),              vec2(dotMainPos.x-dotSpace*1.6, dotMainPos.y),                                             vec2(dotMainPos.x, dotMainPos.y),                                             vec2(dotMainPos.x+dotSpace*1.6,dotMainPos.y),                     vec2(dotMainPos.x-dotSpace, dotMainPos.y-dotSpace),                                             vec2(dotMainPos.x, dotMainPos.y-dotSpace*1.6), vec2(dotMainPos.x+dotSpace,dotMainPos.y-dotSpace)                                             }
     
 end
 
@@ -92,6 +92,9 @@ function SpellsScene:draw()
         local levelRequired= Spells[currentPage]["level"]
         text("Requires level "..levelRequired.." or more.", WIDTH/2, HEIGHT/1.3)
         
+        --spell in numbers 
+        --text(Spells[currentPage]["spell"], WIDTH/2, HEIGHT/1.4)
+        
         --spell
         for numberOfDots=1,9 do
             --draw nine dots
@@ -132,7 +135,7 @@ function SpellsScene:touched(touch)
     --previous page
     previousPageButton:touched(touch)
     if previousPageButton.selected==true then
-        if currentPage-1 >= 0 then
+        if currentPage-1 ~= -1 then
             --if not the first page then turn page
             currentPage=currentPage-1
             newSpellSet()
@@ -140,8 +143,8 @@ function SpellsScene:touched(touch)
     end
     --next page
     nextPageButton:touched(touch)
-    if nextPageButton.selected==true then
-        if currentPage+1 < #Wands then
+    if nextPageButton.selected==true then        
+        if currentPage+1 ~= #Spells then
             --if not the last page then turn page
             currentPage=currentPage+1
             newSpellSet()
@@ -185,7 +188,7 @@ function drawDot()
     end
        
     if dotShownNumber > 0 then
-        print("dot shown"..tostring(dotShown))
+        --print("dot shown"..tostring(dotShown))
         sprite("Platformer Art:Guy Standing", dotPositions[dotShown].x, dotPositions[dotShown].y, WIDTH/14, WIDTH/14)
     end
 end

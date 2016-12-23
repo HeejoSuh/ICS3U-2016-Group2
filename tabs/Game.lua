@@ -36,8 +36,8 @@ function GameScene:init()
     
     --dots position
     local dotMainPos= vec2(WIDTH/2, HEIGHT/2.4)
-    local dotSpace= WIDTH/6
-    local dotPositions= {                                                             vec2(dotMainPos.x-dotSpace, dotMainPos.y+dotSpace),                                             vec2(dotMainPos.x, dotMainPos.y+dotSpace),                                             vec2(dotMainPos.x+dotSpace, dotMainPos.y+dotSpace),              vec2(dotMainPos.x-dotSpace, dotMainPos.y),                                             vec2(dotMainPos.x, dotMainPos.y),                                             vec2(dotMainPos.x+dotSpace,dotMainPos.y),                     vec2(dotMainPos.x-dotSpace, dotMainPos.y-dotSpace),                                             vec2(dotMainPos.x, dotMainPos.y-dotSpace), vec2(dotMainPos.x+dotSpace,dotMainPos.y-dotSpace)                                            }
+    local dotSpace= WIDTH/5.5
+    local dotPositions= {                                                             vec2(dotMainPos.x-dotSpace, dotMainPos.y+dotSpace),                                             vec2(dotMainPos.x, dotMainPos.y+dotSpace*1.6),                                             vec2(dotMainPos.x+dotSpace, dotMainPos.y+dotSpace),              vec2(dotMainPos.x-dotSpace*1.6, dotMainPos.y),                                             vec2(dotMainPos.x, dotMainPos.y),                                             vec2(dotMainPos.x+dotSpace*1.6,dotMainPos.y),                     vec2(dotMainPos.x-dotSpace, dotMainPos.y-dotSpace),                                             vec2(dotMainPos.x, dotMainPos.y-dotSpace*1.6), vec2(dotMainPos.x+dotSpace,dotMainPos.y-dotSpace)                                            }
     
     dots={}
     for numberOfDots= 1, 9 do
@@ -89,8 +89,9 @@ function GameScene:draw()
     end 
 
     --draw touch light
-    touchLight= SpriteObject("Small World:Bush", touchLightPosition)
-    tint(127, 127, 127, 100)
+    
+    touchLight= SpriteObject("Cargo Bot:Crate Green 2", touchLightPosition)
+    tint(127, 127, 127, 90)
     touchLight:draw()
     popStyle()
     

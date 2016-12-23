@@ -8,12 +8,12 @@
 	<array>
 		<string>Main</string>
 		<string>Shop</string>
+		<string>Spells</string>
 		<string>Buy</string>
 		<string>Splash</string>
 		<string>MainMenu</string>
 		<string>Game</string>
 		<string>Settings</string>
-		<string>Spells</string>
 		<string>Maps</string>
 		<string>BasicSprites</string>
 		<string>Walking</string>

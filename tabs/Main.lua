@@ -6,7 +6,7 @@
 -- This is main program for the CPT game
 
 
-Level= 1
+Level= 7
 MoneyHave= 0
 
 
@@ -34,10 +34,9 @@ GoBackTo= ""
 
 Maps= {                                                                                                      {["floor"]= 1, ["unlocked"]= true},                                                                              {["floor"]=2, ["unlocked"]= false},                                                                              {["floor"]= 30, ["unlocked"]= false},                                                                                                                                                        {["floor"]= 100, ["unlocked"]= false},                                                                              }
 
---                                                                 {["spell name"]= "spellName", ["power"]=spellAttackPoints(average=15), ["type"]= "GrowTurn", ["spell"]= {spellNumbers}, ["sprite"]= spellSpriteImage, ["lv"]=3, ["description"]= "Spell strength: Medium \nDifficulty: Medium"},                                                                                                                         
+--                                                                 {["spell name"]= "spellName", ["power"]=spellAttackPoints(average=15), ["type"]= "GrowTurn", ["spell"]= "spellNumbers", ["sprite"]= spellSpriteImage, ["level"]=3, ["description"]= "Spell strength: Medium \nDifficulty: Medium"},                                                                                                                         
 
-Spells= {{["spell name"]= "Dividi Bavidiboo", ["power"]= 4, ["type"]= "grow", ["spell"]= "123", ["sprite"]= "Cargo Bot:Smoke Particle", ["level"]=1, ["description"]= "Spell strength: Low \nDifficulty: Low"},                                                                                                                   {["spell name"]= "Abracadabra", ["power"]= 5, ["type"]= "turn", ["spell"]= "456", ["sprite"]= "SpaceCute:Collision Circle", ["level"]=1, ["description"]= "Spell strength: Low \nDifficulty: Low"},                                                                                             {["spell name"]= "Thunder lash", ["power"]= 8, ["type"]= "turn", ["spell"]= "258789", ["sprite"]= "SpaceCute:Collision Circle", ["level"]=1, ["description"]= "Spell strength: Low \nDifficulty: Low"},                           {["spell name"]= "Fire blast", ["power"]= 13, ["type"]= "grow", ["spell"]= "321478963", ["sprite"]= "Cargo Bot:Smoke Star", ["level"]=2, ["description"]= "Spell strength: Low Medium \nDifficulty: Low Medium"},                                              }
-
+Spells= {{["spell name"]= "Dividi Bavidiboo", ["power"]= 4, ["type"]= "grow", ["spell"]= "123", ["sprite"]= "Cargo Bot:Smoke Particle", ["level"]=1, ["description"]= "Spell strength: Low \nDifficulty: Low"},                                                                                                                   {["spell name"]= "Abracadabra", ["power"]= 5, ["type"]= "turn", ["spell"]= "456", ["sprite"]= "SpaceCute:Collision Circle", ["level"]=1, ["description"]= "Spell strength: Low \nDifficulty: Low"},                                                                                             {["spell name"]= "Thunder lash", ["power"]= 8, ["type"]= "turn", ["spell"]= "258789", ["sprite"]= "SpaceCute:Collision Circle", ["level"]=1, ["description"]= "Spell strength: Low \nDifficulty: Low"},                           {["spell name"]= "Fire blast", ["power"]= 10, ["type"]= "grow", ["spell"]= "321478963", ["sprite"]= "Cargo Bot:Smoke Star", ["level"]=2, ["description"]= "Spell strength: Low Medium \nDifficulty: Low Medium"},                                              {["spell name"]= "Cloud kill", ["power"]=12, ["type"]= "grow", ["spell"]= "9317", ["sprite"]= "Platformer Art:Guy Standing", ["level"]=2, ["description"]= "Spell strength: Low Medium \nDifficulty: Low Medium"},                                                           {["spell name"]= "Wall of fire", ["power"]=17, ["type"]= "turn", ["spell"]= "987654321", ["sprite"]= "Platformer Art:Guy Standing", ["level"]=3, ["description"]= "Spell strength: Medium \nDifficulty: Medium"},                                                                 }
 
 
 
