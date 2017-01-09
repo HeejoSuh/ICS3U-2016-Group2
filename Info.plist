@@ -13,11 +13,11 @@
 		<string>Splash</string>
 		<string>MainMenu</string>
 		<string>Game</string>
+		<string>Attack</string>
 		<string>Settings</string>
 		<string>Maps</string>
 		<string>BasicSprites</string>
 		<string>Walking</string>
-		<string>Attack</string>
 		<string>Monsters</string>
 		<string>DeadScene</string>
 		<string>PausedScene</string>

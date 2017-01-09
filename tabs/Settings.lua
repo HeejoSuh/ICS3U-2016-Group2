@@ -20,7 +20,7 @@ function SettingsScene:init()
     -- you can accept and set parameters here
     backButton= BasicSprites()
     
-    musicOnButton= Button("Planet Cute:Brown Block", vec2(4*WIDTH/7, HEIGHT/1.8))
+    musicOnButton= Button("Project:onoff button", vec2(4*WIDTH/7, HEIGHT/1.8))
     if MusicMuted==false then
         onOffWords= "On"
     else
@@ -39,6 +39,7 @@ end
 function SettingsScene:draw()
     -- Codea does not automatically call this method
     background(40, 60, 29, 255)
+    sprite("Project:bg1", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)--bg
     backButton:drawBackButton()
     
     musicOnButton:draw()
@@ -46,11 +47,11 @@ function SettingsScene:draw()
     font("Papyrus-Condensed")
     textWrapWidth(WIDTH/1.4)
     fontSize(WIDTH/20)
-    text(onOffWords, 4*WIDTH/7, HEIGHT/1.8)
-    text("Music:", 3*WIDTH/7, HEIGHT/1.8)
+    text(onOffWords, 4*WIDTH/7, HEIGHT/1.82)
+    text("Music:", 2.7*WIDTH/7, HEIGHT/1.9)
     
     --level
-    fill(0, 0, 0, 220)
+    fill(255, 255, 255, 230)
     font("Papyrus-Condensed")
     textWrapWidth(WIDTH/1.4)
     fontSize(WIDTH/18)
@@ -63,7 +64,7 @@ function SettingsScene:draw()
     
     --credits
     matrix()
-    fill(7, 7, 6, 220)
+    fill(255, 255, 255, 220)
     font("AmericanTypewriter")
     textWrapWidth(WIDTH/1.1)
     fontSize(WIDTH/27)

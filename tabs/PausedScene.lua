@@ -12,14 +12,14 @@ local resumeButton
 
 function PausedScene:init()
     -- you can accept and set parameters here
-    mainMenuButton= Button("Cargo Bot:Stop Button", vec2(2*WIDTH/7, HEIGHT/3))
-    resumeButton= Button("Cargo Bot:Step Button", vec2(5*WIDTH/7, HEIGHT/3))
+    mainMenuButton= Button("Project:onoff button", vec2(2*WIDTH/7, HEIGHT/3))
+    resumeButton= Button("Project:onoff button", vec2(5*WIDTH/7, HEIGHT/3))
     
 end
 
 function PausedScene:draw()
     -- Codea does not automatically call this method
-    sprite("SpaceCute:Background", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT) -- draw background
+    sprite("Project:bg", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT) -- draw background
     sprite("Cargo Bot:Dialogue Button", WIDTH/2, HEIGHT/2, WIDTH/1.2, HEIGHT/1.2)
     
     font("Zapfino")
@@ -29,8 +29,13 @@ function PausedScene:draw()
     fontSize(WIDTH/15)
     text("Game Paused", WIDTH/2, HEIGHT/1.4)
     
+    
     mainMenuButton:draw()
     resumeButton:draw()
+    font("Papyrus-Condensed")
+    fontSize(WIDTH/26)
+    text("Main Menu", 2*WIDTH/7, HEIGHT/3)
+    text("Resume", 5*WIDTH/7, HEIGHT/3)
 end
 
 function PausedScene:touched(touch)

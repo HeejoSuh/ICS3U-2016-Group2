@@ -36,13 +36,17 @@ function GameScene:init()
     
     --dots position
     local dotMainPos= vec2(WIDTH/2, HEIGHT/2.4)
-    local dotSpace= WIDTH/5.5
-    local dotPositions= {                                                             vec2(dotMainPos.x-dotSpace, dotMainPos.y+dotSpace),                                             vec2(dotMainPos.x, dotMainPos.y+dotSpace*1.6),                                             vec2(dotMainPos.x+dotSpace, dotMainPos.y+dotSpace),              vec2(dotMainPos.x-dotSpace*1.6, dotMainPos.y),                                             vec2(dotMainPos.x, dotMainPos.y),                                             vec2(dotMainPos.x+dotSpace*1.6,dotMainPos.y),                     vec2(dotMainPos.x-dotSpace, dotMainPos.y-dotSpace),                                             vec2(dotMainPos.x, dotMainPos.y-dotSpace*1.6), vec2(dotMainPos.x+dotSpace,dotMainPos.y-dotSpace)                                            }
+    local dotMoveAmount= 1.3
+    local dotSpace= WIDTH/4.5
+    local dotPositions= {                                                             vec2(dotMainPos.x-dotSpace, dotMainPos.y+dotSpace),                                             vec2(dotMainPos.x, dotMainPos.y+dotSpace*dotMoveAmount),                                             vec2(dotMainPos.x+dotSpace, dotMainPos.y+dotSpace),              vec2(dotMainPos.x-dotSpace*dotMoveAmount, dotMainPos.y),                                             vec2(dotMainPos.x, dotMainPos.y),                                             vec2(dotMainPos.x+dotSpace*dotMoveAmount,dotMainPos.y),                     vec2(dotMainPos.x-dotSpace, dotMainPos.y-dotSpace),                                             vec2(dotMainPos.x, dotMainPos.y-dotSpace*dotMoveAmount), vec2(dotMainPos.x+dotSpace,dotMainPos.y-dotSpace)                                            }
+    
+    
     
     dots={}
     for numberOfDots= 1, 9 do
         --put in dots
-        table.insert(dots, SpriteObject("Platformer Art:Crate", dotPositions[numberOfDots]))
+        --sprite("Project:brown dot")
+        table.insert(dots, SpriteObject("Project:brown dot", dotPositions[numberOfDots]))
         dots[numberOfDots].draggable= false --not draggable
     end
     
@@ -50,9 +54,9 @@ function GameScene:init()
     touchLightPosition= vec2(-300,-300) --out of screen
     
     if Mode=="game" then
-        pauseButton= Button("Project:Blue Pause Button", vec2(WIDTH-WIDTH/8, HEIGHT-WIDTH/9)) -- for game
+        pauseButton= Button("Project:pause button", vec2(WIDTH-WIDTH/8, HEIGHT-WIDTH/9)) -- for game
     else
-        spellsButton= Button("Planet Cute:Chest Closed", vec2(WIDTH-WIDTH/8, HEIGHT-WIDTH/9)) -- for practicing
+        spellsButton= Button("Project:book", vec2(WIDTH-WIDTH/8, HEIGHT-WIDTH/9)) -- for practicing
     end
     
     
@@ -83,15 +87,17 @@ function GameScene:draw()
     potionButton:draw()
     
     --draw dots
-    tint(255, 255, 255, 120) --translucent
+    tint(255, 255, 255, 60) --translucent
     for everyDots= 1, 9 do
         dots[everyDots]:draw()
     end 
+    
 
     --draw touch light
     
-    touchLight= SpriteObject("Cargo Bot:Crate Green 2", touchLightPosition)
-    tint(127, 127, 127, 90)
+    touchLight= SpriteObject("Project:40 dot", touchLightPosition)
+   -- sprite("Project:40 dot")
+    tint(127, 127, 127, 80)
     touchLight:draw()
     popStyle()
     
@@ -150,7 +156,7 @@ function GameScene:touched(touch)
     
     --touched dots
     for numberOfDots=1, 9 do
-        if ((touchLight:isTouching(dots[numberOfDots]))==true and string.sub(touchedDots, #touchedDots)~=tostring(numberOfDots))  then
+        if ((touchLight:isTouching(dots[numberOfDots]))==true and string.sub(touchedDots, #touchedDots)~=tostring(numberOfDots)) then
             --if touching a dot and the dot isn't previously touched or nothing has been touched then
             sound(whooshSounds[math.random(#whooshSounds)]) --play a random whoosh sound
             

@@ -12,7 +12,8 @@ local userGage
 
 function BasicSprites:init()
     -- you can accept and set parameters here
-    backButton= Button("Project:Blue Back Circle Button", vec2(WIDTH/8, HEIGHT-WIDTH/9))
+    backButton= Button("Project:button back", vec2(WIDTH/8, HEIGHT-WIDTH/9))
+    
     userGage= GageBar(UserHealth, HealthLevelAmount, vec2(WIDTH/25, HEIGHT/30), color(255, 0, 0, 255), WIDTH/1.06)
 end
 
@@ -21,8 +22,8 @@ function BasicSprites:drawBackground()
     
     --draw background
     if Mode== "practice" then
-        sprite("Planet Cute:Stone Block Tall", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT) -- draw background
-        sprite("Planet Cute:Icon", WIDTH/2, HEIGHT/1.8, WIDTH/1.2, WIDTH/1.2) -- draw dummy
+        sprite("Project:bg1", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT) -- draw background
+        sprite("Planet Cute:Character Princess Girl", WIDTH/2, HEIGHT/1.8, WIDTH, WIDTH) -- draw dummy
     else
         sprite("Project:bg", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT) -- draw background
     end
@@ -55,7 +56,7 @@ function BasicSprites:touched(touch)
     -- Codea does not automatically call this method
     backButton:touched(touch)
     if backButton.selected==true then
-        sound("A Hero's Quest:Arrow Shoot 1")
+        sound("Game Sounds One:Assembly 6")
         Scene.Change("mainMenu")
     end
 end

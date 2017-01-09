@@ -18,7 +18,7 @@ function MapsScene:init()
     
     for numberOfButtons= 1, #Maps do
         --put actual buttons into dictionary
-        buttons[numberOfButtons]= Button("Planet Cute:Gem Blue", vec2(buttonPosition[numberOfButtons].x, buttonPosition[numberOfButtons].y))
+        buttons[numberOfButtons]= Button("Project:brown dot", vec2(buttonPosition[numberOfButtons].x, buttonPosition[numberOfButtons].y))
     end
     
     
@@ -27,18 +27,19 @@ end
 
 function MapsScene:draw()
     -- Codea does not automatically call this method
-    background(40, 60, 29, 255)
+    sprite("Project:parchment", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)--bg
     
     for numberOfButtons= 1,#buttons do
         --draw the buttons
         buttons[numberOfButtons]:draw()
         if Maps[numberOfButtons]["unlocked"]==false then
             --if not unlocked then draw locks
-            sprite("Project:Lock", buttonPosition[numberOfButtons].x, buttonPosition[numberOfButtons].y, WIDTH/5, WIDTH/5) --locks
-        fontSize(WIDTH/23)
-        fill(0, 0, 0, 255)
-        text("Floor "..tostring(Maps[numberOfButtons]["floor"]), buttonPosition[numberOfButtons].x, buttonPosition[numberOfButtons].y)
+            sprite("Project:Lock", buttonPosition[numberOfButtons].x, buttonPosition[numberOfButtons].y, WIDTH/7, WIDTH/7) --locks
         end
+        font("Papyrus-Condensed")
+        fontSize(WIDTH/23)
+        fill(116, 65, 35, 255)
+        text("Floor "..tostring(Maps[numberOfButtons]["floor"]), buttonPosition[numberOfButtons].x, buttonPosition[numberOfButtons].y-40)
     end
     
     backButton:drawBackButton()

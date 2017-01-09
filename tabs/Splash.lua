@@ -14,39 +14,39 @@ local companyLogoSprite
 local gameLogoSprite
 
 local currentSprite
-local currentWords
 
 
 function SplashScene:init()
     
-    transitionTime= 1.8
+    transitionTime= 2.2
     
-    companyLogoSprite= "Planet Cute:Chest Closed"
-    gameLogoSprite= "Planet Cute:Chest Open"
+    companyLogoSprite= "Project:white nothing"
+    gameLogoSprite= "Project:name"
     
     currentSprite= companyLogoSprite --first, set to company sprite
-    currentWords= "H Company"
 end
 
 
 function SplashScene:draw()
     -- Codea does not automatically call this method
-    background(171, 171, 171, 255) -- White background
+    background(255, 255, 255, 255) -- White background
     
     if (durationTime + 2*transitionTime < ElapsedTime) then 
         --if time twice passed, move scene
         Scene.Change("mainMenu")
     elseif (durationTime + transitionTime < ElapsedTime) then
         --for the next few seconds, show game logo
+        background(60, 60, 60, 255)
         currentSprite= gameLogoSprite
-        currentWords= "The Wanderer"
+    else
+        fontSize(WIDTH/16)
+        font("TimesNewRomanPS-BoldItalicMT")
+        fill(0, 0, 0, 255)
+        text("H company", WIDTH/2, 6*HEIGHT/7)
     end
     
     --Draw logo
-    sprite(currentSprite, WIDTH/2, HEIGHT/1.5, WIDTH/1.5, WIDTH/1.5)
-    fontSize(WIDTH/15)
-    fill(0, 0, 0, 255)
-    text(currentWords,WIDTH/2, HEIGHT/1.5)
+    sprite(currentSprite, WIDTH/2, HEIGHT/2, WIDTH/1.2, WIDTH/1.2)
 end
 
 

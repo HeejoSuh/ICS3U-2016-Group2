@@ -22,7 +22,8 @@ function MainMenuScene:init()
     local middleButtonSpace= HEIGHT/7
     local middleButtonOriginalY= HEIGHT/1.9
     
-    buttons= {                                                                                 {["sprite"]= "Project:button maps", ["position"]= vec2(WIDTH/2, middleButtonOriginalY), ["scene"]="maps"},                                                                                  {["sprite"]= "Project:button resume", ["position"]= vec2(WIDTH/2, middleButtonOriginalY - 1*middleButtonSpace), ["scene"]="game", ["mode"]= "resume"},                                           {["sprite"]= "Project:button practice", ["position"]= vec2(WIDTH/2, middleButtonOriginalY - 2*middleButtonSpace), ["scene"]="game", ["mode"]= "practice"},                                                                                 {["sprite"]= "Project:button spells", ["position"]= vec2(WIDTH/2, middleButtonOriginalY - 3*middleButtonSpace), ["scene"]="spells"},                                                                                 {["sprite"]= "Cargo Bot:Title Large Crate 2", ["position"]= vec2(WIDTH/8, HEIGHT/1.1), ["scene"]="settings"},                                                                                                                                                                 {["sprite"]= "Cargo Bot:Title Large Crate 2", ["position"]= vec2(WIDTH-WIDTH/8, HEIGHT/1.1), ["scene"]="shop"},                                                                                 }
+    buttons= {                                                                                 {["sprite"]= "Project:button maps", ["position"]= vec2(WIDTH/2, middleButtonOriginalY), ["scene"]="maps"},                                                                                  {["sprite"]= "Project:button resume", ["position"]= vec2(WIDTH/2, middleButtonOriginalY - 1*middleButtonSpace), ["scene"]="game", ["mode"]= "resume"},                                           {["sprite"]= "Project:button practice", ["position"]= vec2(WIDTH/2, middleButtonOriginalY - 2*middleButtonSpace), ["scene"]="game", ["mode"]= "practice"},                                                                                 {["sprite"]= "Project:button spells", ["position"]= vec2(WIDTH/2, middleButtonOriginalY - 3*middleButtonSpace), ["scene"]="spells"},                                                                                 {["sprite"]= "Project:button settings", ["position"]= vec2(WIDTH/8, HEIGHT/1.1), ["scene"]="settings"},                                                                                                                                                                 {["sprite"]= "Project:button shop", ["position"]= vec2(WIDTH-WIDTH/8, HEIGHT/1.1), ["scene"]="shop"},                                                                                 }
+    
     
     for numberOfButtons= 1, #buttons do
         --put actual buttons into dictionary
@@ -38,16 +39,15 @@ end
 function MainMenuScene:draw()
     -- Codea does not automatically call this method
     background(40, 60, 29, 255)
+    sprite("Project:bg1", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)--bg
     
     for numberOfButtons= 1,#buttons do
         --draw the buttons
         buttons[numberOfButtons]["button"]:draw()
     end
     
-    sprite("Small World:Court", WIDTH/2, HEIGHT/1.2, WIDTH/2.5, WIDTH/2.5) -- game name sprite
-    fontSize(WIDTH/18)
-    fill(0, 0, 0, 255)
-    text("The Wanderer", WIDTH/2, HEIGHT/1.2)
+    sprite("Project:name", WIDTH/2, HEIGHT/1.25, WIDTH/2., WIDTH/2.) -- game name sprite
+    
     
     fontSize (WIDTH/25)
     font("Papyrus")
@@ -68,7 +68,7 @@ function MainMenuScene:touched(touch)
         currentButtonDict["button"]:touched(touch)
         if currentButtonDict["button"].selected==true then
             -- if button touched then
-            sound("A Hero's Quest:Arrow Shoot 2")
+            sound("A Hero's Quest:Door Open")
             
             if currentButtonDict["mode"]=="practice" then
                 CurrentGameFloor=nil

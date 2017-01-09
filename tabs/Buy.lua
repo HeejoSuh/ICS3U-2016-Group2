@@ -18,9 +18,9 @@ function Buy:init(itemInfoNumber)
     showWords= "Do You want to unlock the "..item["wand name"].." for "..tostring(item["cost"]).." coins?"
     
     
-    okayButton= Button("Platformer Art:Block Brick", vec2(WIDTH/2, HEIGHT/3))
-    yesButton= Button("Platformer Art:Block Grass", vec2(2*WIDTH/8, HEIGHT/3))
-    noButton= Button("Platformer Art:Block Brick", vec2(6*WIDTH/8, HEIGHT/3))
+    okayButton= Button("Project:onoff button", vec2(WIDTH/2, HEIGHT/3))
+    yesButton= Button("Project:onoff button", vec2(2*WIDTH/8, HEIGHT/3))
+    noButton= Button("Project:onoff button", vec2(6*WIDTH/8, HEIGHT/3))
     
     
     
@@ -31,7 +31,7 @@ end
 function Buy:draw()
     -- Codea does not automatically call this method
     --pop up
-    sprite("Platformer Art:Block Brick", WIDTH/2, HEIGHT/2, WIDTH/1.3, HEIGHT/1.7) 
+    sprite("Project:parchment", WIDTH/2, HEIGHT/2, WIDTH/1.3, HEIGHT/1.7) 
     
     fill(7, 7, 6, 220)
     font("Papyrus-Condensed")
@@ -44,12 +44,13 @@ function Buy:draw()
     if buyMode=="ask" then
         yesButton:draw()
         noButton:draw()
+        fontSize(WIDTH/17)
         text("Yes", 2*WIDTH/8, HEIGHT/3)
         text("No", 6*WIDTH/8, HEIGHT/3)
     elseif buyMode=="showing okay" then
         print("Work")
         okayButton:draw()
-        fontSize(WIDTH/24)
+        fontSize(WIDTH/17)
         text("Okay", WIDTH/2, HEIGHT/3)
     end
 end
@@ -98,6 +99,7 @@ function check()
             MoneyHave= MoneyHave-tonumber(item["cost"])
             CurrentWandNumber= itemNumber
             
+            sound("Game Sounds One:Assembly 4")
             showWords= "Purchase complete!"
             buyMode= "showing okay"
             

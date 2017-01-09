@@ -28,7 +28,8 @@ function SpellsScene:init()
     -- you can accept and set parameters here
 
     
-    backButton= Button("Project:Blue Back Circle Button", vec2(WIDTH/8, HEIGHT-WIDTH/9))
+    backButton= Button("Project:button back", vec2(WIDTH/8, HEIGHT-WIDTH/9))
+    
     
     --need sprites that are big
     previousPageButton= Button("Project:Page flip button", vec2(WIDTH/7, HEIGHT/2.5))
@@ -40,9 +41,10 @@ function SpellsScene:init()
     
     
     --dots position
-    local dotMainPos= vec2(WIDTH/2, HEIGHT/2)
-    local dotSpace= WIDTH/6
-    dotPositions= {                                                             vec2(dotMainPos.x-dotSpace, dotMainPos.y+dotSpace),                                             vec2(dotMainPos.x, dotMainPos.y+dotSpace*1.6),                                             vec2(dotMainPos.x+dotSpace, dotMainPos.y+dotSpace),              vec2(dotMainPos.x-dotSpace*1.6, dotMainPos.y),                                             vec2(dotMainPos.x, dotMainPos.y),                                             vec2(dotMainPos.x+dotSpace*1.6,dotMainPos.y),                     vec2(dotMainPos.x-dotSpace, dotMainPos.y-dotSpace),                                             vec2(dotMainPos.x, dotMainPos.y-dotSpace*1.6), vec2(dotMainPos.x+dotSpace,dotMainPos.y-dotSpace)                                             }
+    local dotMainPos= vec2(WIDTH/2, HEIGHT/2.4)
+    local dotMoveAmount= 1.3
+    local dotSpace= WIDTH/4.5
+    local dotPositions= {                                                             vec2(dotMainPos.x-dotSpace, dotMainPos.y+dotSpace),                                             vec2(dotMainPos.x, dotMainPos.y+dotSpace*dotMoveAmount),                                             vec2(dotMainPos.x+dotSpace, dotMainPos.y+dotSpace),              vec2(dotMainPos.x-dotSpace*dotMoveAmount, dotMainPos.y),                                             vec2(dotMainPos.x, dotMainPos.y),                                             vec2(dotMainPos.x+dotSpace*dotMoveAmount,dotMainPos.y),                     vec2(dotMainPos.x-dotSpace, dotMainPos.y-dotSpace),                                             vec2(dotMainPos.x, dotMainPos.y-dotSpace*dotMoveAmount), vec2(dotMainPos.x+dotSpace,dotMainPos.y-dotSpace)                                            }
     
 end
 
@@ -54,11 +56,12 @@ function SpellsScene:draw()
     --hide the buttons
     
     background(40, 60, 29, 255)
+    sprite("Project:bg1", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)--bg
     
     if currentPage==0 then
          --book sprite
         tint(85, 31, 31, 255)
-        sprite("Cargo Bot:Goal Area", WIDTH/2, HEIGHT/2, WIDTH/1.1, HEIGHT/1.1)
+        sprite("Project:parchment", WIDTH/2, HEIGHT/2, WIDTH/1.1, HEIGHT/1.1)
         font("TimesNewRomanPS-BoldMT")
         --title
         textMode (CENTER)
@@ -74,7 +77,7 @@ function SpellsScene:draw()
         popStyle()
     elseif currentPage> 0 then
         --page sprite
-        sprite("Cargo Bot:Goal Area", WIDTH/2, HEIGHT/2, WIDTH/1.1, HEIGHT/1.1)
+        sprite("Project:parchment", WIDTH/2, HEIGHT/2, WIDTH/1.1, HEIGHT/1.1)
         textWrapWidth(WIDTH/1.3) --restrict range 
         
         --name of spell
@@ -85,7 +88,7 @@ function SpellsScene:draw()
         local nameOfSpell= Spells[currentPage]["spell name"]
         text(nameOfSpell, WIDTH/2, HEIGHT/1.2)
         
-        --level to unlcok
+        --level to unlock
         font("Papyrus")
         fontSize(WIDTH/40)
         fill(22, 32, 21, 180)
@@ -98,9 +101,10 @@ function SpellsScene:draw()
         --spell
         for numberOfDots=1,9 do
             --draw nine dots
-            fill(255, 255, 255, 90)
-            sprite("Planet Cute:Gem Orange", dotPositions[numberOfDots].x, dotPositions[numberOfDots].y, WIDTH/18, WIDTH/18)
+            tint(255, 255, 255, 170)
+            sprite("Project:brown dot", dotPositions[numberOfDots].x, dotPositions[numberOfDots].y, WIDTH/18, WIDTH/18)
         end
+        popStyle()
         drawDot()
         
         --description
@@ -189,6 +193,6 @@ function drawDot()
        
     if dotShownNumber > 0 then
         --print("dot shown"..tostring(dotShown))
-        sprite("Platformer Art:Guy Standing", dotPositions[dotShown].x, dotPositions[dotShown].y, WIDTH/14, WIDTH/14)
+        sprite("Project:light", dotPositions[dotShown].x, dotPositions[dotShown].y, WIDTH/8, WIDTH/8)
     end
 end

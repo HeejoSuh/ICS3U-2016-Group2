@@ -28,7 +28,8 @@ local popUp
 function ShopScene:init()
     -- you can accept and set parameters here
     
-    buyPotionButton= Button("Cargo Bot:Dialogue Button", vec2(2*WIDTH/3, HEIGHT/5.5))
+    buyPotionButton= Button("Project:buy button", vec2(2*WIDTH/3, HEIGHT/5.5))
+    
     
     
     backButton= BasicSprites()
@@ -40,7 +41,7 @@ function ShopScene:init()
     --wands
     for numberOfWands= 1, #Wands do
         --use buttons
-        table.insert(wandChooseButtons, Button("Planet Cute:Character Boy", vec2(numberOfWands*wandSpace, HEIGHT/2)))
+        table.insert(wandChooseButtons, Button("Project:brown dot", vec2(numberOfWands*wandSpace, HEIGHT/2)))
     end
     
     popUp= Buy(1) --set to random at first
@@ -50,10 +51,12 @@ function ShopScene:draw()
     -- Codea does not automatically call this method
     background(40, 60, 29, 255)
     
+    sprite("Project:bg1", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)--bg
     --top block
-    sprite("Cargo Bot:Dialogue Button", WIDTH/2, HEIGHT/1.1, WIDTH, HEIGHT/5.5)
+    sprite("Project:bg1", WIDTH/2, HEIGHT*1.3, WIDTH, HEIGHT)
     --bottom block
-    sprite("Planet Cute:Brown Block", WIDTH/2, HEIGHT/5, WIDTH, HEIGHT/2.5)
+    sprite("Project:bg1", WIDTH/2, -HEIGHT*0.15, WIDTH, HEIGHT)
+    popStyle()
     
     --potion
     sprite("Project:potion", WIDTH/3, HEIGHT/5.5, WIDTH/4, WIDTH/4)
@@ -61,27 +64,24 @@ function ShopScene:draw()
     buyPotionButton:draw()
     
     --potion cost
-    fill(18, 17, 14, 220)
+    fill(18, 17, 14, 250)
     font("Papyrus-Condensed")
     textWrapWidth(WIDTH/3)
     fontSize(WIDTH/25)
-    text(potionCost.." each", 2.5*WIDTH/5, HEIGHT/4)
+    text(potionCost.." each", 2.5*WIDTH/5, HEIGHT/4.5)
     --potion number
-    fill(18, 17, 14, 220)
+    fill(18, 17, 14, 250)
     font("Papyrus-Condensed")
     fontSize(WIDTH/27)
     text(math.tointeger(NumberOfPotions), 2.5*WIDTH/5, HEIGHT/6)
     
-    text("Buy", 2*WIDTH/3, HEIGHT/5.6)
+    --text("Buy", 2*WIDTH/3, HEIGHT/5.6)
     
-    
-    --back button
-    backButton:drawBackButton()
     
     --money
-    fill(64, 51, 29, 220)
+    fill(196, 162, 36, 250)
     font("Papyrus-Condensed")
-    textWrapWidth(WIDTH/1.4)
+    textWrapWidth(WIDTH/1.85)
     fontSize(WIDTH/20)
     text(math.tointeger(MoneyHave).." coins", WIDTH/2, HEIGHT/1.1)
     
@@ -101,7 +101,8 @@ function ShopScene:draw()
         tint(255, 255, 255, 255)
     end
     
-    
+    --back button
+    backButton:drawBackButton()
     
     if allowTouch==false then
         --draw popup
@@ -111,6 +112,7 @@ function ShopScene:draw()
             allowTouch=true
         end
     end
+    
 end
 
 function ShopScene:touched(touch)
@@ -131,6 +133,7 @@ function ShopScene:touched(touch)
                 MoneyHave= MoneyHave- potionCost
                 --add a number of potion
                 NumberOfPotions= NumberOfPotions +1
+                sound("Game Sounds One:Assembly 4")
             end
         end
     
