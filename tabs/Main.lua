@@ -5,10 +5,10 @@
 -- Created for: ICS3U
 -- This is main program for the CPT game
 
-
+--Set global variables
+--Default level one, 100 coins to start with
 Level= 1
-MoneyHave= 10
-
+MoneyHave= 100
 
 CurrentWandNumber= 1
 
@@ -29,6 +29,7 @@ HealthLevelAmount= 100
 ExpPoints= 0
 ExpNeedAmount= 80
 
+--Used for going back to different scenes
 GoBackTo= ""
 
 
@@ -43,7 +44,6 @@ Spells= {{["spell name"]= "Dividi Bavidiboo", ["power"]= 18, ["type"]= "grow", [
 --{["wand name"]=wandName, ["sprite"]=wandSpriteImage, ["cost"]=cost, ["level"]= LevelToUse},                                                                                             
 Wands= {                                                                    {["wand name"]="Beginner's wand", ["sprite"]="Project:Wand 1", ["cost"]=0, ["level"]= 1, ["unlocked"]= true},                                                                                             
 {["wand name"]="Intermediate's wand", ["sprite"]="Project:Wand 3", ["cost"]=100, ["level"]= 2, ["unlocked"]= false},                                                                     {["wand name"]="Advanced wand", ["sprite"]="Project:Wand 2", ["cost"]=500, ["level"]= 5, ["unlocked"]= false},                                                                     {["wand name"]="Expert's wand", ["sprite"]="Project:Wand 4", ["cost"]=1000, ["level"]= 10, ["unlocked"]= false},                                                                                                                           }
-
 
 
 SpellCastedNumber= 0
@@ -67,10 +67,10 @@ function setup()
     supportedOrientations(PORTRAIT)
     --displayMode(FULLSCREEN_NO_BUTTONS)
     displayMode(FULLSCREEN)
-	noFill()
-	noSmooth()
-	noStroke()
-	pushStyle()
+    noFill()
+    noSmooth()
+    noStroke()
+    pushStyle()
     
     
     if MusicMuted==false then
@@ -91,11 +91,12 @@ function setup()
     Scene("attack", AttackScene)
     Scene("pause", PausedScene)
     Scene("dead", DeadScene)
+    Scene("help", HelpScene)
     
     
     --go to splash scene first
     --Scene.Change("splash")
-    Scene.Change("splash")
+    Scene.Change("settings")
 end
  
 function draw()

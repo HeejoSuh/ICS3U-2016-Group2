@@ -87,7 +87,7 @@ function GameScene:draw()
     potionButton:draw()
     
     --draw dots
-    tint(255, 255, 255, 60) --translucent
+    tint(255, 255, 255, 90) --translucent
     for everyDots= 1, 9 do
         dots[everyDots]:draw()
     end 

@@ -7,6 +7,8 @@
 	<key>Buffer Order</key>
 	<array>
 		<string>Main</string>
+		<string>Settings</string>
+		<string>HelpScene</string>
 		<string>Shop</string>
 		<string>Spells</string>
 		<string>Buy</string>
@@ -14,7 +16,6 @@
 		<string>MainMenu</string>
 		<string>Game</string>
 		<string>Attack</string>
-		<string>Settings</string>
 		<string>Maps</string>
 		<string>BasicSprites</string>
 		<string>Walking</string>
