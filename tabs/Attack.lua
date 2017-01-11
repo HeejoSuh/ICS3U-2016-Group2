@@ -143,6 +143,7 @@ function AttackScene:draw()
             else
                 if CurrentMonster["health"]<= 0 then
                     --if monster died then
+                    GotCoinsAndExp= false
                     Scene.Change("walk")
                 else
                     Scene.Change("game")

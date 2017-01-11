@@ -146,7 +146,7 @@ function Monsters:nextMonsterUp()
     local healthTimesAmount= 1.05
     
     --check if there needs to be a new level
-    if ExpPoints>= ExpNeedAmount then
+    if ExpPoints>= ExpNeedAmount and GotCoinsAndExp==false then
         ExpPoints= ExpPoints- ExpNeedAmount --take away exp points
         Level= Level+1 -- level up
         ExpNeedAmount= ExpNeedAmount + expLevelAmount --increase in needed exp
