@@ -18,12 +18,12 @@
 		<string>Attack</string>
 		<string>Maps</string>
 		<string>BasicSprites</string>
+		<string>GageBar</string>
 		<string>Walking</string>
 		<string>Monsters</string>
 		<string>DeadScene</string>
 		<string>PausedScene</string>
 		<string>Potion</string>
-		<string>GageBar</string>
 		<string>HelperClass</string>
 	</array>
 	<key>Description</key>

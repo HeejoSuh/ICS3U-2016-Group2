@@ -110,7 +110,8 @@ function setNextMonster()
     
     
     --differs for every monster
-    local percent= math.random(4, 10*CurrentGameFloor)/10
+    --40%~150%
+    local percent= math.random(4, 15*CurrentGameFloor)/10
 
     
     CurrentMonster["health"]= tonumber(string.format("%.f", tonumber(CurrentMonster["health"]) * percent))
@@ -141,7 +142,7 @@ function Monsters:nextMonsterUp()
     
     
     
-    local expLevelAmount= 90
+    local expLevelAmount= ExpNeedAmount/Level
     local healthTimesAmount= 1.05
     
     --check if there needs to be a new level

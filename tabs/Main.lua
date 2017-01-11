@@ -27,18 +27,22 @@ UserHealth= 100
 HealthLevelAmount= 100
 
 ExpPoints= 0
-ExpNeedAmount= 80
+ExpNeedAmount= 50
 
 --Used for going back to different scenes
 GoBackTo= ""
+
+--checks if given exp and everything
+GotCoinsAndExp= true
+
 
 
 
 Maps= {                                                                                                      {["floor"]= 1, ["unlocked"]= true},                                                                              {["floor"]=2, ["unlocked"]= false},                                                                              {["floor"]= 30, ["unlocked"]= false},                                                                                                                                                        {["floor"]= 100, ["unlocked"]= false},                                                                              }
 
---                                                                 {["spell name"]= "spellName", ["power"]=spellAttackPoints(average=15), ["type"]= "GrowTurn", ["spell"]= "spellNumbers", ["sprite"]= spellSpriteImage, ["level"]=3, ["description"]= "Spell strength: Medium \nDifficulty: Medium"},                                                                                                                         
+--                                                                 {["spell name"]= "spellName", ["power"]=spellAttackPoints(average=15), ["type"]= "GrowTurn", ["spell"]= "spellNumbers", ["sprite"]= spellSpriteImage, ["level"]=3, ["description"]= "Spell strength: Medium   Difficulty: Medium"},                                                                                                                         
 
-Spells= {{["spell name"]= "Dividi Bavidiboo", ["power"]= 18, ["type"]= "grow", ["spell"]= "123", ["sprite"]= "Project:spell 1", ["level"]=1, ["description"]= "Spell strength: Low \nDifficulty: Low"},                                                                                                                   {["spell name"]= "Abracadabra", ["power"]= 10, ["type"]= "turn", ["spell"]= "456", ["sprite"]= "Project:spells 2", ["level"]=1, ["description"]= "Spell strength: Low \nDifficulty: Low"},                                                                                             {["spell name"]= "Thunder lash", ["power"]= 20, ["type"]= "turn", ["spell"]= "258789", ["sprite"]= "Project:spells 3", ["level"]=1, ["description"]= "Spell strength: Low \nDifficulty: Low"},                           {["spell name"]= "Fire blast", ["power"]= 30, ["type"]= "grow", ["spell"]= "321478963", ["sprite"]= "Project:spells 4", ["level"]=2, ["description"]= "Spell strength: Low Medium \nDifficulty: Low Medium"},                                              {["spell name"]= "Cloud kill", ["power"]=40, ["type"]= "grow", ["spell"]= "9317", ["sprite"]= "Project:spells 5", ["level"]=2, ["description"]= "Spell strength: Low Medium \nDifficulty: Low Medium"},                                                           {["spell name"]= "Wall of fire", ["power"]=60, ["type"]= "turn", ["spell"]= "987654321", ["sprite"]= "Project:spells 6", ["level"]=3, ["description"]= "Spell strength: Medium \nDifficulty: Medium"},                                                                 }
+Spells= {{["spell name"]= "Dividi Bavidiboo", ["power"]= 18, ["type"]= "grow", ["spell"]= "123", ["sprite"]= "Project:spell 1", ["level"]=1, ["description"]= "Spell strength: Low   Difficulty: Low"},                                                                                                                   {["spell name"]= "Abracadabra", ["power"]= 10, ["type"]= "turn", ["spell"]= "456", ["sprite"]= "Project:spells 2", ["level"]=1, ["description"]= "Spell strength: Low   Difficulty: Low"},                                                                                             {["spell name"]= "Thunder lash", ["power"]= 20, ["type"]= "turn", ["spell"]= "258789", ["sprite"]= "Project:spells 3", ["level"]=1, ["description"]= "Spell strength: Low   Difficulty: Low"},                           {["spell name"]= "Fire blast", ["power"]= 30, ["type"]= "grow", ["spell"]= "321478963", ["sprite"]= "Project:spells 4", ["level"]=2, ["description"]= "Spell strength: Low Medium   Difficulty: Low Medium"},                                              {["spell name"]= "Cloud kill", ["power"]=40, ["type"]= "grow", ["spell"]= "9317", ["sprite"]= "Project:spells 5", ["level"]=2, ["description"]= "Spell strength: Low Medium   Difficulty: Low Medium"},                                                           {["spell name"]= "Wall of fire", ["power"]=60, ["type"]= "turn", ["spell"]= "987654321", ["sprite"]= "Project:spells 6", ["level"]=3, ["description"]= "Spell strength: Medium   Difficulty: Medium"},                                                                 }
 
 
 --{["wand name"]=wandName, ["sprite"]=wandSpriteImage, ["cost"]=cost, ["level"]= LevelToUse},                                                                                             
@@ -62,6 +66,8 @@ MusicMuted= false
 Mode= "game"
 
 
+--for tutorials
+FirstGamePlay= true
 
 function setup()
     supportedOrientations(PORTRAIT)
@@ -96,7 +102,8 @@ function setup()
     
     --go to splash scene first
     --Scene.Change("splash")
-    Scene.Change("settings")
+    Scene.Change("mainMenu")
+    FirstGamePlay= false
 end
  
 function draw()

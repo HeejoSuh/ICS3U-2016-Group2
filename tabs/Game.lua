@@ -3,7 +3,7 @@
 --Created by: Heejo Suh
 -- Created on: Dec 2016
 -- Created for: ICS3U
--- This is the game scene
+-- This is the game scene, used for both practice and actual game.
 
 GameScene = class()
 

@@ -12,40 +12,37 @@ local backButton
 local previousPageButton
 local nextPageButton
 
+local eachPassTime= 2
 local currentPage
+local currentTime= ElapsedTime
+ 
 
-local helpImages= {"Project:Monster 7", "Project:Monster 3"}
+local helpImages= {"Project:Tutorial 16", "Project:Tutorial 1", "Project:Tutorial 2", "Project:Tutorial 3", "Project:Tutorial 4", "Project:Tutorial 5", "Project:Tutorial 6", "Project:Tutorial 7", "Project:Tutorial 8", "Project:Tutorial 9", "Project:Tutorial 10", "Project:Tutorial 11", "Project:Tutorial 12", "Project:Tutorial 13", "Project:Tutorial 14", "Project:Tutorial 15", "Project:Tutorial 16"}
 
 
 function HelpScene:init()
     -- you can accept and set parameters here
 
     
-    backButton= Button("Project:button back", vec2(WIDTH/8, HEIGHT-WIDTH/9))
-    
-    
-    --need sprites that are big
-    previousPageButton= Button("Project:Page flip button", vec2(WIDTH/7, HEIGHT/2.5))
-    
-    
-    nextPageButton= Button("Project:Page flip button", vec2(6*WIDTH/7, HEIGHT/2.5))
+    if FirstGamePlay==false then
+        backButton= Button("Project:button back", vec2(WIDTH/8, HEIGHT-WIDTH/9))  
+        --need sprites that are big
+        previousPageButton= Button("Project:Page flip button", vec2(WIDTH/7, HEIGHT/2.5))
+        nextPageButton= Button("Project:Page flip button", vec2(6*WIDTH/7, HEIGHT/2.5))
+    end
     
     currentPage= 1
-    
-    
-    --dots position
-    local dotMainPos= vec2(WIDTH/2, HEIGHT/2.4)
-    local dotMoveAmount= 1.3
-    local dotSpace= WIDTH/4.5
-    dotPositions= {                                                             vec2(dotMainPos.x-dotSpace, dotMainPos.y+dotSpace),                                             vec2(dotMainPos.x, dotMainPos.y+dotSpace*dotMoveAmount),                                             vec2(dotMainPos.x+dotSpace, dotMainPos.y+dotSpace),              vec2(dotMainPos.x-dotSpace*dotMoveAmount, dotMainPos.y),                                             vec2(dotMainPos.x, dotMainPos.y),                                             vec2(dotMainPos.x+dotSpace*dotMoveAmount,dotMainPos.y),                     vec2(dotMainPos.x-dotSpace, dotMainPos.y-dotSpace),                                             vec2(dotMainPos.x, dotMainPos.y-dotSpace*dotMoveAmount), vec2(dotMainPos.x+dotSpace,dotMainPos.y-dotSpace)                                            }
-    
 end
+
 
 function HelpScene:draw()
     -- Codea does not automatically call this method
     
-    previousPageButton:draw()
-    nextPageButton:draw()
+    if FirstGamePlay==false then
+        previousPageButton:draw()
+        nextPageButton:draw()
+    end
+    
     --hide the buttons
     
     background(40, 60, 29, 255)
@@ -53,33 +50,58 @@ function HelpScene:draw()
     sprite(helpImages[currentPage], WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)--bg
     
     
-    backButton:draw()
+    --If not forced tutorial
+    if FirstGamePlay==false then
+        backButton:draw()
+        fill(255, 205, 0, 255)
+        font("Papyrus")
+        font(WIDTH/8)
+        if currentPage==1 then
+            --explanation on the first tutorial page
+            text("Touch left or right to\nnavigate through the tutorials", WIDTH/2, HEIGHT/6)
+        end
+    end
+    
+    --if forced tutorial
+    if FirstGamePlay==true then
+        --slide pictures
+        for numberOfTutorials= 1, #helpImages do
+            if currentPage*eachPassTime< ElapsedTime then
+                if currentPage== #helpImages then
+                    FirstGamePlay= false
+                    Scene.Change("mainMenu")
+                else
+                    currentPage= currentPage+1
+                end
+            end
+        end
+    end
 end
 
 
 function HelpScene:touched(touch)
     -- Codea does not automatically call this method
-    
-    -- go back
-    backButton:touched(touch)
-    if backButton.selected==true then
-        Scene.Change("settings")
-    end
-    
-    --previous page
-    previousPageButton:touched(touch)
-    if previousPageButton.selected==true then
-        if currentPage-1 > 0 then
-            --if not the first page then turn page
-            currentPage=currentPage-1
+    if FirstGamePlay==false then
+        -- go back
+        backButton:touched(touch)
+        if backButton.selected==true then
+            Scene.Change("settings")
+        end  
+        --previous page
+        previousPageButton:touched(touch)
+        if previousPageButton.selected==true then
+            if currentPage-1 > 0 then
+                --if not the first page then turn page
+                currentPage=currentPage-1
+            end
         end
-    end
-    --next page
-    nextPageButton:touched(touch)
-    if nextPageButton.selected==true then        
-        if currentPage+1 <= #helpImages then
-            --if not the last page then turn page
-            currentPage=currentPage+1
+        --next page
+        nextPageButton:touched(touch)
+        if nextPageButton.selected==true then        
+            if currentPage+1 <= #helpImages then
+                --if not the last page then turn page
+                currentPage=currentPage+1
+            end
         end
     end
 end

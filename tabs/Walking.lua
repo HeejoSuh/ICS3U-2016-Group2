@@ -84,7 +84,8 @@ function WalkingScene:init()
     potionButton= Potion()
     basicSprites= BasicSprites()
     
-    pauseButton= Button("Project:Blue Pause Button", vec2(WIDTH-WIDTH/8, HEIGHT-WIDTH/9))
+    pauseButton= Button("Project:pause button", vec2(WIDTH-WIDTH/8, HEIGHT-WIDTH/9))
+    
     
     beginTime= ElapsedTime
     

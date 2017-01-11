@@ -21,7 +21,7 @@ function SplashScene:init()
     transitionTime= 2.2
     
     companyLogoSprite= "Project:white nothing"
-    gameLogoSprite= "Project:name"
+    gameLogoSprite= ("Project:name")
     
     currentSprite= companyLogoSprite --first, set to company sprite
 end
@@ -29,16 +29,22 @@ end
 
 function SplashScene:draw()
     -- Codea does not automatically call this method
-    background(255, 255, 255, 255) -- White background
+    background(0, 0, 0, 255)
     
     if (durationTime + 2*transitionTime < ElapsedTime) then 
         --if time twice passed, move scene
-        Scene.Change("mainMenu")
+        if FirstGamePlay==false then
+            Scene.Change("mainMenu")
+        else
+            print("Tutorials")
+            Scene.Change("help")
+        end
     elseif (durationTime + transitionTime < ElapsedTime) then
         --for the next few seconds, show game logo
-        background(60, 60, 60, 255)
+        background(14, 14, 14, 255)
         currentSprite= gameLogoSprite
     else
+        background(255, 255, 255, 255)
         fontSize(WIDTH/16)
         font("TimesNewRomanPS-BoldItalicMT")
         fill(0, 0, 0, 255)

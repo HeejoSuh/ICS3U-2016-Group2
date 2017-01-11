@@ -23,11 +23,12 @@ function GageBar:init(healthAmount, fullHealthAmount, barPosition, colourSet, wi
     health= healthAmount
     fullHealth= fullHealthAmount
     position= barPosition
-    colour= color(colourSet.r, colourSet.g, colourSet.b, 80) --make colour translucent
+    colour= colourSet or color(255, 0, 0, 255)
+    colour= color(colour.r, colour.g, colour.b, 80) --make colour translucent
     
     lineWidth= 3
     barlength= HEIGHT/43
-    barWidth= widthOfBar
+    barWidth= widthOfBar or WIDTH/1.06
 end
 
 

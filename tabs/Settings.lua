@@ -46,6 +46,7 @@ function SettingsScene:draw()
     sprite("Project:bg1", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)--bg
     backButton:drawBackButton()
     
+    --music
     musicOnButton:draw()
     fill(0, 0, 0, 255)
     font("Papyrus-Condensed")
@@ -77,7 +78,7 @@ function SettingsScene:draw()
     popMatrix()
     
     
-    --info
+    --tutorials
     helpButton:draw()
     fill(255, 255, 255, 255)
     font("Papyrus")

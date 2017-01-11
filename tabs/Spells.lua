@@ -73,8 +73,8 @@ function SpellsScene:draw()
         fill(0, 0, 0, 230)
         fontSize(WIDTH/26)
         text("Touch left or right to turn the page", WIDTH/2, HEIGHT/3.5) 
-        
         popStyle()
+        
     elseif currentPage> 0 then
         --page sprite
         sprite("Project:parchment", WIDTH/2, HEIGHT/2, WIDTH/1.1, HEIGHT/1.1)
@@ -83,17 +83,24 @@ function SpellsScene:draw()
         --name of spell
         font("SnellRoundhand-Black")
         textMode (CENTER)
-        fontSize(WIDTH/18)
-        fill(79, 33, 31, 190)
+        fontSize(WIDTH/16)
+        fill(79, 33, 31, 220)
         local nameOfSpell= Spells[currentPage]["spell name"]
-        text(nameOfSpell, WIDTH/2, HEIGHT/1.2)
+        text(nameOfSpell, WIDTH/2, HEIGHT/1.17)
         
         --level to unlock
         font("Papyrus")
         fontSize(WIDTH/40)
         fill(22, 32, 21, 180)
         local levelRequired= Spells[currentPage]["level"]
-        text("Requires level "..levelRequired.." or more.", WIDTH/2, HEIGHT/1.3)
+        text("Requires level "..levelRequired.." or more.", WIDTH/2, HEIGHT/1.28)
+        
+        --description
+        fill(0, 0, 0, 200)
+        local description= Spells[currentPage]["description"]
+        text(description, WIDTH/2, HEIGHT/1.35)
+        
+        
         
         --spell in numbers 
         --text(Spells[currentPage]["spell"], WIDTH/2, HEIGHT/1.4)
@@ -101,20 +108,11 @@ function SpellsScene:draw()
         --spell
         for numberOfDots=1,9 do
             --draw nine dots
-            tint(255, 255, 255, 170)
+            tint(255, 255, 255, 190)
             sprite("Project:brown dot", dotPositions[numberOfDots].x, dotPositions[numberOfDots].y, WIDTH/18, WIDTH/18)
         end
         popStyle()
         drawDot()
-        
-        --description
-        textMode(LEFT)
-        font("Zapfino")
-        fontSize(WIDTH/50)
-        fill(0, 0, 0, 160)
-        local description= Spells[currentPage]["description"]
-        text(description, WIDTH-WIDTH/1.4, HEIGHT/6)      
-        popStyle()
     end
     
     backButton:draw()
@@ -184,7 +182,7 @@ function drawDot()
         if dotShownNumber== #dotTable+1 then         
             --if last number then give a few seconds
             nowTime= ElapsedTime
-            dotShownNumber= -1
+            dotShownNumber= -2 --Number of each dot show time waited
         else
             nowTime= ElapsedTime
             dotShown= dotTable[dotShownNumber]

@@ -14,7 +14,7 @@ function BasicSprites:init()
     -- you can accept and set parameters here
     backButton= Button("Project:button back", vec2(WIDTH/8, HEIGHT-WIDTH/9))
     
-    userGage= GageBar(UserHealth, HealthLevelAmount, vec2(WIDTH/25, HEIGHT/30), color(255, 0, 0, 255), WIDTH/1.06)
+    userGage= GageBar(UserHealth, HealthLevelAmount, vec2(WIDTH/25, HEIGHT/30))
 end
 
 function BasicSprites:drawBackground()
