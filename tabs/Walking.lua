@@ -5,7 +5,11 @@
 -- Created for: ICS3U
 -- This is the walking scene for game
 
+------------------------------------------------------------------------
+
 WalkingScene = class()
+
+------------------------------------------------------------------------
 
 local backgroundImage= ("Project:bg")
 
@@ -34,7 +38,7 @@ local coinWords= ""
 local expWords= ""
 
 
-
+------------------------------------------------------------------------
 
 
 function WalkingScene:init()
@@ -92,6 +96,8 @@ function WalkingScene:init()
     sound("A Hero's Quest:Walk")
 end
 
+
+------------------------------------------------------------------------
 
 
 function WalkingScene:draw()
@@ -184,10 +190,10 @@ function WalkingScene:draw()
         Scene.Change("game")
     end
     
-    
     pauseButton:draw()
-    
 end
+
+------------------------------------------------------------------------
 
 function WalkingScene:touched(touch)
     -- Codea does not automatically call this method

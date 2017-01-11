@@ -5,7 +5,11 @@
 -- Created for: ICS3U
 -- This is class for health gage bars
 
+------------------------------------------------------------------------
+
 GageBar = class()
+
+------------------------------------------------------------------------
 
 local health
 local fullHealth
@@ -16,6 +20,8 @@ local lineWidth
 local barlength
 local barWidth
 
+
+------------------------------------------------------------------------
 
 
 function GageBar:init(healthAmount, fullHealthAmount, barPosition, colourSet, widthOfBar)
@@ -31,6 +37,8 @@ function GageBar:init(healthAmount, fullHealthAmount, barPosition, colourSet, wi
     barWidth= widthOfBar or WIDTH/1.06
 end
 
+
+------------------------------------------------------------------------
 
 
 function GageBar:draw()
@@ -51,6 +59,8 @@ function GageBar:draw()
     end
     
 end
+
+------------------------------------------------------------------------
 
 
 function GageBar:touched(touch)

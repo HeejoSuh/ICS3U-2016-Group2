@@ -5,10 +5,17 @@
 -- Created for: ICS3U
 -- This is the class for making monsters
 
+------------------------------------------------------------------------
+
 Monsters = class()
 
+------------------------------------------------------------------------
 
---NO DECIMALS OR THE PROGRAM DIES
+
+--NO DECIMALS OR THE PROGRAM DIES!
+--NO
+--FING
+--DECIMALS
 --                                                                                                            {['monster name']='NameOfMonster', ['sprite']= spriteImage, ['health']= healthOfMonster(average=80), ['points']= pointOfMonster(average=10), ['speed']= timeItTakesToAttack(average=2.3), ['coins']= numberOfCoins(average=14), ['strength']= attackPower,(average=36), ['floor']= atLeastThisFlooraToSee, ['attack sound']= soundWhenAttacking, ['hurt sound']= soundWhenAttacked},                                                                                                                  
 monstersDict= {                                                                                                            {['monster name']='Fluffy', ['sprite']= "Project:Monster bushy", ['health']= 20, ['points']= 8, ['speed']= 2.5, ['coins']= 10, ["strength"]= 30, ['floor']= 1, ['attack sound']= "A Hero's Quest:Monster Die 2", ['hurt sound']= "A Hero's Quest:Monster Die 1"},                                                                                                                  {['monster name']='Dustball', ['sprite']= "Project:monster dust", ['health']= 70, ['points']= 10, ['speed']= 3.3, ['coins']= 5, ['strength']= 8, ['floor']= 1, ['attack sound']= "A Hero's Quest:Monster Hit 2", ['hurt sound']= "A Hero's Quest:Bottle Break 1"},                                                                                                                  {['monster name']='Mysterious egg', ['sprite']= "Project:monster egg", ['health']= 90, ['points']= 5, ['speed']= 1.8, ['coins']= 50, ['strength']= 15, ['floor']= 2, ['attack sound']= "A Hero's Quest:Dig 1", ['hurt sound']= "A Hero's Quest:Bottle Break 1"},                                                                                                                       {['monster name']='Nightmare', ['sprite']= "Project:Monster 4", ['health']= 100, ['points']= 8, ['speed']= 1.6, ['coins']= 20, ['strength']= 5, ['floor']= 2, ['attack sound']= "A Hero's Quest:Dig 1", ['hurt sound']= "A Hero's Quest:Bottle Break 1"},                                                                                                                                   {['monster name']='Chirpy', ['sprite']= "Project:Monster 7", ['health']= 80, ['points']= 20, ['speed']= 2.1, ['coins']= 10, ['strength']= 20, ['floor']= 3, ['attack sound']= "A Hero's Quest:Dig 1", ['hurt sound']= "A Hero's Quest:Bottle Break 1"},                                                                                                                                                 {['monster name']='Ghoastasgast', ['sprite']= "Project:Monster 5", ['health']= 30, ['points']= 6, ['speed']= 2.4, ['coins']= 20, ['strength']= 40, ['floor']= 3, ['attack sound']= "A Hero's Quest:FireBall Blast 2", ['hurt sound']= "A Hero's Quest:FireBall Blast 1"},                                                                                                                             {['monster name']='HoHoHoo', ['sprite']= "Project:Monster 6", ['health']= 100, ['points']= 7 ,['speed']= 1.9, ['coins']= 10, ['strength']= 18, ['floor']= 3, ['attack sound']= "A Hero's Quest:Dig 1", ['hurt sound']= "A Hero's Quest:Dig 2"}                                                                                                                                                                                           }
 
@@ -18,12 +25,16 @@ monstersDict= {                                                                 
 local __monstersList= {}
 local __currentMonsterGageBar
 
+------------------------------------------------------------------------
+
 
 function Monsters:init()
     -- you can accept and set parameters here
     createNewBatchOfMonsters()
     setNextMonster()
 end
+
+------------------------------------------------------------------------
 
 function Monsters:draw()
     -- Codea does not automatically call this method
@@ -40,11 +51,15 @@ function Monsters:draw()
     __currentMonsterGageBar:draw()
 end
 
+------------------------------------------------------------------------
+
 
 function Monsters:touched(touch)
     -- Codea does not automatically call this method
 end
 
+
+------------------------------------------------------------------------
 
 function createNewBatchOfMonsters()
     --Create a new batch of monsters
@@ -66,6 +81,8 @@ function createNewBatchOfMonsters()
 end
 
 
+------------------------------------------------------------------------
+
 function Monsters:returnMonsterNames()
     -- return the names of the monsters, just for checking
     local namesStrings= ""
@@ -76,6 +93,8 @@ function Monsters:returnMonsterNames()
     return namesStrings
 end
 
+
+------------------------------------------------------------------------
 
 function Monsters:checkIfAttacked(startTime)
     --get the time limit of current monster 
@@ -88,29 +107,15 @@ function Monsters:checkIfAttacked(startTime)
 end
 
 
+------------------------------------------------------------------------
+
 function setNextMonster()
     --reset monster and gagebar
     
-   -- local changes= {'health', 'points', 'coins', "strength"}
-    --the ones that will be changed
-    
     CurrentMonster= monstersDict[__monstersList[1]] --set current monster
     
-   -- for numberOfDetails= 1, #changes do
-        --replace with random numbers so they wouldnt be exact
-        
-       -- local currentChanging= changes[numberOfDetails] --what value is currently changing     
-      --  print(CurrentMonster[currentChanging])
-                
-       -- CurrentMonster[currentChanging]= math.tointeger(tonumber(CurrentMonster[currentChanging])*math.random(50,CurrentGameFloor*100)/100)
-        --slight variations for each one
-       -- print(CurrentMonster[currentChanging])
-   -- end
-    
-    
-    
     --differs for every monster
-    --40%~150%
+    --40%~150% difference
     local percent= math.random(4, 15*CurrentGameFloor)/10
 
     
@@ -128,7 +133,7 @@ function setNextMonster()
     
 end
 
-
+------------------------------------------------------------------------
 
 function Monsters:nextMonsterUp()
     --see if can get next monster

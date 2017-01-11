@@ -6,17 +6,25 @@
 -- This is class for potions
 
 
+------------------------------------------------------------------------
+
 Potion = class()
+
+------------------------------------------------------------------------
 
 local __potionWaitTime= 0 --potion cool time, set it to zero as default
 local __potionHealAmount= 15
 local __potionCoolTimeSeconds= 2 --how long it takes for the potion to be able to be used again
+
+------------------------------------------------------------------------
 
 function Potion:init()
     -- you can accept and set parameters here
     __potionButton= Button("Project:potion", vec2(WIDTH/8, WIDTH/6))
 
 end
+
+------------------------------------------------------------------------
 
 function Potion:draw()
     -- Codea does not automatically call this method
@@ -38,6 +46,8 @@ function Potion:draw()
         text(math.tointeger(NumberOfPotions), WIDTH/8+20, WIDTH/6.5-20)
     end
 end
+
+------------------------------------------------------------------------
 
 function Potion:touched(touch)
     -- Codea does not automatically call this method

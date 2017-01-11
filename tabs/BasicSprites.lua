@@ -5,10 +5,16 @@
 -- Created for: ICS3U
 -- This is class for drawing basic things such as background and wands
 
+------------------------------------------------------------------------
+
 BasicSprites = class()
+
+------------------------------------------------------------------------
 
 local backButton
 local userGage
+
+------------------------------------------------------------------------
 
 function BasicSprites:init()
     -- you can accept and set parameters here
@@ -16,6 +22,8 @@ function BasicSprites:init()
     
     userGage= GageBar(UserHealth, HealthLevelAmount, vec2(WIDTH/25, HEIGHT/30))
 end
+
+------------------------------------------------------------------------
 
 function BasicSprites:drawBackground()
     -- Codea does not automatically call this method
@@ -29,12 +37,16 @@ function BasicSprites:drawBackground()
     end
 end
 
+------------------------------------------------------------------------
+
 
 function BasicSprites:drawWand()
     -- Codea does not automatically call this method
     --draw wand
     sprite(Wands[CurrentWandNumber]["sprite"], WIDTH/2, HEIGHT/4, WIDTH/3, HEIGHT/1.3)
 end
+
+------------------------------------------------------------------------
 
 
 function BasicSprites:drawBackButton()
@@ -43,6 +55,8 @@ function BasicSprites:drawBackButton()
     backButton:draw()
 end
 
+------------------------------------------------------------------------
+
 
 function BasicSprites:drawUserGage()
     -- Codea does not automatically call this method
@@ -50,6 +64,8 @@ function BasicSprites:drawUserGage()
     userGage= GageBar(UserHealth, HealthLevelAmount, vec2(WIDTH/25, HEIGHT/30), color(255, 0, 0, 255), WIDTH/1.06)
     userGage:draw()
 end
+
+------------------------------------------------------------------------
 
 
 function BasicSprites:touched(touch)

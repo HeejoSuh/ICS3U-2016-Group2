@@ -5,7 +5,11 @@
 -- Created for: ICS3U
 -- This is attack scene that shows if attacking or getting attacked
 
+------------------------------------------------------------------------
+
 AttackScene = class()
+
+------------------------------------------------------------------------
 
 local spellSpritePos
 
@@ -19,6 +23,8 @@ local startedTime= ElapsedTime
 local timeLimit= 4
 
 
+------------------------------------------------------------------------
+
 function AttackScene:init()
     -- you can accept and set parameters here
     print("Attack scene")
@@ -31,10 +37,20 @@ function AttackScene:init()
         --if attacking monster
         if Attacked==false then
             print("Attack monster")
+            
             --recalculate monster health
             print("Monster health decreased from "..tostring(CurrentMonster["health"]).." by "..tostring(Spells[SpellCastedNumber]["power"]))
-            CurrentMonster["health"]= CurrentMonster["health"] - Spells[SpellCastedNumber]["power"]
+                --power increases with different levels and wands
+            local additionalSpellPower
+            if Level>1 then
+                additionalSpellPower= math.tointeger((Level/1.5)*Wands[CurrentWandNumber]["power"])
+            else
+                additionalSpellPower= math.tointeger(Wands[CurrentWandNumber]["power"])
+            end
+            CurrentMonster["health"]= CurrentMonster["health"] - Spells[SpellCastedNumber]["power"]*additionalSpellPower
         
+            
+            
             if CurrentMonster["health"]<0 then
                 --just set it back to zero
                 CurrentMonster["health"]= 0
@@ -74,6 +90,8 @@ function AttackScene:init()
     basics= BasicSprites()
     userGage= GageBar(UserHealth, HealthLevelAmount, vec2(WIDTH/25, HEIGHT/90), color(255, 0, 0, 255), WIDTH/1.06)
 end
+
+------------------------------------------------------------------------
 
 function AttackScene:draw()
     -- Codea does not automatically call this method
@@ -157,9 +175,13 @@ function AttackScene:draw()
     basics:drawUserGage()
 end
 
+------------------------------------------------------------------------
+
 function AttackScene:touched(touch)
     -- Codea does not automatically call this method
 end
+
+------------------------------------------------------------------------
 
 function saySpell()
     --say spell

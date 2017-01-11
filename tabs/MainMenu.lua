@@ -5,13 +5,21 @@
 -- Created for: ICS3U
 -- This is the main menu scene.
 
+------------------------------------------------------------------------
+
+
 MainMenuScene = class()
+
+
+------------------------------------------------------------------------
 
 
 local buttons
 
-
 local centerButtonSize= vec2(WIDTH/2.5, HEIGHT/8)
+
+------------------------------------------------------------------------
+
 
 function MainMenuScene:init()
     -- you can accept and set parameters here 
@@ -31,15 +39,16 @@ function MainMenuScene:init()
         local buttonPosition= buttons[numberOfButtons]["position"]
         buttons[numberOfButtons]["button"]= Button(buttonImage, vec2(buttonPosition.x, buttonPosition.y))
     end
-    
 end
 
-
+------------------------------------------------------------------------
 
 function MainMenuScene:draw()
     -- Codea does not automatically call this method
-    background(40, 60, 29, 255)
     sprite("Project:bg1", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)--bg
+    tint(72, 38, 30, 180)
+    sprite("Project:bg1", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)--bg
+    tint(255, 255, 255, 255)
     
     for numberOfButtons= 1,#buttons do
         --draw the buttons
@@ -56,9 +65,9 @@ function MainMenuScene:draw()
     fill(228, 190, 101, 255)
     text("Coins: "..tostring(math.tointeger(MoneyHave)), WIDTH/2, HEIGHT/1.6)
     fill(10, 10, 10, 255)
-    
 end
 
+------------------------------------------------------------------------
 
 function MainMenuScene:touched(touch)
     -- Codea does not automatically call this method

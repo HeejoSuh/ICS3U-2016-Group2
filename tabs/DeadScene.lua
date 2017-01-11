@@ -6,9 +6,15 @@
 -- This is the dead scene for game
 
 
+------------------------------------------------------------------------
+
 DeadScene = class()
 
+------------------------------------------------------------------------
+
 local mainMenuButton
+
+------------------------------------------------------------------------
 
 function DeadScene:init()
     -- you can accept and set parameters here
@@ -16,6 +22,8 @@ function DeadScene:init()
     CurrentGameFloor= 0 --delete current data, start over.
     UserHealth= HealthLevelAmount -- reset health
 end
+
+------------------------------------------------------------------------
 
 function DeadScene:draw()
     -- Codea does not automatically call this method
@@ -34,6 +42,8 @@ function DeadScene:draw()
     fontSize(WIDTH/25)
     text("Main Menu", WIDTH/2, HEIGHT/2.5)
 end
+
+------------------------------------------------------------------------
 
 function DeadScene:touched(touch)
     -- Codea does not automatically call this method

@@ -5,7 +5,13 @@
 -- Created for: ICS3U
 -- This is main program for the CPT game
 
+
+
+------------------------------------------------------------------------
+
+
 --Set global variables
+
 --Default level one, 100 coins to start with
 Level= 1
 MoneyHave= 100
@@ -46,8 +52,8 @@ Spells= {{["spell name"]= "Dividi Bavidiboo", ["power"]= 18, ["type"]= "grow", [
 
 
 --{["wand name"]=wandName, ["sprite"]=wandSpriteImage, ["cost"]=cost, ["level"]= LevelToUse},                                                                                             
-Wands= {                                                                    {["wand name"]="Beginner's wand", ["sprite"]="Project:Wand 1", ["cost"]=0, ["level"]= 1, ["unlocked"]= true},                                                                                             
-{["wand name"]="Intermediate's wand", ["sprite"]="Project:Wand 3", ["cost"]=100, ["level"]= 2, ["unlocked"]= false},                                                                     {["wand name"]="Advanced wand", ["sprite"]="Project:Wand 2", ["cost"]=500, ["level"]= 5, ["unlocked"]= false},                                                                     {["wand name"]="Expert's wand", ["sprite"]="Project:Wand 4", ["cost"]=1000, ["level"]= 10, ["unlocked"]= false},                                                                                                                           }
+Wands= {                                                                    {["wand name"]="Beginner's wand", ["sprite"]="Project:Wand 1", ["cost"]=0, ["level"]= 1, ["unlocked"]= true, ["power"]= 1},                                                                                             
+{["wand name"]="Intermediate's wand", ["sprite"]="Project:Wand 3", ["cost"]=100, ["level"]= 2, ["unlocked"]= false, ["power"]= 2},                                                                     {["wand name"]="Advanced wand", ["sprite"]="Project:Wand 2", ["cost"]=500, ["level"]= 5, ["unlocked"]= false, ["power"]= 3},                                                                     {["wand name"]="Expert's wand", ["sprite"]="Project:Wand 4", ["cost"]=1000, ["level"]= 10, ["unlocked"]= false, ["power"]= 7},                                                                                                                           }
 
 
 SpellCastedNumber= 0
@@ -68,6 +74,8 @@ Mode= "game"
 
 --for tutorials
 FirstGamePlay= true
+
+------------------------------------------------------------------------
 
 function setup()
     supportedOrientations(PORTRAIT)
@@ -106,10 +114,15 @@ function setup()
     FirstGamePlay= false
 end
  
+------------------------------------------------------------------------
+
 function draw()
     background(0, 0, 0, 255) 
     Scene:Draw()
 end
+
+------------------------------------------------------------------------
+
 --Touched needed in the main.
 function touched(touch)
     Scene.Touched(touch)

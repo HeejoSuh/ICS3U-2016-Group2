@@ -5,11 +5,16 @@
 -- Created for: ICS3U
 -- This is the maps scene
 
+------------------------------------------------------------------------
+
 MapsScene = class()
+------------------------------------------------------------------------
+
 
 local buttons= {}
 local backButton
 
+------------------------------------------------------------------------
 
 function MapsScene:init()
     -- you can accept and set parameters here
@@ -24,6 +29,8 @@ function MapsScene:init()
     
     backButton= BasicSprites()
 end
+------------------------------------------------------------------------
+
 
 function MapsScene:draw()
     -- Codea does not automatically call this method
@@ -42,8 +49,16 @@ function MapsScene:draw()
         text("Floor "..tostring(Maps[numberOfButtons]["floor"]), buttonPosition[numberOfButtons].x, buttonPosition[numberOfButtons].y-40)
     end
     
+    font("Papyrus")
+    fontSize(WIDTH/12)
+    fill(36, 24, 22, 255)
+    text("Maps", WIDTH/2, HEIGHT/1.2)
+    
+    
     backButton:drawBackButton()
 end
+------------------------------------------------------------------------
+
 
 function MapsScene:touched(touch)
     -- Codea does not automatically call this method

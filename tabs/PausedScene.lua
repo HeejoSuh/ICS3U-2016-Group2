@@ -5,17 +5,24 @@
 -- Created for: ICS3U
 -- This is the paused scene for game
 
+------------------------------------------------------------------------
+
 PausedScene = class()
+
+------------------------------------------------------------------------
 
 local mainMenuButton
 local resumeButton
+
+------------------------------------------------------------------------
 
 function PausedScene:init()
     -- you can accept and set parameters here
     mainMenuButton= Button("Project:onoff button", vec2(2*WIDTH/7, HEIGHT/3))
     resumeButton= Button("Project:onoff button", vec2(5*WIDTH/7, HEIGHT/3))
-    
 end
+
+------------------------------------------------------------------------
 
 function PausedScene:draw()
     -- Codea does not automatically call this method
@@ -37,6 +44,8 @@ function PausedScene:draw()
     text("Main Menu", 2*WIDTH/7, HEIGHT/3)
     text("Resume", 5*WIDTH/7, HEIGHT/3)
 end
+
+------------------------------------------------------------------------
 
 function PausedScene:touched(touch)
     -- Codea does not automatically call this method

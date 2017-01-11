@@ -5,7 +5,11 @@
 -- Created for: ICS3U
 -- This is the help scene
 
+------------------------------------------------------------------------
+
 HelpScene = class()
+------------------------------------------------------------------------
+
 
 local backButton
 
@@ -19,6 +23,8 @@ local currentTime= ElapsedTime
 
 local helpImages= {"Project:Tutorial 16", "Project:Tutorial 1", "Project:Tutorial 2", "Project:Tutorial 3", "Project:Tutorial 4", "Project:Tutorial 5", "Project:Tutorial 6", "Project:Tutorial 7", "Project:Tutorial 8", "Project:Tutorial 9", "Project:Tutorial 10", "Project:Tutorial 11", "Project:Tutorial 12", "Project:Tutorial 13", "Project:Tutorial 14", "Project:Tutorial 15", "Project:Tutorial 16"}
 
+
+------------------------------------------------------------------------
 
 function HelpScene:init()
     -- you can accept and set parameters here
@@ -35,18 +41,19 @@ function HelpScene:init()
 end
 
 
+------------------------------------------------------------------------
+
 function HelpScene:draw()
     -- Codea does not automatically call this method
     
+    --forced tutorial or not
     if FirstGamePlay==false then
         previousPageButton:draw()
         nextPageButton:draw()
     end
     
-    --hide the buttons
-    
+    --hide the buttons behind background
     background(40, 60, 29, 255)
-    
     sprite(helpImages[currentPage], WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)--bg
     
     
@@ -78,6 +85,8 @@ function HelpScene:draw()
     end
 end
 
+
+------------------------------------------------------------------------
 
 function HelpScene:touched(touch)
     -- Codea does not automatically call this method

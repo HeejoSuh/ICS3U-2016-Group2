@@ -9,13 +9,13 @@
 		<string>Main</string>
 		<string>Settings</string>
 		<string>HelpScene</string>
+		<string>Attack</string>
 		<string>Shop</string>
 		<string>Spells</string>
 		<string>Buy</string>
 		<string>Splash</string>
 		<string>MainMenu</string>
 		<string>Game</string>
-		<string>Attack</string>
 		<string>Maps</string>
 		<string>BasicSprites</string>
 		<string>GageBar</string>

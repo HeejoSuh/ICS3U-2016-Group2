@@ -5,7 +5,11 @@
 -- Created for: ICS3U
 -- This is the spells scene
 
+------------------------------------------------------------------------
+
 SpellsScene = class()
+
+------------------------------------------------------------------------
 
 local backButton
 
@@ -22,6 +26,8 @@ local dotShownNumber= 0
 local dotTable= {}
 
 local dotPositions
+
+------------------------------------------------------------------------
 
 
 function SpellsScene:init()
@@ -45,8 +51,9 @@ function SpellsScene:init()
     local dotMoveAmount= 1.3
     local dotSpace= WIDTH/4.5
     dotPositions= {                                                             vec2(dotMainPos.x-dotSpace, dotMainPos.y+dotSpace),                                             vec2(dotMainPos.x, dotMainPos.y+dotSpace*dotMoveAmount),                                             vec2(dotMainPos.x+dotSpace, dotMainPos.y+dotSpace),              vec2(dotMainPos.x-dotSpace*dotMoveAmount, dotMainPos.y),                                             vec2(dotMainPos.x, dotMainPos.y),                                             vec2(dotMainPos.x+dotSpace*dotMoveAmount,dotMainPos.y),                     vec2(dotMainPos.x-dotSpace, dotMainPos.y-dotSpace),                                             vec2(dotMainPos.x, dotMainPos.y-dotSpace*dotMoveAmount), vec2(dotMainPos.x+dotSpace,dotMainPos.y-dotSpace)                                            }
-    
 end
+
+------------------------------------------------------------------------
 
 function SpellsScene:draw()
     -- Codea does not automatically call this method
@@ -55,24 +62,24 @@ function SpellsScene:draw()
     nextPageButton:draw()
     --hide the buttons
     
-    background(40, 60, 29, 255)
     sprite("Project:bg1", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)--bg
     
     if currentPage==0 then
          --book sprite
-        tint(85, 31, 31, 255)
+        tint(35, 28, 24, 255)
         sprite("Project:parchment", WIDTH/2, HEIGHT/2, WIDTH/1.1, HEIGHT/1.1)
-        font("TimesNewRomanPS-BoldMT")
+    
         --title
         textMode (CENTER)
-        fontSize(WIDTH/15)
-        fill(210, 176, 13, 220)
+        fontSize(WIDTH/12)
+        fill(184, 127, 20, 200)
+        font("SnellRoundhand-Black")
         text("Book of Spells", WIDTH/2, HEIGHT/1.5)
         
         font("HoeflerText-Italic")
-        fill(0, 0, 0, 230)
+        fill(212, 212, 212, 90)
         fontSize(WIDTH/26)
-        text("Touch left or right to turn the page", WIDTH/2, HEIGHT/3.5) 
+        text("Touch left or right to turn the page", WIDTH/2, HEIGHT/4) 
         popStyle()
         
     elseif currentPage> 0 then
@@ -118,6 +125,8 @@ function SpellsScene:draw()
     backButton:draw()
 end
 
+------------------------------------------------------------------------
+
 function SpellsScene:touched(touch)
     -- Codea does not automatically call this method
     
@@ -155,6 +164,8 @@ function SpellsScene:touched(touch)
 end
 
 
+------------------------------------------------------------------------
+
 function newSpellSet()
     --set spell things
     print("Current page "..tostring(currentPage))
@@ -172,6 +183,8 @@ function newSpellSet()
         dotShownNumber= 1
     end
 end
+
+------------------------------------------------------------------------
 
 
 function drawDot()

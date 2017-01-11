@@ -5,8 +5,12 @@
 -- Created for: ICS3U
 -- This is the shop scene
 
+------------------------------------------------------------------------
+
 ShopScene = class()
 
+
+------------------------------------------------------------------------
 
 
 local buyPotionButton
@@ -23,6 +27,8 @@ local shopType
 
 local allowTouch= true
 local popUp
+
+------------------------------------------------------------------------
 
 
 function ShopScene:init()
@@ -47,15 +53,18 @@ function ShopScene:init()
     popUp= Buy(1) --set to random at first
 end
 
+------------------------------------------------------------------------
+
 function ShopScene:draw()
     -- Codea does not automatically call this method
-    background(40, 60, 29, 255)
+    sprite("Project:parchment", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)--bg
     
-    sprite("Project:bg1", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)--bg
-    --top block
-    sprite("Project:bg1", WIDTH/2, HEIGHT*1.3, WIDTH, HEIGHT)
-    --bottom block
-    sprite("Project:bg1", WIDTH/2, -HEIGHT*0.15, WIDTH, HEIGHT)
+    tint(86, 48, 31, 100)
+    sprite("Project:parchment", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)
+    --bg
+    tint(255, 255, 255, 255)
+    --Middle block
+    sprite("Project:parchment", WIDTH/2, HEIGHT/1.6, WIDTH, HEIGHT/2.5)
     popStyle()
     
     --potion
@@ -112,8 +121,9 @@ function ShopScene:draw()
             allowTouch=true
         end
     end
-    
 end
+
+------------------------------------------------------------------------
 
 function ShopScene:touched(touch)
     -- Codea does not automatically call this method

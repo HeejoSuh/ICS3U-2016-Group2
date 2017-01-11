@@ -1,3 +1,13 @@
+
+-- Buy
+
+-- Created by: Heejo Suh
+-- Created on: Dec 2016
+-- Created for: ICS3U
+-- This is the Buy class for the pop up for the shop
+
+------------------------------------------------------------------------
+
 Buy = class()
 
 local showWords
@@ -9,6 +19,8 @@ local noButton
 
 local buyMode
 
+
+------------------------------------------------------------------------
 
 function Buy:init(itemInfoNumber)
     -- you can accept and set parameters here
@@ -28,14 +40,19 @@ function Buy:init(itemInfoNumber)
     buyMode= "ask"
 end
 
+------------------------------------------------------------------------
+
+
 function Buy:draw()
     -- Codea does not automatically call this method
     --pop up
+    tint(213, 194, 171, 255)
     sprite("Project:parchment", WIDTH/2, HEIGHT/2, WIDTH/1.3, HEIGHT/1.7) 
+    tint(255, 255, 255, 255)
     
     fill(7, 7, 6, 220)
     font("Papyrus-Condensed")
-    textWrapWidth(WIDTH/1.7)
+    textWrapWidth(WIDTH/1.9)
     textMode(CENTER)
     
     fontSize(WIDTH/22)
@@ -54,6 +71,9 @@ function Buy:draw()
         text("Okay", WIDTH/2, HEIGHT/3)
     end
 end
+
+------------------------------------------------------------------------
+
 
 function Buy:touched(touch)
     -- Codea does not automatically call this method
@@ -77,6 +97,9 @@ function Buy:touched(touch)
     end
 end
 
+------------------------------------------------------------------------
+
+
 function Buy:done()
     -- check if its done or not
     if buyMode=="done" then
@@ -86,6 +109,9 @@ function Buy:done()
         return false
     end
 end
+
+------------------------------------------------------------------------
+
 
 function check()
     --check if user is allowed to purchase

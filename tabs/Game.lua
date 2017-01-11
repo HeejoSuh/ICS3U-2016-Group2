@@ -5,7 +5,12 @@
 -- Created for: ICS3U
 -- This is the game scene, used for both practice and actual game.
 
+------------------------------------------------------------------------
+
+
 GameScene = class()
+
+------------------------------------------------------------------------
 
 
 local touchLight
@@ -28,6 +33,8 @@ local startTime
 local spellsButton
 
 
+------------------------------------------------------------------------
+
 function GameScene:init()
     -- you can accept and set parameters here
     print("Game scene")
@@ -39,7 +46,6 @@ function GameScene:init()
     local dotMoveAmount= 1.3
     local dotSpace= WIDTH/4.5
     local dotPositions= {                                                             vec2(dotMainPos.x-dotSpace, dotMainPos.y+dotSpace),                                             vec2(dotMainPos.x, dotMainPos.y+dotSpace*dotMoveAmount),                                             vec2(dotMainPos.x+dotSpace, dotMainPos.y+dotSpace),              vec2(dotMainPos.x-dotSpace*dotMoveAmount, dotMainPos.y),                                             vec2(dotMainPos.x, dotMainPos.y),                                             vec2(dotMainPos.x+dotSpace*dotMoveAmount,dotMainPos.y),                     vec2(dotMainPos.x-dotSpace, dotMainPos.y-dotSpace),                                             vec2(dotMainPos.x, dotMainPos.y-dotSpace*dotMoveAmount), vec2(dotMainPos.x+dotSpace,dotMainPos.y-dotSpace)                                            }
-    
     
     
     dots={}
@@ -67,6 +73,8 @@ function GameScene:init()
     
     startTime= ElapsedTime 
 end
+
+------------------------------------------------------------------------
 
 
 function GameScene:draw()
@@ -127,6 +135,7 @@ function GameScene:draw()
     end
 end
 
+------------------------------------------------------------------------
 
 
 function GameScene:touched(touch)

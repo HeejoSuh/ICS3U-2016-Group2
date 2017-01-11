@@ -5,7 +5,13 @@
 -- Created for: ICS3U
 -- This is splash scene that shows the company logo, then the game logo, then transitions to the main manu screen.
 
+------------------------------------------------------------------------
+
+
 SplashScene = class()
+
+------------------------------------------------------------------------
+
 
 local durationTime= ElapsedTime
 local transitionTime
@@ -14,6 +20,9 @@ local companyLogoSprite
 local gameLogoSprite
 
 local currentSprite
+
+
+------------------------------------------------------------------------
 
 
 function SplashScene:init()
@@ -25,6 +34,9 @@ function SplashScene:init()
     
     currentSprite= companyLogoSprite --first, set to company sprite
 end
+
+
+------------------------------------------------------------------------
 
 
 function SplashScene:draw()
@@ -54,6 +66,9 @@ function SplashScene:draw()
     --Draw logo
     sprite(currentSprite, WIDTH/2, HEIGHT/2, WIDTH/1.2, WIDTH/1.2)
 end
+
+
+------------------------------------------------------------------------
 
 
 function SplashScene:touched(touch)
