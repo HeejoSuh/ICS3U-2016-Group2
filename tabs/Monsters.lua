@@ -58,7 +58,6 @@ function Monsters:touched(touch)
     -- Codea does not automatically call this method
 end
 
-
 ------------------------------------------------------------------------
 
 function createNewBatchOfMonsters()
@@ -73,13 +72,12 @@ function createNewBatchOfMonsters()
     
     for monsters= 1, numberOfMonsters do
         repeat
-            randomNumber= math.random(1, #monstersDict)--random number
+        randomNumber= math.random(1, #monstersDict)--random number
         until monstersDict[randomNumber]["floor"]<= CurrentGameFloor
-            --if monsters are available at that floor then
-            table.insert(__monstersList, randomNumber)--put number into array
+        --if monsters are available at that floor then
+        table.insert(__monstersList, randomNumber)--put number into array
     end
 end
-
 
 ------------------------------------------------------------------------
 
@@ -106,13 +104,36 @@ function Monsters:checkIfAttacked(startTime)
     end
 end
 
+------------------------------------------------------------------------
+
+--Got from Tylerneylon in Github by Heejo Suh
+--Got from <https://gist.github.com/tylerneylon/81333721109155b2d244>
+--Got on January 12, 2017
+
+--Modified by Heejo Suh
+
+--Deep-copies table
+function clone(tableToCopy)
+    
+    if type(tableToCopy) ~= 'table' then 
+        return tableToCopy 
+    end
+    
+    local tableToReturn = {} --set new table
+    
+    
+    for k, v in pairs(tableToCopy) do --set each one to the other one
+        tableToReturn[clone(k)] = clone(v)
+    end
+    return tableToReturn --return new table
+end
 
 ------------------------------------------------------------------------
 
 function setNextMonster()
     --reset monster and gagebar
     
-    CurrentMonster= monstersDict[__monstersList[1]] --set current monster
+    CurrentMonster= clone(monstersDict[__monstersList[1]]) --set current monster
     
     --differs for every monster
     --40%~150% difference
@@ -168,6 +189,7 @@ function Monsters:nextMonsterUp()
         
     else
         for numberOfMonsters= 1, #__monstersList do
+            --move down each monster one up
             if numberOfMonsters== #__monstersList then
                 --get rid of the last one
                 table.remove(__monstersList, #__monstersList)
@@ -176,6 +198,7 @@ function Monsters:nextMonsterUp()
                 __monstersList[numberOfMonsters]= __monstersList[numberOfMonsters+1] --set to next one
             end
         end
+        
         print(Monsters:returnMonsterNames())
     end
 end
