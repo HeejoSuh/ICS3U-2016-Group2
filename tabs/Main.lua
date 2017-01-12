@@ -79,8 +79,8 @@ FirstGamePlay= true
 
 function setup()
     supportedOrientations(PORTRAIT)
-    --displayMode(FULLSCREEN_NO_BUTTONS)
-    displayMode(FULLSCREEN)
+    displayMode(FULLSCREEN_NO_BUTTONS)
+    --displayMode(FULLSCREEN)
     noFill()
     noSmooth()
     noStroke()
@@ -110,8 +110,7 @@ function setup()
     
     --go to splash scene first
     --Scene.Change("splash")
-    Scene.Change("mainMenu")
-    FirstGamePlay= false
+    Scene.Change("splash")
 end
  
 ------------------------------------------------------------------------

@@ -65,7 +65,7 @@ function BasicSprites:drawUserGage()
     userGage:draw()
 end
 
-------------------------------------------------------------------------
+-----------------------------------------------------------------------
 
 
 function BasicSprites:touched(touch)

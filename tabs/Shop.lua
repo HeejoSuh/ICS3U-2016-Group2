@@ -28,6 +28,7 @@ local shopType
 local allowTouch= true
 local popUp
 
+
 ------------------------------------------------------------------------
 
 
@@ -51,21 +52,22 @@ function ShopScene:init()
     end
     
     popUp= Buy(1) --set to random at first
+    
 end
 
 ------------------------------------------------------------------------
 
 function ShopScene:draw()
     -- Codea does not automatically call this method
-    sprite("Project:parchment", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)--bg
-    
-    tint(86, 48, 31, 100)
-    sprite("Project:parchment", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)
-    --bg
+    sprite("Project:Wood", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)--bg
+    tint(77, 77, 77, 100)
+    sprite("Project:Wood", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)
     tint(255, 255, 255, 255)
+    --bg
+    tint(100, 84, 84, 255)
     --Middle block
-    sprite("Project:parchment", WIDTH/2, HEIGHT/1.6, WIDTH, HEIGHT/2.5)
-    popStyle()
+    sprite("Project:Wood", WIDTH/2, HEIGHT/1.6, WIDTH, HEIGHT/2.5)
+    tint(255, 255, 255, 255)
     
     --potion
     sprite("Project:potion", WIDTH/3, HEIGHT/5.5, WIDTH/4, WIDTH/4)

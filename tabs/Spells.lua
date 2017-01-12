@@ -37,11 +37,14 @@ function SpellsScene:init()
     backButton= Button("Project:button back", vec2(WIDTH/8, HEIGHT-WIDTH/9))
     
     
+    
+    local pageDivideAmount= WIDTH/5
+    
     --need sprites that are big
-    previousPageButton= Button("Project:Page flip button", vec2(WIDTH/7, HEIGHT/2.5))
+    previousPageButton= Button("Project:Page flip button", vec2(-pageDivideAmount, HEIGHT/2.5))
     
     
-    nextPageButton= Button("Project:Page flip button", vec2(6*WIDTH/7, HEIGHT/2.5))
+    nextPageButton= Button("Project:Page flip button", vec2(WIDTH+pageDivideAmount, HEIGHT/2.5))
     
     currentPage= 0
     
@@ -62,12 +65,16 @@ function SpellsScene:draw()
     nextPageButton:draw()
     --hide the buttons
     
-    sprite("Project:bg1", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)--bg
+    --bg
+    sprite("Project:Wood", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)--bg
+    tint(77, 77, 77, 100)
+    sprite("Project:Wood", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)
+    tint(255, 255, 255, 255)
     
     if currentPage==0 then
          --book sprite
-        tint(35, 28, 24, 255)
-        sprite("Project:parchment", WIDTH/2, HEIGHT/2, WIDTH/1.1, HEIGHT/1.1)
+        tint(23, 39, 24, 255)
+        sprite("Project:Parchmanet", WIDTH/2, HEIGHT/2, WIDTH/1.1, HEIGHT/1.1)
     
         --title
         textMode (CENTER)
@@ -84,7 +91,7 @@ function SpellsScene:draw()
         
     elseif currentPage> 0 then
         --page sprite
-        sprite("Project:parchment", WIDTH/2, HEIGHT/2, WIDTH/1.1, HEIGHT/1.1)
+        sprite("Project:Parchment (1)", WIDTH/2, HEIGHT/2, WIDTH/1.1, HEIGHT/1.1)
         textWrapWidth(WIDTH/1.3) --restrict range 
         
         --name of spell

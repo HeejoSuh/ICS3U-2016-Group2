@@ -22,6 +22,7 @@ local currentLevel
 local currentExpPoints
 local expGage
 
+
 ------------------------------------------------------------------------
 
 function SettingsScene:init()
@@ -43,14 +44,18 @@ function SettingsScene:init()
     currentExpPoints= math.tointeger(ExpPoints)
     
     expGage= GageBar(ExpPoints, ExpNeedAmount, vec2(WIDTH/4, HEIGHT/1.5), color(255, 184, 0, 255), WIDTH/2)   
+    
 end
 
 ------------------------------------------------------------------------
 
 function SettingsScene:draw()
     -- Codea does not automatically call this method
-    background(40, 60, 29, 255)
     sprite("Project:bg1", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)--bg
+    tint(48, 48, 48, 100)
+    sprite("Project:bg1", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)
+    tint(255, 255, 255, 255)
+    
     backButton:drawBackButton()
     
     --music

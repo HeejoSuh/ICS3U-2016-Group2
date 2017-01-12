@@ -16,11 +16,6 @@ SplashScene = class()
 local durationTime= ElapsedTime
 local transitionTime
 
-local companyLogoSprite
-local gameLogoSprite
-
-local currentSprite
-
 
 ------------------------------------------------------------------------
 
@@ -28,11 +23,6 @@ local currentSprite
 function SplashScene:init()
     
     transitionTime= 2.2
-    
-    companyLogoSprite= "Project:white nothing"
-    gameLogoSprite= ("Project:name")
-    
-    currentSprite= companyLogoSprite --first, set to company sprite
 end
 
 
@@ -53,18 +43,20 @@ function SplashScene:draw()
         end
     elseif (durationTime + transitionTime < ElapsedTime) then
         --for the next few seconds, show game logo
-        background(14, 14, 14, 255)
-        currentSprite= gameLogoSprite
+        background(31, 31, 31, 255)
+        --Draw logo
+        sprite("Project:name", WIDTH/2, HEIGHT/2, WIDTH/1.2, WIDTH/1.2)
     else
         background(255, 255, 255, 255)
-        fontSize(WIDTH/16)
-        font("TimesNewRomanPS-BoldItalicMT")
-        fill(0, 0, 0, 255)
-        text("H company", WIDTH/2, 6*HEIGHT/7)
+        --Draw logo
+        tint(131, 29, 29, 255)
+        sprite("Project:brown dot", WIDTH/2+10, HEIGHT/2, WIDTH/1.1, WIDTH/1.1)
+        fontSize(WIDTH/9)
+        font("Marion-Italic")
+        fill(33, 81, 31, 255)
+        text(":D: Works", WIDTH/2, HEIGHT/1.9)
     end
     
-    --Draw logo
-    sprite(currentSprite, WIDTH/2, HEIGHT/2, WIDTH/1.2, WIDTH/1.2)
 end
 
 
