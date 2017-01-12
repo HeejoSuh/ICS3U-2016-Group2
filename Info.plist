@@ -9,8 +9,9 @@
 		<string>Main</string>
 		<string>Settings</string>
 		<string>HelpScene</string>
-		<string>Attack</string>
 		<string>Shop</string>
+		<string>Attack</string>
+		<string>Monsters</string>
 		<string>Spells</string>
 		<string>Buy</string>
 		<string>Splash</string>
@@ -20,7 +21,6 @@
 		<string>BasicSprites</string>
 		<string>GageBar</string>
 		<string>Walking</string>
-		<string>Monsters</string>
 		<string>DeadScene</string>
 		<string>PausedScene</string>
 		<string>Potion</string>

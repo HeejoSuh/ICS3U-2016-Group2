@@ -119,18 +119,17 @@ function setNextMonster()
     local percent= math.random(4, 15*CurrentGameFloor)/10
 
     
-    CurrentMonster["health"]= tonumber(string.format("%.f", tonumber(CurrentMonster["health"]) * percent))
+    CurrentMonster["health"]= tonumber(string.format("%.f", (CurrentMonster["health"]) * percent))
     
-    CurrentMonster["coins"]= tonumber(string.format("%.f", tonumber(CurrentMonster["coins"]) * percent))
+    CurrentMonster["coins"]= tonumber(string.format("%.f", (CurrentMonster["coins"]) * percent))
     
-    CurrentMonster["points"]= tonumber(string.format("%.f", tonumber(CurrentMonster["points"]) * percent))
+    CurrentMonster["points"]= tonumber(string.format("%.f", (CurrentMonster["points"]) * percent))
     
-    CurrentMonster["strength"]= tonumber(string.format("%.f", tonumber(CurrentMonster["strength"]) * percent))
+    CurrentMonster["strength"]= tonumber(string.format("%.f", (CurrentMonster["strength"]) * percent))
 
-    print("\n\n\n\n\n\n")
+    print("\n\n\n\n\n")
 
     currentMonsterOrgHealth= CurrentMonster["health"] --save original health    
-    
 end
 
 ------------------------------------------------------------------------
@@ -179,5 +178,4 @@ function Monsters:nextMonsterUp()
         end
         print(Monsters:returnMonsterNames())
     end
-    
 end
