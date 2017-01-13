@@ -34,7 +34,7 @@ end
 
 function MapsScene:draw()
     -- Codea does not automatically call this method
-    sprite("Project:Parchment (1)", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)--bg
+    sprite("Project:parchment old", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)--bg
     
     for numberOfButtons= 1,#buttons do
         --draw the buttons

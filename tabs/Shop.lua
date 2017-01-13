@@ -14,7 +14,7 @@ ShopScene = class()
 
 
 local buyPotionButton
-local potionCost= 100
+local potionCost= 50
 
 local backButton
 
@@ -35,7 +35,7 @@ local popUp
 function ShopScene:init()
     -- you can accept and set parameters here
     
-    buyPotionButton= Button("Project:buy button", vec2(2*WIDTH/3, HEIGHT/5.5))
+    buyPotionButton= Button("Project:buy button", vec2(2.1*WIDTH/3, HEIGHT/5.5))
     
     
     
@@ -75,25 +75,30 @@ function ShopScene:draw()
     buyPotionButton:draw()
     
     --potion cost
-    fill(18, 17, 14, 250)
-    font("Papyrus-Condensed")
+    fill(18, 17, 14, 255)
+    font("Copperplate-Bold")
     textWrapWidth(WIDTH/3)
-    fontSize(WIDTH/25)
-    text(potionCost.." each", 2.5*WIDTH/5, HEIGHT/4.5)
+    fontSize(WIDTH/20)
+    text(potionCost.." each", 2.5*WIDTH/5, HEIGHT/3)
+    
+    
+    
+    
+    
     --potion number
-    fill(18, 17, 14, 250)
-    font("Papyrus-Condensed")
-    fontSize(WIDTH/27)
-    text(math.tointeger(NumberOfPotions), 2.5*WIDTH/5, HEIGHT/6)
+    fill(255, 200, 0, 220)
+    font("Papyrus")
+    fontSize(WIDTH/15)
+    text(math.tointeger(NumberOfPotions), 2.5*WIDTH/5, HEIGHT/5.7)
     
     --text("Buy", 2*WIDTH/3, HEIGHT/5.6)
     
     
     --money
-    fill(196, 162, 36, 250)
+    fill(255, 200, 0, 250)
     font("Papyrus-Condensed")
     textWrapWidth(WIDTH/1.85)
-    fontSize(WIDTH/20)
+    fontSize(WIDTH/17)
     text(math.tointeger(MoneyHave).." coins", WIDTH/2, HEIGHT/1.1)
     
     for numberOfWands= 1, #Wands do
@@ -106,7 +111,7 @@ function ShopScene:draw()
         end
         if CurrentWandNumber== numberOfWands then
             --if using it
-            tint(26, 155, 66, 255)
+            tint(53, 27, 27, 255)
         end
         wandChooseButtons[numberOfWands]:draw()
         tint(255, 255, 255, 255)

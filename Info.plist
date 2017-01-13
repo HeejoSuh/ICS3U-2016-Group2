@@ -15,12 +15,12 @@
 		<string>Monsters</string>
 		<string>Spells</string>
 		<string>Buy</string>
+		<string>Walking</string>
 		<string>MainMenu</string>
 		<string>Game</string>
 		<string>Maps</string>
 		<string>BasicSprites</string>
 		<string>GageBar</string>
-		<string>Walking</string>
 		<string>DeadScene</string>
 		<string>PausedScene</string>
 		<string>Potion</string>

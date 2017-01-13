@@ -77,7 +77,7 @@ function MainMenuScene:touched(touch)
         currentButtonDict["button"]:touched(touch)
         if currentButtonDict["button"].selected==true then
             -- if button touched then
-            sound("A Hero's Quest:Door Open")
+            sound("Game Sounds One:Jump")
             
             if currentButtonDict["mode"]=="practice" then
                 CurrentGameFloor=nil
@@ -91,9 +91,9 @@ function MainMenuScene:touched(touch)
                 if CurrentGameFloor==0 then
                     --if no data then do nothing
                 else
+                    NextWords= ""
                     if CurrentMonsters==nil then 
                         -- if no monsters then make new ones
-                        CurrentGameFloor= 1
                         CurrentMonsters= Monsters()
                     end
                     Scene.Change("walk")

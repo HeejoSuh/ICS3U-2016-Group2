@@ -11,8 +11,6 @@ WalkingScene = class()
 
 ------------------------------------------------------------------------
 
-local backgroundImage= ("Project:bg")
-
 local backgroundSprite
 
 local beginTime
@@ -37,6 +35,10 @@ local monsterDeafeatWords= ""
 local coinWords= ""
 local expWords= ""
 
+local walkSoundTime= ElapsedTime
+local walkSounds
+
+local eachWalkTime= 1
 
 ------------------------------------------------------------------------
 
@@ -92,8 +94,9 @@ function WalkingScene:init()
     
     
     beginTime= ElapsedTime
+    eachWalkTime=0.5
     
-    sound("A Hero's Quest:Walk")
+    walkSounds= {"A Hero's Quest:Walk", "A Hero's Quest:Walk 2 (Short)"}
 end
 
 
@@ -150,8 +153,7 @@ function WalkingScene:draw()
     
     --pop up
     --create sprite
-    
-    sprite("Cargo Bot:Dialogue Button", WIDTH/2, popUpY, WIDTH/1.5, WIDTH/2.5) --draw popup
+    sprite("Project:parchment old", WIDTH/2, popUpY, WIDTH/1.5, WIDTH/2.5) --draw popup
     
     --draw text
     textMode (CENTER)
@@ -191,6 +193,13 @@ function WalkingScene:draw()
     end
     
     pauseButton:draw()
+    
+    
+    if walkSoundTime+eachWalkTime<ElapsedTime then
+        local randomNumber= math.random(1, #walkSounds)
+        sound(walkSounds[randomNumber], 0.6) --play a walking sound
+        walkSoundTime= ElapsedTime
+    end
 end
 
 ------------------------------------------------------------------------

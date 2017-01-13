@@ -43,9 +43,9 @@ function AttackScene:init()
                 --power increases with different levels and wands
             local additionalSpellPower
             if Level>1 then
-                additionalSpellPower= math.tointeger((Level/1.5)*Wands[CurrentWandNumber]["power"])
+                additionalSpellPower= (Level/1.5)*Wands[CurrentWandNumber]["power"]
             else
-                additionalSpellPower= math.tointeger(Wands[CurrentWandNumber]["power"])
+                additionalSpellPower= Wands[CurrentWandNumber]["power"]
             end
             CurrentMonster["health"]= CurrentMonster["health"] - Spells[SpellCastedNumber]["power"]*additionalSpellPower
         
