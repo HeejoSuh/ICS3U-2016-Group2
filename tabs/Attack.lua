@@ -84,6 +84,7 @@ function AttackScene:init()
         end
     else
         --practice scene
+        sound("A Hero's Quest:Attack Cast 1")
         saySpell()
     end
     
@@ -186,8 +187,8 @@ end
 function saySpell()
     --say spell
     speech.language= "en-GB"
-    speech.pitch= 1.2
-    speech.rate= 0.5
+    speech.pitch= 1.1
+    speech.rate= 0.45
     speech.voice= speech.voices[9]
     speech.say(Spells[SpellCastedNumber]["spell name"])--say 
 end

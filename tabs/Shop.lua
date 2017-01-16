@@ -64,7 +64,7 @@ function ShopScene:draw()
     sprite("Project:Wood", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)
     tint(255, 255, 255, 255)
     --bg
-    tint(100, 84, 84, 255)
+    tint(187, 187, 187, 255)
     --Middle block
     sprite("Project:Wood", WIDTH/2, HEIGHT/1.6, WIDTH, HEIGHT/2.5)
     tint(255, 255, 255, 255)
@@ -80,8 +80,6 @@ function ShopScene:draw()
     textWrapWidth(WIDTH/3)
     fontSize(WIDTH/20)
     text(potionCost.." each", 2.5*WIDTH/5, HEIGHT/3)
-    
-    
     
     
     
@@ -105,7 +103,7 @@ function ShopScene:draw()
         tint(255, 255, 255, 255)
         
         sprite(Wands[numberOfWands]["sprite"], numberOfWands*wandSpace, 3.3*HEIGHT/5, WIDTH/7.5, WIDTH/3.5) --draw wands   
-        if Wands[numberOfWands]["unlocked"]==false then
+        if WandUnlocked[numberOfWands]==false then
             --draw locks
             sprite("Project:Lock", numberOfWands*wandSpace, 3.3*HEIGHT/5, WIDTH/5, WIDTH/5)
         end
@@ -148,8 +146,10 @@ function ShopScene:touched(touch)
             if MoneyHave>= potionCost then 
                 --take away money
                 MoneyHave= MoneyHave- potionCost
+                saveGlobalData("money", MoneyHave)
                 --add a number of potion
                 NumberOfPotions= NumberOfPotions +1
+                saveGlobalData("potionNumber", NumberOfPotions)
                 sound("Game Sounds One:Assembly 4")
             end
         end
@@ -158,9 +158,10 @@ function ShopScene:touched(touch)
             local touchedButton= wandChooseButtons[numberOfWands]
             touchedButton:touched(touch)
             if touchedButton.selected==true then
-                if Wands[numberOfWands]["unlocked"]==true then 
+                if WandUnlocked[numberOfWands]==true then 
                     --if unlocked then
                     CurrentWandNumber= numberOfWands
+                    saveGlobalData("wandNumber", CurrentWandNumber)
                 else
                     --not unlocked
                     allowTouch= false

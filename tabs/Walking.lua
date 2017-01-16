@@ -38,7 +38,7 @@ local expWords= ""
 local walkSoundTime= ElapsedTime
 local walkSounds
 
-local eachWalkTime= 1
+local eachWalkTime= 20
 
 ------------------------------------------------------------------------
 
@@ -46,33 +46,37 @@ local eachWalkTime= 1
 function WalkingScene:init()
     -- you can accept and set parameters here
     print("Walk scene")
-    if CurrentMonster["health"]<=0 then
-        --if defeated monster then
-        coinWords= "+"..tostring(math.tointeger(CurrentMonster["coins"])).." coins"
-        expWords= "+"..tostring(math.tointeger(CurrentMonster["points"])).." points"
-        
-        CurrentMonsters:nextMonsterUp() -- next monster
-        if CurrentMonsters==nil then
-            --if a floor cleared then
-            print("Nooooo")
-            CurrentMonsters= Monsters() --sprite new patch
-            endWalkTime= 4 --new floor
-            CurrentGameFloor= CurrentGameFloor+1 --new floor
-            NextWords= "Underground floor number "..tostring(math.tointeger(CurrentGameFloor))
-            sound("A Hero's Quest:Door Open")--new floor sound
-                for numberOfMaps= 1,#Maps do
-                    --floor unlocked
-                    if CurrentGameFloor==Maps[numberOfMaps]["floor"] then
-                    Maps[numberOfMaps]["unlocked"]= true
-                end
-            end
-            
-        else
-            endWalkTime= math.random(10, 35)/10--time it takes to walk
-        end
-        
-    else
+    if NextWords== "Remembering the paths..." or MonsterDefeated=="" then
+        --if resuming game then
         endWalkTime= 5 --beginning game, slightly longer
+        coinWords=""
+        expWords=""
+    else
+        if CurrentMonster["health"]<=0 then
+            --if defeated monster then
+            coinWords= "+"..tostring(math.tointeger(CurrentMonster["coins"])).." coins"
+            expWords= "+"..tostring(math.tointeger(CurrentMonster["points"])).." points"
+            
+            CurrentMonsters:nextMonsterUp() -- next monster
+            if CurrentMonsters==nil then
+                --if a floor cleared then
+                print("Nooooo")
+                CurrentMonsters= Monsters() --sprite new patch
+                endWalkTime= 4 --new floor
+                  CurrentGameFloor= CurrentGameFloor+1 --new floor
+                NextWords= "Underground floor number "..tostring(math.tointeger(CurrentGameFloor))
+                sound("A Hero's Quest:Door Open")--new floor sound
+                for numberOfMaps= 1,#Maps do
+                     --floor unlocked
+                     if CurrentGameFloor==Maps[numberOfMaps]["floor"] then
+                        Maps[numberOfMaps]["unlocked"]= true
+                    end
+                end
+            
+            else
+                endWalkTime= math.random(10, 35)/10--time it takes to walk
+            end
+        end
     end
 
     
@@ -159,12 +163,14 @@ function WalkingScene:draw()
     textMode (CENTER)
     font("Papyrus")
     pushStyle ()
+
     if NextWords~= "" then
         --if new floor then
         fontSize (WIDTH/26)
         fill(42, 28, 24, 255)
         text(NextWords, WIDTH/2, popUpY+WIDTH/15)
     end
+    
     if MonsterDefeated~="" then
         --enemy defeated
         fontSize (WIDTH/23)

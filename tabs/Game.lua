@@ -17,6 +17,7 @@ local touchLight
 local touchLightPosition
 
 local dots
+local dotPositions
 local touchedDots=""
 
 local whooshSounds={"A Hero's Quest:Swing 1", "A Hero's Quest:Swing 2", "A Hero's Quest:Swing 3"}
@@ -45,14 +46,13 @@ function GameScene:init()
     local dotMainPos= vec2(WIDTH/2, HEIGHT/2.4)
     local dotMoveAmount= 1.3
     local dotSpace= WIDTH/4.5
-    local dotPositions= {                                                             vec2(dotMainPos.x-dotSpace, dotMainPos.y+dotSpace),                                             vec2(dotMainPos.x, dotMainPos.y+dotSpace*dotMoveAmount),                                             vec2(dotMainPos.x+dotSpace, dotMainPos.y+dotSpace),              vec2(dotMainPos.x-dotSpace*dotMoveAmount, dotMainPos.y),                                             vec2(dotMainPos.x, dotMainPos.y),                                             vec2(dotMainPos.x+dotSpace*dotMoveAmount,dotMainPos.y),                     vec2(dotMainPos.x-dotSpace, dotMainPos.y-dotSpace),                                             vec2(dotMainPos.x, dotMainPos.y-dotSpace*dotMoveAmount), vec2(dotMainPos.x+dotSpace,dotMainPos.y-dotSpace)                                            }
-    
+    dotPositions= {                                                             vec2(dotMainPos.x-dotSpace, dotMainPos.y+dotSpace),                                             vec2(dotMainPos.x, dotMainPos.y+dotSpace*dotMoveAmount),                                             vec2(dotMainPos.x+dotSpace, dotMainPos.y+dotSpace),              vec2(dotMainPos.x-dotSpace*dotMoveAmount, dotMainPos.y),                                             vec2(dotMainPos.x, dotMainPos.y),                                             vec2(dotMainPos.x+dotSpace*dotMoveAmount,dotMainPos.y),                     vec2(dotMainPos.x-dotSpace, dotMainPos.y-dotSpace),                                             vec2(dotMainPos.x, dotMainPos.y-dotSpace*dotMoveAmount), vec2(dotMainPos.x+dotSpace,dotMainPos.y-dotSpace)                                            }
     
     dots={}
     for numberOfDots= 1, 9 do
         --put in dots
         --sprite("Project:brown dot")
-        table.insert(dots, SpriteObject("Project:brown dot", dotPositions[numberOfDots]))
+        table.insert(dots, SpriteObject("Documents:Light", dotPositions[numberOfDots]))
         dots[numberOfDots].draggable= false --not draggable
     end
     
@@ -95,15 +95,18 @@ function GameScene:draw()
     potionButton:draw()
     
     --draw dots
-    tint(255, 255, 255, 110) --translucent
     for everyDots= 1, 9 do
+        tint(255, 255, 255, 10) --translucent
         dots[everyDots]:draw()
+        --draw dots on top 
+        tint(255, 255, 255, 110) --translucent
+        sprite("Project:brown dot", dotPositions[everyDots].x, dotPositions[everyDots].y)
     end 
     
 
     --draw touch light
     
-    touchLight= SpriteObject("Project:40 dot", touchLightPosition)
+    touchLight= SpriteObject("Project:Black Spot Small", touchLightPosition)
    -- sprite("Project:40 dot")
     tint(127, 127, 127, 80)
     touchLight:draw()

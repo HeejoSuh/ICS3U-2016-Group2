@@ -31,8 +31,8 @@ function Buy:init(itemInfoNumber)
     
     
     okayButton= Button("Project:onoff button", vec2(WIDTH/2, HEIGHT/3))
-    yesButton= Button("Project:onoff button", vec2(2*WIDTH/8, HEIGHT/3))
-    noButton= Button("Project:onoff button", vec2(6*WIDTH/8, HEIGHT/3))
+    yesButton= Button("Project:onoff button", vec2(2.5*WIDTH/8, HEIGHT/3))
+    noButton= Button("Project:onoff button", vec2(5.5*WIDTH/8, HEIGHT/3))
     
     
     
@@ -47,7 +47,7 @@ function Buy:draw()
     -- Codea does not automatically call this method
     --pop up
     tint(213, 194, 171, 255)
-    sprite("Project:parchment", WIDTH/2, HEIGHT/2, WIDTH/1.3, HEIGHT/1.7) 
+    sprite("Project:parchment old", WIDTH/2, HEIGHT/2, WIDTH/1.3, HEIGHT/1.7) 
     tint(255, 255, 255, 255)
     
     fill(7, 7, 6, 220)
@@ -62,8 +62,8 @@ function Buy:draw()
         yesButton:draw()
         noButton:draw()
         fontSize(WIDTH/17)
-        text("Yes", 2*WIDTH/8, HEIGHT/3)
-        text("No", 6*WIDTH/8, HEIGHT/3)
+        text("Yes", 2.5*WIDTH/8, HEIGHT/3)
+        text("No", 5.5*WIDTH/8, HEIGHT/3)
     elseif buyMode=="showing okay" then
         print("Work")
         okayButton:draw()
@@ -121,9 +121,15 @@ function check()
         --if right level
         if MoneyHave>= tonumber(item["cost"]) then
             --if enough money
-            Wands[itemNumber]["unlocked"]=true
+            --unlock wand
+            WandUnlocked[itemNumber]=true
+            saveGlobalData("wandUnlocked"..tostring(itemNumber), true)
+            --reduce money
             MoneyHave= MoneyHave-tonumber(item["cost"])
+            saveGlobalData("money", MoneyHave)
+            --set wand number
             CurrentWandNumber= itemNumber
+            saveGlobalData("wandNumber", CurrentWandNumber)
             
             sound("Game Sounds One:Assembly 4")
             showWords= "Purchase complete!"

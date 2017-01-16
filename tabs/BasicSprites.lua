@@ -31,7 +31,7 @@ function BasicSprites:drawBackground()
     --draw background
     if Mode== "practice" then
         sprite("Project:bg1", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT) -- draw background
-        sprite("Planet Cute:Character Princess Girl", WIDTH/2, HEIGHT/1.8, WIDTH, WIDTH) -- draw dummy
+        sprite("Project:Monster 6", WIDTH/2, HEIGHT/1.8, WIDTH/1.5, WIDTH/1.5) -- draw dummy
     else
         sprite("Project:bg", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT) -- draw background
     end

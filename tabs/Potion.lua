@@ -13,7 +13,15 @@ Potion = class()
 ------------------------------------------------------------------------
 
 local __potionWaitTime= 0 --potion cool time, set it to zero as default
-local __potionHealAmount= 15
+
+local __potionHealAmount
+if Mode== "game" then
+    --differs for each mode
+    __potionHealAmount= 2 
+else
+    __potionHealAmount= 1
+end
+
 local __potionCoolTimeSeconds= 2 --how long it takes for the potion to be able to be used again
 
 ------------------------------------------------------------------------
@@ -64,6 +72,7 @@ function Potion:touched(touch)
                 --just set it back to max
                 UserHealth= HealthLevelAmount
             end
+            saveGlobalData("userHealth", UserHealth)
         else
             return 0
         end

@@ -20,6 +20,7 @@ function DeadScene:init()
     -- you can accept and set parameters here
     mainMenuButton= Button("Project:onoff button", vec2(WIDTH/2, HEIGHT/2.5))
     CurrentGameFloor= 0 --delete current data, start over.
+    saveGlobalData("gameFloor", CurrentGameFloor)
     UserHealth= HealthLevelAmount -- reset health
 end
 
@@ -29,6 +30,7 @@ function DeadScene:draw()
     -- Codea does not automatically call this method
     background(188, 161, 161, 255)
     sprite("Project:bg1", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)--bg
+    sprite("Project:parchment old", WIDTH/2, HEIGHT/2, WIDTH/1.2, HEIGHT/1.2)
     
     fill(0, 0, 0, 255)
     font("Zapfino")

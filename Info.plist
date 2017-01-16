@@ -7,23 +7,23 @@
 	<key>Buffer Order</key>
 	<array>
 		<string>Main</string>
+		<string>Monsters</string>
+		<string>Maps</string>
+		<string>MainMenu</string>
+		<string>Potion</string>
+		<string>Walking</string>
 		<string>Settings</string>
+		<string>Shop</string>
+		<string>Game</string>
 		<string>Splash</string>
 		<string>HelpScene</string>
-		<string>Shop</string>
-		<string>Attack</string>
-		<string>Monsters</string>
-		<string>Spells</string>
 		<string>Buy</string>
-		<string>Walking</string>
-		<string>MainMenu</string>
-		<string>Game</string>
-		<string>Maps</string>
+		<string>Attack</string>
+		<string>Spells</string>
 		<string>BasicSprites</string>
 		<string>GageBar</string>
 		<string>DeadScene</string>
 		<string>PausedScene</string>
-		<string>Potion</string>
 		<string>HelperClass</string>
 	</array>
 	<key>Description</key>

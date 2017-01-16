@@ -38,10 +38,6 @@ function SettingsScene:init()
     
     
     helpButton= Button("Project:brown dot", vec2(WIDTH/2, 3*HEIGHT/7))
-
-    --level
-    currentLevel= math.tointeger(Level)
-    currentExpPoints= math.tointeger(ExpPoints)
     
     expGage= GageBar(ExpPoints, ExpNeedAmount, vec2(WIDTH/4, HEIGHT/1.5), color(255, 184, 0, 255), WIDTH/2)   
     
@@ -76,7 +72,7 @@ function SettingsScene:draw()
     fontSize(WIDTH/10)
     text("Lv."..Level, WIDTH/2, HEIGHT/1.15)
     fontSize(WIDTH/20)
-    text("Exp:  "..tostring(ExpPoints).." / "..tostring(ExpNeedAmount), WIDTH/2, HEIGHT/1.25)
+    text("Exp:  "..tostring(math.tointeger(ExpPoints)).." / "..tostring(math.tointeger(ExpNeedAmount)), WIDTH/2, HEIGHT/1.25)
     
     --exp points
     expGage:draw()
@@ -111,12 +107,13 @@ function SettingsScene:touched(touch)
         if onOffWords== "On" then
             onOffWords= "Off"
             MusicMuted= true
-            music.paused= true
         else
             onOffWords= "On"
             MusicMuted= false
-            music.paused= false
+            music("Project:GameBgm", true, 1)
         end
+        music.paused= MusicMuted
+        saveGlobalData("musicMuted", MusicMuted)
     end
     
     helpButton:touched(touch)

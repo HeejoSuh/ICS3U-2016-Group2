@@ -57,13 +57,13 @@ function MainMenuScene:draw()
     
     sprite("Project:name", WIDTH/2, HEIGHT/1.25, WIDTH/2., WIDTH/2.) -- game name sprite
     
-    
+    --level
     fontSize (WIDTH/25)
     font("Papyrus")
     textMode (CENTER)
     pushStyle ()
-    fill(228, 190, 101, 255)
-    text("Coins: "..tostring(math.tointeger(MoneyHave)), WIDTH/2, HEIGHT/1.6)
+    fill(227, 227, 227, 255)
+    text("Level "..tostring(math.tointeger(Level)), WIDTH/2, HEIGHT/1.6)
     fill(10, 10, 10, 255)
 end
 
@@ -80,7 +80,7 @@ function MainMenuScene:touched(touch)
             sound("Game Sounds One:Jump")
             
             if currentButtonDict["mode"]=="practice" then
-                CurrentGameFloor=nil
+                Mode= "practice"
                 SpriteEnemies= false
             else
                 SpriteEnemies= true
@@ -91,19 +91,13 @@ function MainMenuScene:touched(touch)
                 if CurrentGameFloor==0 then
                     --if no data then do nothing
                 else
-                    NextWords= ""
-                    if CurrentMonsters==nil then 
-                        -- if no monsters then make new ones
-                        CurrentMonsters= Monsters()
-                    end
+                    Mode= "game"
+                    NextWords= "Floor number "..tostring(math.tointeger(CurrentGameFloor))
+                    -- create new monsters
+                    CurrentMonsters= Monsters()
                     Scene.Change("walk")
                 end
             else 
-                if currentButtonDict["mode"]=="practice" then
-                    --practice scene
-                    Mode= "practice"
-                    CurrentGameFloor= 0
-                end
                 print("Go to "..currentButtonDict["scene"])
                 Scene.Change(currentButtonDict["scene"])
             end

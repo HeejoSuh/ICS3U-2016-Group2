@@ -19,7 +19,7 @@ local backButton
 function MapsScene:init()
     -- you can accept and set parameters here
     
-    buttonPosition= {vec2(WIDTH/4, HEIGHT/1.5 ), vec2(WIDTH/4, HEIGHT/1.5 - 1*HEIGHT/5), vec2(WIDTH/4, HEIGHT/1.5 - 2*HEIGHT/5), vec2(3*WIDTH/4, HEIGHT/2)}
+    buttonPosition= {vec2(WIDTH/4, HEIGHT/1.5 ), vec2(WIDTH/4, HEIGHT/1.5 - 1*HEIGHT/5), vec2(WIDTH/4, HEIGHT/1.5 - 2*HEIGHT/5), vec2(3*WIDTH/4, HEIGHT/2), vec2(3*WIDTH/4, HEIGHT/5)}
     
     for numberOfButtons= 1, #Maps do
         --put actual buttons into dictionary
@@ -39,7 +39,7 @@ function MapsScene:draw()
     for numberOfButtons= 1,#buttons do
         --draw the buttons
         buttons[numberOfButtons]:draw()
-        if Maps[numberOfButtons]["unlocked"]==false then
+        if MapsUnlocked[numberOfButtons]==false then
             --if not unlocked then draw locks
             sprite("Project:Lock", buttonPosition[numberOfButtons].x, buttonPosition[numberOfButtons].y, WIDTH/7, WIDTH/7) --locks
         end
@@ -71,10 +71,12 @@ function MapsScene:touched(touch)
             -- if button touched then
             sound("A Hero's Quest:Arrow Shoot 2")
             --go to walk scene
-            if Maps[numberOfButtons]["unlocked"]==true then
+            if MapsUnlocked[numberOfButtons]==true then
                 --if unlocked then
-                UserHealth= 100
+                UserHealth= HealthLevelAmountGlobal
+                saveGlobalData("userHealth", UserHealth)
                 CurrentGameFloor= Maps[numberOfButtons]["floor"]
+                saveGlobalData("gameFloor", CurrentGameFloor)
                 NextWords= "Floor "..tostring(CurrentGameFloor)
                 print(NextWords)
                 Mode= "walk"

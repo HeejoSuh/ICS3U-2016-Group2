@@ -27,7 +27,7 @@ end
 function PausedScene:draw()
     -- Codea does not automatically call this method
     sprite("Project:bg", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT) -- draw background
-    sprite("Cargo Bot:Dialogue Button", WIDTH/2, HEIGHT/2, WIDTH/1.2, HEIGHT/1.2)
+    sprite("Project:parchment old", WIDTH/2, HEIGHT/2, WIDTH/1.2, HEIGHT/1.2)
     
     font("Zapfino")
     textMode (CENTER)
