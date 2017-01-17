@@ -72,11 +72,9 @@ function Potion:touched(touch)
                 --just set it back to max
                 UserHealth= HealthLevelAmount
             end
-            saveGlobalData("userHealth", UserHealth)
-        else
-            return 0
+            saveLocalData("userHealth", UserHealth)
+        else--no more potions
+            return false
         end
-    else
-        return 0
     end
 end

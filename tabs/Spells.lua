@@ -50,10 +50,8 @@ function SpellsScene:init()
     
     
     --dots position
-    local dotMainPos= vec2(WIDTH/2, HEIGHT/2.4)
-    local dotMoveAmount= 1.3
-    local dotSpace= WIDTH/4.5
-    dotPositions= {                                                             vec2(dotMainPos.x-dotSpace, dotMainPos.y+dotSpace),                                             vec2(dotMainPos.x, dotMainPos.y+dotSpace*dotMoveAmount),                                             vec2(dotMainPos.x+dotSpace, dotMainPos.y+dotSpace),              vec2(dotMainPos.x-dotSpace*dotMoveAmount, dotMainPos.y),                                             vec2(dotMainPos.x, dotMainPos.y),                                             vec2(dotMainPos.x+dotSpace*dotMoveAmount,dotMainPos.y),                     vec2(dotMainPos.x-dotSpace, dotMainPos.y-dotSpace),                                             vec2(dotMainPos.x, dotMainPos.y-dotSpace*dotMoveAmount), vec2(dotMainPos.x+dotSpace,dotMainPos.y-dotSpace)                                            }
+    local basicSprites= BasicSprites()
+    dotPositions= basicSprites:returnDotSprites()
 end
 
 ------------------------------------------------------------------------

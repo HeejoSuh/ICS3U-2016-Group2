@@ -92,7 +92,7 @@ function MainMenuScene:touched(touch)
                     --if no data then do nothing
                 else
                     Mode= "game"
-                    NextWords= "Floor number "..tostring(math.tointeger(CurrentGameFloor))
+                    NextWords= "Loading..."
                     -- create new monsters
                     CurrentMonsters= Monsters()
                     Scene.Change("walk")

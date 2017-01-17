@@ -20,7 +20,7 @@ function DeadScene:init()
     -- you can accept and set parameters here
     mainMenuButton= Button("Project:onoff button", vec2(WIDTH/2, HEIGHT/2.5))
     CurrentGameFloor= 0 --delete current data, start over.
-    saveGlobalData("gameFloor", CurrentGameFloor)
+    saveLocalData("gameFloor", CurrentGameFloor)
     UserHealth= HealthLevelAmount -- reset health
 end
 

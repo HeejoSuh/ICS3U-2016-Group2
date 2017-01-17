@@ -38,7 +38,7 @@ function SplashScene:draw()
         if FirstGamePlay==false then
             Scene.Change("mainMenu")
         else
-            saveGlobalData("tutorials", false)
+            saveLocalData("tutorials", false)
             print("Tutorials")
             Scene.Change("help")
         end

@@ -16,7 +16,7 @@ local backButton
 local previousPageButton
 local nextPageButton
 
-local eachPassTime= 2
+local eachPassTime= 2.5
 local currentPage
 local currentTime= ElapsedTime
  

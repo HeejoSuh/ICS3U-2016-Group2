@@ -19,7 +19,22 @@ local backButton
 function MapsScene:init()
     -- you can accept and set parameters here
     
-    buttonPosition= {vec2(WIDTH/4, HEIGHT/1.5 ), vec2(WIDTH/4, HEIGHT/1.5 - 1*HEIGHT/5), vec2(WIDTH/4, HEIGHT/1.5 - 2*HEIGHT/5), vec2(3*WIDTH/4, HEIGHT/2), vec2(3*WIDTH/4, HEIGHT/5)}
+    local mapSpaceX= WIDTH/4
+    local mapSpaceY= HEIGHT/6
+    
+    local mapMainPos= vec2(WIDTH/2, HEIGHT/2-mapSpaceY)
+    
+    local buttonPositionsBase= {                                                             vec2(mapMainPos.x-mapSpaceX, mapMainPos.y+2*mapSpaceY),                                             vec2(mapMainPos.x, mapMainPos.y+2*mapSpaceY),                                             vec2(mapMainPos.x+mapSpaceX, mapMainPos.y+2*mapSpaceY),              vec2(mapMainPos.x-mapSpaceX, mapMainPos.y+mapSpaceY),                                             vec2(mapMainPos.x, mapMainPos.y+mapSpaceY),                                             vec2(mapMainPos.x+mapSpaceX, mapMainPos.y+mapSpaceY),  vec2(mapMainPos.x-mapSpaceX, mapMainPos.y),                                             vec2(mapMainPos.x, mapMainPos.y),                                             vec2(mapMainPos.x+mapSpaceX,mapMainPos.y),                     vec2(mapMainPos.x-mapSpaceX, mapMainPos.y-mapSpaceY),                                             vec2(mapMainPos.x, mapMainPos.y-mapSpaceY), vec2(mapMainPos.x+mapSpaceX,mapMainPos.y-mapSpaceY),                                            vec2(mapMainPos.x-mapSpaceX, mapMainPos.y-2*mapSpaceY),                                             vec2(mapMainPos.x, mapMainPos.y-2*mapSpaceY), vec2(mapMainPos.x+mapSpaceX,mapMainPos.y-2*mapSpaceY)                       }
+    --set each position a little different each time
+    for numberOfMapPositions= 1, #buttonPositionsBase do
+        buttonPositionsBase[numberOfMapPositions]= vec2(buttonPositionsBase[numberOfMapPositions].x +math.random(0, 5)*10-50, buttonPositionsBase[numberOfMapPositions].y +math.random(0, 5)*10-50)
+    end
+    
+    --for number of maps, set position
+    buttonPosition={}
+    for numberOfMaps= 1, #Maps do
+        table.insert(buttonPosition, buttonPositionsBase[numberOfMaps])
+    end
     
     for numberOfButtons= 1, #Maps do
         --put actual buttons into dictionary
@@ -38,15 +53,30 @@ function MapsScene:draw()
     
     for numberOfButtons= 1,#buttons do
         --draw the buttons
+        local lockSize= WIDTH/12
+        tint(255, 255, 255, 180)
         buttons[numberOfButtons]:draw()
         if MapsUnlocked[numberOfButtons]==false then
             --if not unlocked then draw locks
-            sprite("Project:Lock", buttonPosition[numberOfButtons].x, buttonPosition[numberOfButtons].y, WIDTH/7, WIDTH/7) --locks
+            tint(255, 255, 255, 190)
+            sprite("Project:Lock", buttonPosition[numberOfButtons].x, buttonPosition[numberOfButtons].y, lockSize, lockSize) --locks
         end
         font("Papyrus-Condensed")
         fontSize(WIDTH/23)
         fill(116, 65, 35, 255)
         text("Floor "..tostring(Maps[numberOfButtons]["floor"]), buttonPosition[numberOfButtons].x, buttonPosition[numberOfButtons].y-40)
+        
+        --draw connecting dots in between them
+        tint(255, 255, 255, 170)
+        local smallDotSize= WIDTH/50
+        if numberOfButtons==2 or numberOfButtons==3 or numberOfButtons==5 or numberOfButtons==6 or numberOfButtons==8 or numberOfButtons==9 or numberOfButtons==11 or numberOfButtons==12 or numberOfButtons==14 or numberOfButtons==15 then
+            --if not the first or the last one, nor the first rows then
+            local sDotX= (buttonPosition[numberOfButtons].x + buttonPosition[numberOfButtons-1].x)/2
+            local sDotY= (buttonPosition[numberOfButtons].y + buttonPosition[numberOfButtons].y)/2
+            
+            sprite("Project:brown dot", 0.95*sDotX, 0.998*sDotY, smallDotSize, smallDotSize)
+            sprite("Project:brown dot", 1.05*sDotX, 1.002*sDotY, smallDotSize, smallDotSize)
+        end
     end
     
     font("Papyrus")
@@ -74,9 +104,9 @@ function MapsScene:touched(touch)
             if MapsUnlocked[numberOfButtons]==true then
                 --if unlocked then
                 UserHealth= HealthLevelAmountGlobal
-                saveGlobalData("userHealth", UserHealth)
+                saveLocalData("userHealth", UserHealth)
                 CurrentGameFloor= Maps[numberOfButtons]["floor"]
-                saveGlobalData("gameFloor", CurrentGameFloor)
+                saveLocalData("gameFloor", CurrentGameFloor)
                 NextWords= "Floor "..tostring(CurrentGameFloor)
                 print(NextWords)
                 Mode= "walk"

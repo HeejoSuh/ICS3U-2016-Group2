@@ -13,6 +13,7 @@ BasicSprites = class()
 
 local backButton
 local userGage
+local dotPositions
 
 ------------------------------------------------------------------------
 
@@ -21,6 +22,10 @@ function BasicSprites:init()
     backButton= Button("Project:button back", vec2(WIDTH/8, HEIGHT-WIDTH/9))
     
     userGage= GageBar(UserHealth, HealthLevelAmount, vec2(WIDTH/25, HEIGHT/30))
+    local dotMainPos= vec2(WIDTH/2, HEIGHT/2.4)
+    local dotMoveAmount= 1.3
+    local dotSpace= WIDTH/4.5
+    dotPositions= {                                                             vec2(dotMainPos.x-dotSpace, dotMainPos.y+dotSpace),                                             vec2(dotMainPos.x, dotMainPos.y+dotSpace*dotMoveAmount),                                             vec2(dotMainPos.x+dotSpace, dotMainPos.y+dotSpace),              vec2(dotMainPos.x-dotSpace*dotMoveAmount, dotMainPos.y),                                             vec2(dotMainPos.x, dotMainPos.y),                                             vec2(dotMainPos.x+dotSpace*dotMoveAmount,dotMainPos.y),                     vec2(dotMainPos.x-dotSpace, dotMainPos.y-dotSpace),                                             vec2(dotMainPos.x, dotMainPos.y-dotSpace*dotMoveAmount), vec2(dotMainPos.x+dotSpace,dotMainPos.y-dotSpace)                                            }
 end
 
 ------------------------------------------------------------------------
@@ -57,6 +62,13 @@ end
 
 ------------------------------------------------------------------------
 
+function BasicSprites:returnDotSprites()
+    -- Codea does not automatically call this method
+    --gets the positions for te dot sprites
+    return dotPositions
+end
+
+-----------------------------------------------------------------------
 
 function BasicSprites:drawUserGage()
     -- Codea does not automatically call this method

@@ -46,7 +46,7 @@ local eachWalkTime= 20
 function WalkingScene:init()
     -- you can accept and set parameters here
     print("Walk scene")
-    if NextWords== "Remembering the paths..." or MonsterDefeated=="" then
+    if NextWords== "Loading..." or MonsterDefeated=="" then
         --if resuming game then
         endWalkTime= 5 --beginning game, slightly longer
         coinWords=""
@@ -60,7 +60,7 @@ function WalkingScene:init()
             CurrentMonsters:nextMonsterUp() -- next monster
             if CurrentMonsters==nil then
                 --if a floor cleared then
-                print("Nooooo")
+                print("Floor cleared")
                 CurrentMonsters= Monsters() --sprite new patch
                 endWalkTime= 4 --new floor
                   CurrentGameFloor= CurrentGameFloor+1 --new floor
@@ -70,10 +70,11 @@ function WalkingScene:init()
                      --floor unlocked
                      if CurrentGameFloor==Maps[numberOfMaps]["floor"] then
                         Maps[numberOfMaps]["unlocked"]= true
+                            saveLocalData("mapsUnlocked"..tostring(numberOfMaps), true)
                     end
                 end
             
-            else
+            else --finding new monster
                 endWalkTime= math.random(10, 35)/10--time it takes to walk
             end
         end

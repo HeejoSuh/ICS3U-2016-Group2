@@ -146,10 +146,10 @@ function ShopScene:touched(touch)
             if MoneyHave>= potionCost then 
                 --take away money
                 MoneyHave= MoneyHave- potionCost
-                saveGlobalData("money", MoneyHave)
+                saveLocalData("money", MoneyHave)
                 --add a number of potion
                 NumberOfPotions= NumberOfPotions +1
-                saveGlobalData("potionNumber", NumberOfPotions)
+                saveLocalData("potionNumber", NumberOfPotions)
                 sound("Game Sounds One:Assembly 4")
             end
         end
@@ -161,7 +161,7 @@ function ShopScene:touched(touch)
                 if WandUnlocked[numberOfWands]==true then 
                     --if unlocked then
                     CurrentWandNumber= numberOfWands
-                    saveGlobalData("wandNumber", CurrentWandNumber)
+                    saveLocalData("wandNumber", CurrentWandNumber)
                 else
                     --not unlocked
                     allowTouch= false

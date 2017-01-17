@@ -123,26 +123,26 @@ function check()
             --if enough money
             --unlock wand
             WandUnlocked[itemNumber]=true
-            saveGlobalData("wandUnlocked"..tostring(itemNumber), true)
+            saveLocalData("wandUnlocked"..tostring(itemNumber), true)
             --reduce money
             MoneyHave= MoneyHave-tonumber(item["cost"])
-            saveGlobalData("money", MoneyHave)
+            saveLocalData("money", MoneyHave)
             --set wand number
             CurrentWandNumber= itemNumber
-            saveGlobalData("wandNumber", CurrentWandNumber)
+            saveLocalData("wandNumber", CurrentWandNumber)
             
             sound("Game Sounds One:Assembly 4")
             showWords= "Purchase complete!"
             buyMode= "showing okay"
             
             print("Bought")
-        else
+        else --not enough money
             showWords= "You don't have enough money"
             buyMode= "showing okay"
             
             print("No money")
         end
-    else
+    else --not enough level
         showWords= "You need to be at least level "..tostring(item["level"]).." to unlock this wand"
         buyMode= "showing okay"
         print("No level")

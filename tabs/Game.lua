@@ -42,11 +42,10 @@ function GameScene:init()
     
     Attacked= false --reset to false
     
+    potionButton= Potion()
+    basicSprites= BasicSprites()
     --dots position
-    local dotMainPos= vec2(WIDTH/2, HEIGHT/2.4)
-    local dotMoveAmount= 1.3
-    local dotSpace= WIDTH/4.5
-    dotPositions= {                                                             vec2(dotMainPos.x-dotSpace, dotMainPos.y+dotSpace),                                             vec2(dotMainPos.x, dotMainPos.y+dotSpace*dotMoveAmount),                                             vec2(dotMainPos.x+dotSpace, dotMainPos.y+dotSpace),              vec2(dotMainPos.x-dotSpace*dotMoveAmount, dotMainPos.y),                                             vec2(dotMainPos.x, dotMainPos.y),                                             vec2(dotMainPos.x+dotSpace*dotMoveAmount,dotMainPos.y),                     vec2(dotMainPos.x-dotSpace, dotMainPos.y-dotSpace),                                             vec2(dotMainPos.x, dotMainPos.y-dotSpace*dotMoveAmount), vec2(dotMainPos.x+dotSpace,dotMainPos.y-dotSpace)                                            }
+    dotPositions= basicSprites:returnDotSprites()
     
     dots={}
     for numberOfDots= 1, 9 do
@@ -64,10 +63,6 @@ function GameScene:init()
     else
         spellsButton= Button("Project:book", vec2(WIDTH-WIDTH/8, HEIGHT-WIDTH/9)) -- for practicing
     end
-    
-    
-    potionButton= Potion()
-    basicSprites= BasicSprites()
     
    -- userGage= GageBar(UserHealth, HealthLevelAmount, vec2(WIDTH/25, HEIGHT/30), color(255, 0, 0, 255), WIDTH/1.06)
     

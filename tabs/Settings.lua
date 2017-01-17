@@ -70,7 +70,7 @@ function SettingsScene:draw()
     font("Papyrus-Condensed")
     textWrapWidth(WIDTH/1.4)
     fontSize(WIDTH/10)
-    text("Lv."..Level, WIDTH/2, HEIGHT/1.15)
+    text("Lv."..tostring(math.tointeger(Level)), WIDTH/2, HEIGHT/1.15)
     fontSize(WIDTH/20)
     text("Exp:  "..tostring(math.tointeger(ExpPoints)).." / "..tostring(math.tointeger(ExpNeedAmount)), WIDTH/2, HEIGHT/1.25)
     
@@ -113,7 +113,7 @@ function SettingsScene:touched(touch)
             music("Project:GameBgm", true, 1)
         end
         music.paused= MusicMuted
-        saveGlobalData("musicMuted", MusicMuted)
+        saveLocalData("musicMuted", MusicMuted)
     end
     
     helpButton:touched(touch)
