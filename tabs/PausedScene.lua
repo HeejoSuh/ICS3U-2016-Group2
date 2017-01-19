@@ -29,16 +29,22 @@ function PausedScene:draw()
     sprite("Project:bg", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT) -- draw background
     sprite("Project:parchment old", WIDTH/2, HEIGHT/2, WIDTH/1.2, HEIGHT/1.2)
     
-    font("Zapfino")
+    font("Papyrus")
     textMode (CENTER)
     textWrapWidth(WIDTH*0.9) --restrict range 
-    fill(0, 0, 0, 255)
+    fill(19, 29, 29, 255)
     fontSize(WIDTH/15)
-    text("Game Paused", WIDTH/2, HEIGHT/1.4)
+    text("Game Paused", WIDTH/2, HEIGHT/1.5)
     
+    font("Papyrus-Condensed")
+    fill(0, 0, 0, 250)
+    fontSize(WIDTH/25)
+    text("The monster might escape if you\nget out of the game!", WIDTH/2, HEIGHT/2)
     
     mainMenuButton:draw()
     resumeButton:draw()
+    
+    fill(140, 116, 28, 255)
     font("Papyrus-Condensed")
     fontSize(WIDTH/26)
     text("Main Menu", 2*WIDTH/7, HEIGHT/3)

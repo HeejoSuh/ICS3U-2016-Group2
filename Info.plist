@@ -7,8 +7,10 @@
 	<key>Buffer Order</key>
 	<array>
 		<string>Main</string>
+		<string>Spells</string>
 		<string>Walking</string>
 		<string>Monsters</string>
+		<string>Attack</string>
 		<string>Maps</string>
 		<string>MainMenu</string>
 		<string>Potion</string>
@@ -19,8 +21,6 @@
 		<string>Splash</string>
 		<string>HelpScene</string>
 		<string>Buy</string>
-		<string>Attack</string>
-		<string>Spells</string>
 		<string>GageBar</string>
 		<string>DeadScene</string>
 		<string>PausedScene</string>

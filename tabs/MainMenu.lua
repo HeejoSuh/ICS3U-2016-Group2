@@ -80,9 +80,13 @@ function MainMenuScene:touched(touch)
             sound("Game Sounds One:Jump")
             
             if currentButtonDict["mode"]=="practice" then
+                --practice
                 Mode= "practice"
                 SpriteEnemies= false
+                print("Practice")
             else
+                --game
+                Mode= "game"
                 SpriteEnemies= true
             end
             
@@ -91,7 +95,6 @@ function MainMenuScene:touched(touch)
                 if CurrentGameFloor==0 then
                     --if no data then do nothing
                 else
-                    Mode= "game"
                     NextWords= "Loading..."
                     -- create new monsters
                     CurrentMonsters= Monsters()

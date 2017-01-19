@@ -160,7 +160,7 @@ function SpellsScene:touched(touch)
     --next page
     nextPageButton:touched(touch)
     if nextPageButton.selected==true then        
-        if currentPage+1 ~= #Spells then
+        if currentPage ~= #Spells then
             --if not the last page then turn page
             currentPage=currentPage+1
             newSpellSet()

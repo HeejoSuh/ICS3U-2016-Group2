@@ -14,22 +14,23 @@ Potion = class()
 
 local __potionWaitTime= 0 --potion cool time, set it to zero as default
 
-local __potionHealAmount
-if Mode== "game" then
-    --differs for each mode
-    __potionHealAmount= 2 
-else
-    __potionHealAmount= 1
-end
+local __potionHealAmount= 35
 
-local __potionCoolTimeSeconds= 2 --how long it takes for the potion to be able to be used again
+local __potionCoolTimeSeconds --how long it takes for the potion to be able to be used again
 
 ------------------------------------------------------------------------
 
 function Potion:init()
     -- you can accept and set parameters here
     __potionButton= Button("Project:potion", vec2(WIDTH/8, WIDTH/6))
-
+    
+    if Mode== "game" then
+    --differs for each mode
+    __potionCoolTimeSeconds= 2
+    print("potion wait time is longer")
+    else
+    __potionCoolTimeSeconds= 0.8
+    end
 end
 
 ------------------------------------------------------------------------

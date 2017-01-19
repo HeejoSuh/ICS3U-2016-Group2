@@ -15,6 +15,7 @@
 LevelGlobal= readLocalData("level", 1)
 Level= LevelGlobal
 
+
 MoneyHaveGlobal= readLocalData("money", 100)
 MoneyHave= MoneyHaveGlobal
 
@@ -94,20 +95,30 @@ MapsUnlocked= MapsUnlockedGlobal
 
 Spells= {}
 
-Spells[1]= {["spell name"]= "Dividi Bavidiboo", ["power"]= 18, ["type"]= "grow", ["spell"]= "123", ["sprite"]= "Tyrian Remastered:Explosion Huge", ["level"]=1, ["description"]= "Spell strength: Low   Difficulty: Low"}
+Spells[1]= {["spell name"]= "Dividi Bavidiboo", ["power"]= 18, ["type"]= "grow", ["spell"]= "123", ["sprite"]= "Project:spell 1", ["level"]=1, ["description"]= "Spell strength: Low   Difficulty: Low"}
 
-Spells[2]= {["spell name"]= "Abracadabra", ["power"]= 10, ["type"]= "turn", ["spell"]= "456", ["sprite"]= "Project:spells 2", ["level"]=1, ["description"]= "Spell strength: Low   Difficulty: Low"} 
+Spells[2]= {["spell name"]= "Abracadabra", ["power"]= 10, ["type"]= "grow", ["spell"]= "456", ["sprite"]= "Project:spells 3", ["level"]=1, ["description"]= "Spell strength: Low   Difficulty: Low"} 
 
-Spells[3]= {["spell name"]= "Icpears", ["power"]= 15, ["type"]= "turn", ["spell"]= "4569", ["sprite"]= "Tyrian Remastered:Space Ice 3", ["level"]=1, ["description"]= "Spell strength: Low   Difficulty: Low"} 
+Spells[3]= {["spell name"]= "Ispears", ["power"]= 15, ["type"]= "turn", ["spell"]= "4569", ["sprite"]= "Project:spells 2", ["level"]=1, ["description"]= "Spell strength: Low   Difficulty: Low"} 
 
-Spells[4]= {["spell name"]= "Thunder lash", ["power"]= 20, ["type"]= "turn", ["spell"]= "258789", ["sprite"]= "Project:spells 3", ["level"]=2, ["description"]= "Spell strength: Low   Difficulty: Low"} 
+Spells[4]= {["spell name"]= "Sccarre", ["power"]= 20, ["type"]= "turn", ["spell"]= "3214789", ["sprite"]= "Project:spell sprite-01", ["level"]=2, ["description"]= "Spell strength: Low   Difficulty: Low"} 
 
-Spells[5]= {["spell name"]= "Fire blast", ["power"]= 30, ["type"]= "grow", ["spell"]= "321478963", ["sprite"]= "Project:spells 4", ["level"]=2, ["description"]= "Spell strength: Low Medium   Difficulty: Low Medium"}
+Spells[5]= {["spell name"]= "Thunder lash", ["power"]= 20, ["type"]= "turn", ["spell"]= "258789", ["sprite"]= "Project:spell sprite-07", ["level"]=2, ["description"]= "Spell strength: Low   Difficulty: Low Medium"} 
 
-Spells[6]= {["spell name"]= "Cloud kill", ["power"]=40, ["type"]= "grow", ["spell"]= "9317", ["sprite"]= "Tyrian Remastered:Space Ice 5", ["level"]=2, ["description"]= "Spell strength: Low Medium   Difficulty: Low Medium"}
+Spells[6]= {["spell name"]= "Starstruck", ["power"]= 25, ["type"]= "turn", ["spell"]= "2457", ["sprite"]= "Project:spell sprite-03", ["level"]=3, ["description"]= "Spell strength: Low Medium   Difficulty: Low"} 
 
-Spells[7]= {["spell name"]= "Wall of fire", ["power"]=60, ["type"]= "turn", ["spell"]= "987654321", ["sprite"]= "Project:spells 6", ["level"]=3, ["description"]= "Spell strength: Medium   Difficulty: Medium"}
+Spells[7]= {["spell name"]= "Fire blast", ["power"]= 22, ["type"]= "grow", ["spell"]= "321478963", ["sprite"]= "Project:spell sprite-16", ["level"]=3, ["description"]= "Spell strength: Low Medium   Difficulty: Low Medium"}
 
+Spells[8]= {["spell name"]= "Locker", ["power"]= 30, ["type"]= "grow", ["spell"]= "456369", ["sprite"]= "Project:spell sprite-06", ["level"]=4, ["description"]= "Spell strength: Low Medium   Difficulty: Low"}
+
+
+Spells[9]= {["spell name"]= "Hallucinate", ["power"]= 28, ["type"]= "grow", ["spell"]= "254789", ["sprite"]= "Project:spell sprite-04", ["level"]=4, ["description"]= "Spell strength: Low Medium   Difficulty: Low"}
+
+Spells[10]= {["spell name"]= "Cloud kill", ["power"]=40, ["type"]= "grow", ["spell"]= "9317", ["sprite"]= "Project:spell sprite-17", ["level"]=5, ["description"]= "Spell strength: Low Medium   Difficulty: Low Medium"}
+
+Spells[11]= {["spell name"]= "Wall of fire", ["power"]=50, ["type"]= "turn", ["spell"]= "987654321", ["sprite"]= "Project:spell sprite-02", ["level"]=8, ["description"]= "Spell strength: Medium   Difficulty: Medium"}
+
+Spells[12]= {["spell name"]= "Death star", ["power"]= 1000, ["type"]= "grow", ["spell"]= "2576352", ["sprite"]= "Project:spell sprite-15", ["level"]=100, ["description"]= "Spell strength: Extreme   Difficulty: Medium"}
 
 MonsterDefeated= ""
 
@@ -159,7 +170,7 @@ function setup()
     
     --go to splash scene first
     --Scene.Change("splash")
-    Scene.Change("splash")
+    Scene.Change("mainMenu")
 end
  
 ------------------------------------------------------------------------

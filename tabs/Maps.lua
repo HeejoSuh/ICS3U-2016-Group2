@@ -25,7 +25,7 @@ function MapsScene:init()
     local mapMainPos= vec2(WIDTH/2, HEIGHT/2-mapSpaceY)
     
     local buttonPositionsBase= {                                                             vec2(mapMainPos.x-mapSpaceX, mapMainPos.y+2*mapSpaceY),                                             vec2(mapMainPos.x, mapMainPos.y+2*mapSpaceY),                                             vec2(mapMainPos.x+mapSpaceX, mapMainPos.y+2*mapSpaceY),              vec2(mapMainPos.x-mapSpaceX, mapMainPos.y+mapSpaceY),                                             vec2(mapMainPos.x, mapMainPos.y+mapSpaceY),                                             vec2(mapMainPos.x+mapSpaceX, mapMainPos.y+mapSpaceY),  vec2(mapMainPos.x-mapSpaceX, mapMainPos.y),                                             vec2(mapMainPos.x, mapMainPos.y),                                             vec2(mapMainPos.x+mapSpaceX,mapMainPos.y),                     vec2(mapMainPos.x-mapSpaceX, mapMainPos.y-mapSpaceY),                                             vec2(mapMainPos.x, mapMainPos.y-mapSpaceY), vec2(mapMainPos.x+mapSpaceX,mapMainPos.y-mapSpaceY),                                            vec2(mapMainPos.x-mapSpaceX, mapMainPos.y-2*mapSpaceY),                                             vec2(mapMainPos.x, mapMainPos.y-2*mapSpaceY), vec2(mapMainPos.x+mapSpaceX,mapMainPos.y-2*mapSpaceY)                       }
-    --set each position a little different each time
+    --set each position a little different each time 
     for numberOfMapPositions= 1, #buttonPositionsBase do
         buttonPositionsBase[numberOfMapPositions]= vec2(buttonPositionsBase[numberOfMapPositions].x +math.random(0, 5)*10-50, buttonPositionsBase[numberOfMapPositions].y +math.random(0, 5)*10-50)
     end
