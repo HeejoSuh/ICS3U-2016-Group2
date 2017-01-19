@@ -6,7 +6,7 @@
 -- This is main program for the CPT game
 
 --RESET DATA
---clearLocalData()
+-- clearLocalData()
 ------------------------------------------------------------------------
 
 --Set global variables
@@ -112,13 +112,19 @@ Spells[7]= {["spell name"]= "Fire blast", ["power"]= 22, ["type"]= "grow", ["spe
 Spells[8]= {["spell name"]= "Locker", ["power"]= 30, ["type"]= "grow", ["spell"]= "456369", ["sprite"]= "Project:spell sprite-06", ["level"]=4, ["description"]= "Spell strength: Low Medium   Difficulty: Low"}
 
 
-Spells[9]= {["spell name"]= "Hallucinate", ["power"]= 28, ["type"]= "grow", ["spell"]= "254789", ["sprite"]= "Project:spell sprite-04", ["level"]=4, ["description"]= "Spell strength: Low Medium   Difficulty: Low"}
+Spells[9]= {["spell name"]= "Hallucinate", ["power"]= 28, ["type"]= "grow", ["spell"]= "326598", ["sprite"]= "Project:spell sprite-04", ["level"]=4, ["description"]= "Spell strength: Low Medium   Difficulty: Low"}
 
-Spells[10]= {["spell name"]= "Cloud kill", ["power"]=40, ["type"]= "grow", ["spell"]= "9317", ["sprite"]= "Project:spell sprite-17", ["level"]=5, ["description"]= "Spell strength: Low Medium   Difficulty: Low Medium"}
+Spells[10]= {["spell name"]= "Cloud kill", ["power"]=35, ["type"]= "grow", ["spell"]= "9317", ["sprite"]= "Project:spell sprite-17", ["level"]=4, ["description"]= "Spell strength: Medium   Difficulty: Low Medium"}
 
-Spells[11]= {["spell name"]= "Wall of fire", ["power"]=50, ["type"]= "turn", ["spell"]= "987654321", ["sprite"]= "Project:spell sprite-02", ["level"]=8, ["description"]= "Spell strength: Medium   Difficulty: Medium"}
+Spells[11]= {["spell name"]= "Unlock", ["power"]=30, ["type"]= "grow", ["spell"]= "2547896", ["sprite"]= "Project:spell sprite-05", ["level"]=5, ["description"]= "Spell strength: Low Medium   Difficulty: Medium"}
 
-Spells[12]= {["spell name"]= "Death star", ["power"]= 1000, ["type"]= "grow", ["spell"]= "2576352", ["sprite"]= "Project:spell sprite-15", ["level"]=100, ["description"]= "Spell strength: Extreme   Difficulty: Medium"}
+Spells[12]= {["spell name"]= "Ignite", ["power"]=36, ["type"]= "turn", ["spell"]= "453", ["sprite"]= "Project:spell sprite-18", ["level"]=6, ["description"]= "Spell strength: Medium   Difficulty: Low"}
+
+Spells[13]= {["spell name"]= "Poison", ["power"]=38, ["type"]= "turn", ["spell"]= "759", ["sprite"]= "Project:spell sprite-18", ["level"]=7, ["description"]= "Spell strength: Medium   Difficulty: Low"}
+
+Spells[14]= {["spell name"]= "Wall of fire", ["power"]=40, ["type"]= "turn", ["spell"]= "987654321", ["sprite"]= "Project:spell sprite-02", ["level"]=8, ["description"]= "Spell strength: Medium   Difficulty: Medium"}
+
+Spells[15]= {["spell name"]= "Death star", ["power"]= 1000, ["type"]= "grow", ["spell"]= "2576352", ["sprite"]= "Project:spell sprite-15", ["level"]=100, ["description"]= "Spell strength: Extreme   Difficulty: Medium"}
 
 MonsterDefeated= ""
 

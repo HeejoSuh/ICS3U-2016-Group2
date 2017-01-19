@@ -19,9 +19,12 @@ local potionCost= 50
 local backButton
 
 
---local zeroWidth= 0
-local wandSpace
-local wandChooseButtons={}
+local zeroWidth= 0 --default
+local wandSpace= WIDTH/3.2
+local wandChooseButton
+
+local currentWandInTheCentre= 0 --default
+local middleSpace= wandSpace*0.9
 
 local shopType
 
@@ -41,15 +44,11 @@ function ShopScene:init()
     
     backButton= BasicSprites()
     
-    wandSpace= WIDTH/5
-    
     shopType= "shop"
     
     --wands
-    for numberOfWands= 1, #Wands do
-        --use buttons
-        table.insert(wandChooseButtons, Button("Project:brown dot", vec2(numberOfWands*wandSpace, HEIGHT/2)))
-    end
+    --use button
+    wandChooseButton= Button("Project:brown dot", vec2(WIDTH/2, HEIGHT/2.1))
     
     popUp= Buy(1) --set to random at first
     
@@ -59,14 +58,20 @@ end
 
 function ShopScene:draw()
     -- Codea does not automatically call this method
-    sprite("Project:Wood", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)--bg
+    --base
+    sprite("Project:Wood", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)
+    --bg
     tint(77, 77, 77, 100)
     sprite("Project:Wood", WIDTH/2, HEIGHT/2, WIDTH, HEIGHT)
-    tint(255, 255, 255, 255)
-    --bg
-    tint(187, 187, 187, 255)
     --Middle block
+    tint(187, 187, 187, 255)
     sprite("Project:Wood", WIDTH/2, HEIGHT/1.6, WIDTH, HEIGHT/2.5)
+    --light block
+    fill(223, 190, 146, 50)
+    rectMode(CENTER)
+    rect(WIDTH/2, HEIGHT/1.6, middleSpace, HEIGHT/2.5)
+    
+    
     tint(255, 255, 255, 255)
     
     --potion
@@ -99,24 +104,48 @@ function ShopScene:draw()
     fontSize(WIDTH/17)
     text(math.tointeger(MoneyHave).." coins", WIDTH/2, HEIGHT/1.1)
     
+    --draw wands
+    
+    local currentWand= false
     for numberOfWands= 1, #Wands do
-        tint(255, 255, 255, 255)
+        local xPos= zeroWidth+ numberOfWands*wandSpace
         
-        sprite(Wands[numberOfWands]["sprite"], numberOfWands*wandSpace, 3.3*HEIGHT/5, WIDTH/7.5, WIDTH/3.5) --draw wands   
-        if WandUnlocked[numberOfWands]==false then
-            --draw locks
-            sprite("Project:Lock", numberOfWands*wandSpace, 3.3*HEIGHT/5, WIDTH/5, WIDTH/5)
+        if xPos>=0 and xPos<=WIDTH then
+            --if on the screen currently
+            sprite(Wands[numberOfWands]["sprite"], xPos, 3.3*HEIGHT/5, WIDTH/7.5, WIDTH/3.5) --draw wands   
+            if WandUnlocked[numberOfWands]==false then
+                --draw locks
+                sprite("Project:Lock", xPos, 3.3*HEIGHT/5, WIDTH/5, WIDTH/5)
+            end
+            --set one in the centre
+            if xPos > WIDTH/2-middleSpace/2 and xPos < WIDTH/2+middleSpace/2 then
+                --if a certain wand is in the centre then
+                currentWand=true
+                currentWandInTheCentre= numberOfWands
+            end
         end
-        if CurrentWandNumber== numberOfWands then
-            --if using it
-            tint(53, 27, 27, 255)
-        end
-        wandChooseButtons[numberOfWands]:draw()
+    end
+    
+    --if no wand is in the centre then change to zero.
+    if currentWand==false then 
+        currentWandInTheCentre= 0
+    end
+    
+    
+    --choose button
+    if CurrentWandNumber== currentWandInTheCentre then
+        --if using it
+        tint(0, 45, 255, 255)
+    else
         tint(255, 255, 255, 255)
     end
+    wandChooseButton:draw()
+    
+    tint(255, 255, 255, 255)
     
     --back button
     backButton:drawBackButton()
+    
     
     if allowTouch==false then
         --draw popup
@@ -154,28 +183,32 @@ function ShopScene:touched(touch)
             end
         end
     
-        for numberOfWands= 1, #Wands do
-            local touchedButton= wandChooseButtons[numberOfWands]
-            touchedButton:touched(touch)
-            if touchedButton.selected==true then
-                if WandUnlocked[numberOfWands]==true then 
-                    --if unlocked then
-                    CurrentWandNumber= numberOfWands
-                    saveLocalData("wandNumber", CurrentWandNumber)
-                else
-                    --not unlocked
-                    allowTouch= false
-                    print("Buy?")
-                    popUp= Buy(numberOfWands)     
-                end
+                
+        wandChooseButton:touched(touch)
+        if wandChooseButton.selected==true and currentWandInTheCentre~=0 then
+            print(tostring(currentWandInTheCentre).."th wand selected")
+            --reset wand
+            if WandUnlocked[currentWandInTheCentre]==true then 
+                --if unlocked then
+                CurrentWandNumber= numberOfWands
+                saveLocalData("wandNumber", CurrentWandNumber)
+            else
+                --not unlocked
+                allowTouch= false
+                print("Buy?")
+                popUp= Buy(currentWandInTheCentre)     
             end
         end
+        
     end
     
     
     --screen moving
-    --if zeroWidth+touch.deltaX < (#Wands+1)*wandSpace and zeroWidth+touch.deltaX>0 then 
+    if zeroWidth+touch.deltaX<= wandSpace*0.65 and zeroWidth+touch.deltaX >= -1*(#Wands-1.5)*wandSpace then 
         --if in the righ domain, move screen left and right
-        --zeroWidth=zeroWidth+touch.deltaX
-    --end
+        zeroWidth=zeroWidth+touch.deltaX
+        --print(zeroWidth)
+    end
+    
+    
 end

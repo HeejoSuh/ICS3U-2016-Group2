@@ -14,7 +14,7 @@ Potion = class()
 
 local __potionWaitTime= 0 --potion cool time, set it to zero as default
 
-local __potionHealAmount= 35
+local __potionHealAmount= 100
 
 local __potionCoolTimeSeconds --how long it takes for the potion to be able to be used again
 

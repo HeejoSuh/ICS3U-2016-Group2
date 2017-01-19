@@ -84,7 +84,7 @@ function SettingsScene:draw()
     textWrapWidth(WIDTH/1.1)
     fontSize(WIDTH/27)
     textMode(CENTER)
-    text("CREDITS:\n\nDesigned by: Heejo Suh\nProgrammed by: Heejo Suh\nMusic by:Yun\nArtwork by: Heejo Suh", WIDTH/2, HEIGHT/4.5)
+    text("CREDITS:\n\nDesigned by: Heejo Suh\nProgrammed by: Heejo Suh\nMusic by: Yun\nMain Artwork by: Heejo Suh", WIDTH/2, HEIGHT/4.5)
     popMatrix()
     
     

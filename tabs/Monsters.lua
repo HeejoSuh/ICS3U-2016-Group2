@@ -15,7 +15,7 @@ Monsters = class()
 --                                                                                                            monstersDict[hejdhdhd]= {['monster name']='NameOfMonster', ['sprite']= spriteImage, ['health']= healthOfMonster(average=80), ['points']= pointOfMonster(average=10), ['speed']= timeItTakesToAttack(average=1.5), ['coins']= numberOfCoins(average=14), ['strength']= attackPower,(average=36), ['floor']= atLeastThisFlooraToSee, ['attack sound']= soundWhenAttacking, ['hurt sound']= soundWhenAttacked}  
 monstersDict= {}
 monstersDict[1]= {['monster name']='Fluffy', ['sprite']= "Project:Monster bushy", ['health']= 20, ['points']= 8, ['speed']= 1.8, ['coins']= 10, ["strength"]= 30, ['floor']= 1, ['attack sound']= "A Hero's Quest:Monster Die 2", ['hurt sound']= "A Hero's Quest:Monster Die 1"} 
-monstersDict[2]= {['monster name']='Dustball', ['sprite']= "Project:monster dust", ['health']= 70, ['points']= 10, ['speed']= 1, ['coins']= 5, ['strength']= 8, ['floor']= 1, ['attack sound']= "A Hero's Quest:Monster Hit 2", ['hurt sound']= "A Hero's Quest:Bottle Break 1"}
+monstersDict[2]= {['monster name']='Dustball', ['sprite']= "Project:monster dust", ['health']= 70, ['points']= 10, ['speed']= 1.4, ['coins']= 5, ['strength']= 8, ['floor']= 1, ['attack sound']= "A Hero's Quest:Monster Hit 2", ['hurt sound']= "A Hero's Quest:Bottle Break 1"}
 monstersDict[3]= {['monster name']='Mysterious egg', ['sprite']= "Project:monster egg", ['health']= 90, ['points']= 5, ['speed']= 1.2, ['coins']= 50, ['strength']= 15, ['floor']= 2, ['attack sound']= "A Hero's Quest:Dig 1", ['hurt sound']= "A Hero's Quest:Bottle Break 1"}
 monstersDict[4]= {['monster name']='Nightmare', ['sprite']= "Project:Monster 4", ['health']= 100, ['points']= 8, ['speed']= 1.1, ['coins']= 20, ['strength']= 5, ['floor']= 2, ['attack sound']= "A Hero's Quest:Dig 1", ['hurt sound']= "A Hero's Quest:Bottle Break 1"}
 monstersDict[5]= {['monster name']='Chirpy', ['sprite']= "Project:Monster 7", ['health']= 80, ['points']= 20, ['speed']= 2.1, ['coins']= 10, ['strength']= 20, ['floor']= 3, ['attack sound']= "A Hero's Quest:Dig 1", ['hurt sound']= "A Hero's Quest:Bottle Break 1"}
@@ -144,7 +144,7 @@ function setNextMonster()
 
     --differs for every monster
     --40%~150% difference
-    local percent= math.random(5, 15*CurrentGameFloor)/10
+    local percent= math.random(5, 12*CurrentGameFloor)/10
 
     
     CurrentMonster["health"]= tonumber(string.format("%.f", (CurrentMonster["health"]) * percent))

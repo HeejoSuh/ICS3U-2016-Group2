@@ -16,11 +16,11 @@
 		<string>Potion</string>
 		<string>Settings</string>
 		<string>Shop</string>
+		<string>Buy</string>
 		<string>Game</string>
 		<string>BasicSprites</string>
 		<string>Splash</string>
 		<string>HelpScene</string>
-		<string>Buy</string>
 		<string>GageBar</string>
 		<string>DeadScene</string>
 		<string>PausedScene</string>
