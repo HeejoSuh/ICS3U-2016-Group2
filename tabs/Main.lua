@@ -156,7 +156,6 @@ FirstGamePlay= readLocalData("tutorials", true)
 
 function setup()
     supportedOrientations(PORTRAIT)
-    -
     displayMode(FULLSCREEN_NO_BUTTONS)
     --displayMode(FULLSCREEN)
     noFill()
