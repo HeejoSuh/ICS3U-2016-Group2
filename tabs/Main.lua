@@ -5,8 +5,8 @@
 -- Created for: ICS3U
 -- This is main program for the CPT game
 
---RESET DATA
--- clearLocalData()
+--RESET DATA Hehehehehe
+--              clearLocalData()
 ------------------------------------------------------------------------
 
 --Set global variables
@@ -21,13 +21,24 @@ MoneyHave= MoneyHaveGlobal
 
 
 
---{["wand name"]=wandName, ["sprite"]=wandSpriteImage, ["cost"]=cost, ["level"]= LevelToUse},                                                                                             
-Wands= {                                                                    {["wand name"]="Beginner's wand", ["sprite"]="Project:Wand 1", ["cost"]=0, ["level"]= 1, ["power"]= 1},                                                                                             
-{["wand name"]="Intermediate's wand", ["sprite"]="Project:Wand 3", ["cost"]=100, ["level"]= 1, ["power"]= 2},                                                                     {["wand name"]="Advanced wand", ["sprite"]="Project:Wand 2", ["cost"]=500, ["level"]= 3, ["power"]= 3},                                                                     {["wand name"]="Expert's wand", ["sprite"]="Project:Wand 4", ["cost"]=1000, ["level"]= 5, ["power"]= 7},                                                                                                                           }
+--    Wands[hdhdjd]= {["wand name"]=wandName, ["sprite"]=wandSpriteImage, ["cost"]=cost, ["level"]= LevelToUse, ["power"]= powerOfWand, ["x"]= widthOfWand}
+Wands= {}
+
+Wands[1]= {["wand name"]="Beginner's wand", ["sprite"]="Space Art:Green Bullet", ["cost"]=0, ["level"]= 1, ["power"]= 1, ["x"]= 80}
+
+Wands[2]= {["wand name"]="Intermediate's wand", ["sprite"]="Space Art:Beam", ["cost"]=300, ["level"]= 1, ["power"]= 2, ["x"]= 50}
+
+Wands[3]= {["wand name"]="Advanced wand", ["sprite"]="Project:Wand 3", ["cost"]=700, ["level"]= 3, ["power"]= 3, ["x"]= WIDTH/3}
+
+Wands[4]= {["wand name"]="Expert's wand", ["sprite"]="Project:Wand 2", ["cost"]=1000, ["level"]= 5, ["power"]= 4, ["x"]= WIDTH/3}
+
+Wands[5]= {["wand name"]="Old Pine wand", ["sprite"]="Project:Wand 4", ["cost"]=2000, ["level"]= 8, ["power"]= 5, ["x"]= WIDTH/3}
+
+Wands[6]= {["wand name"]="Maple wand", ["sprite"]="Project:Wand 1", ["cost"]=3500, ["level"]= 10, ["power"]= 7, ["x"]= WIDTH/3}
+
 
 CurrentWandNumberGlobal= readLocalData("wandNumber", 1)
 CurrentWandNumber= CurrentWandNumberGlobal
-
 
 WandUnlockedGlobal={}
 table.insert(WandUnlockedGlobal, 1, readLocalData("wandUnlocked1", true))
@@ -176,7 +187,7 @@ function setup()
     
     --go to splash scene first
     --Scene.Change("splash")
-    Scene.Change("mainMenu")
+    Scene.Change("splash")
 end
  
 ------------------------------------------------------------------------

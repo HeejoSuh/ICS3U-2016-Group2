@@ -112,7 +112,7 @@ function ShopScene:draw()
         
         if xPos>=0 and xPos<=WIDTH then
             --if on the screen currently
-            sprite(Wands[numberOfWands]["sprite"], xPos, 3.3*HEIGHT/5, WIDTH/7.5, WIDTH/3.5) --draw wands   
+            sprite(Wands[numberOfWands]["sprite"], xPos, 3.3*HEIGHT/5, Wands[numberOfWands]["x"]/2.5, WIDTH/3.5) --draw wands   
             if WandUnlocked[numberOfWands]==false then
                 --draw locks
                 sprite("Project:Lock", xPos, 3.3*HEIGHT/5, WIDTH/5, WIDTH/5)

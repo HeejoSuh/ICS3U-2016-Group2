@@ -19,12 +19,14 @@ monstersDict[2]= {['monster name']='Dustball', ['sprite']= "Project:monster dust
 monstersDict[3]= {['monster name']='Mysterious egg', ['sprite']= "Project:monster egg", ['health']= 90, ['points']= 5, ['speed']= 1.2, ['coins']= 50, ['strength']= 15, ['floor']= 2, ['attack sound']= "A Hero's Quest:Dig 1", ['hurt sound']= "A Hero's Quest:Bottle Break 1"}
 monstersDict[4]= {['monster name']='Nightmare', ['sprite']= "Project:Monster 4", ['health']= 100, ['points']= 8, ['speed']= 1.1, ['coins']= 20, ['strength']= 5, ['floor']= 2, ['attack sound']= "A Hero's Quest:Dig 1", ['hurt sound']= "A Hero's Quest:Bottle Break 1"}
 monstersDict[5]= {['monster name']='Chirpy', ['sprite']= "Project:Monster 7", ['health']= 80, ['points']= 20, ['speed']= 2.1, ['coins']= 10, ['strength']= 20, ['floor']= 3, ['attack sound']= "A Hero's Quest:Dig 1", ['hurt sound']= "A Hero's Quest:Bottle Break 1"}
-monstersDict[6]= {['monster name']='Ghoastasgast', ['sprite']= "Project:Monster 5", ['health']= 30, ['points']= 6, ['speed']= 1.2, ['coins']= 20, ['strength']= 40, ['floor']= 3, ['attack sound']= "A Hero's Quest:FireBall Blast 2", ['hurt sound']= "A Hero's Quest:FireBall Blast 1"}
+monstersDict[6]= {['monster name']='Ghoastasgast', ['sprite']= "Project:Monster 5", ['health']= 30, ['points']= 4, ['speed']= 1.2, ['coins']= 20, ['strength']= 40, ['floor']= 3, ['attack sound']= "A Hero's Quest:FireBall Blast 2", ['hurt sound']= "A Hero's Quest:FireBall Blast 1"}
 monstersDict[7]= {['monster name']='Dongy', ['sprite']= "Project:Monster 6", ['health']= 10000, ['points']= 10000000 ,['speed']= 1.2, ['coins']= 10000, ['strength']= 100, ['floor']= 100, ['attack sound']= "A Hero's Quest:Dig 1", ['hurt sound']= "A Hero's Quest:Dig 2"}
 
+monstersDict[8]= {['monster name']='A Random Explorer', ['sprite']= "Project:Guy", ['health']= 100, ['points']= 30 ,['speed']= 1.2, ['coins']= 40, ['strength']= 40, ['floor']= 5, ['attack sound']= "A Hero's Quest:Hurt 1", ['hurt sound']= "A Hero's Quest:Hurt 4"}
 
---sprite("4")
---sound("A Hero's Quest:FireBall Blast 1")
+
+-- sprite()
+--    sound("A Hero's Quest:Hurt 1")
 
 local __monstersList= {}
 local __currentMonsterGageBar
