@@ -124,12 +124,12 @@ function GameScene:draw()
     
     if Mode=="game" then
         --floor number
-        fill(7, 7, 6, 220)
+        fill(255, 164, 0, 220)
         font("Papyrus-Condensed")
         textWrapWidth(WIDTH/1.1)
         fontSize(WIDTH/24)
         textMode(CENTER)
-        text("Floor "..tostring(CurrentGameFloor), WIDTH/2, HEIGHT/1.1)
+        text("Floor "..tostring(math.tointeger(CurrentGameFloor)), WIDTH/2, HEIGHT/1.1)
     end
 end
 
